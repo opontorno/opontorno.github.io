@@ -38,11 +38,11 @@
 }
 .style-switcher .style-switcher-toggler
 {
-    top: 0;
+    top: 55;
 }
 .style-switcher .day-night
 {
-    top: 55px;
+    top: 0px;
 }
 .style-switcher h4
 {
