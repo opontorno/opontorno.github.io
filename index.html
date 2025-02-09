@@ -4,19 +4,22 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>O.Pontorno</title>
+  <link rel="icon" type="image/png" href="images/brain-graph_.png">
+  <title>opontorno</title>
   <!-- ===== CSS Files ===== -->
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/skins/color-3.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <!-- ====== Style Switcher ====== -->
+  <!-- <link rel="stylesheet" href="css/style-switcher.css">
   <link rel="stylesheet" href="css/skins/color-1.css" class="alternate-style" title="color-1" disabled>
   <link rel="stylesheet" href="css/skins/color-2.css" class="alternate-style" title="color-2" disabled>
   <link rel="stylesheet" href="css/skins/color-3.css" class="alternate-style" title="color-3" disabled>
   <link rel="stylesheet" href="css/skins/color-4.css" class="alternate-style" title="color-4" disabled>
-  <link rel="stylesheet" href="css/skins/color-5.css" class="alternate-style" title="color-5" disabled>
-  <link rel="stylesheet" href="css/style-switcher.css">
+  <link rel="stylesheet" href="css/skins/color-5.css" class="alternate-style" title="color-5" disabled> -->
 </head>
+
+
 <body class="dark">
   <!-- ===== Main Container Start ===== -->
   <div class="main-container">
@@ -30,75 +33,86 @@
       </div>
       <ul class="nav">
         <li><a href="#home" class="active"><i class="fa fa-home"></i> Home</a></li>
-        <li><a href="#about"><i class="fa fa-user"></i>Curriculum Vitae</a></li>
-        <li><a href="#services"><i class="fa fa-list"></i>Research</a></li>
+        <li><a href="#cv"><i class="fa fa-user"></i>Curriculum Vitae</a></li>
+        <li><a href="#research"><i class="fa fa-search"></i>Research</a></li>
       </ul>
     </div>
     <!-- ===== Aside End ===== -->
+
+
+
+
+
+
+
+
     <!-- ===== Main Content Start ===== -->
     <div class="main-content">
-      <!-- ===== Home Section Start ===== -->
       <section class="home active section" id="home"> 
         <div class="container">
           <div class="row">
             <div class="home-info padd-15">
-              <h1>Orazio Pontorno</h1>
+              <h1 class="name-highlight">Orazio Pontorno</h1>
               <p>
-                Ph.D. Student in Artificial Intelligence at <a href="https://www.unicampus.it/" class="external-link" target="_blank">UCBM</a>
-                in collaboration with <a href="https://www.unict.it/" class="external-link" target="_blank">UNICT</a>.<br>
-                Research and Development Specialist at <a href="https://www.fantix.ai" class="external-link" target="_blank">Fantix AI</a>.
+                Ph.D. Student in Artificial Intelligence at 
+                <a href="https://www.unicampus.it/" class="external-link" target="_blank">UCBM</a>
+                in collaboration with 
+                <a href="https://www.unict.it/" class="external-link" target="_blank">UNICT</a>.<br>
+                Research and Development Specialist at 
+                <a href="https://www.fantix.ai" class="external-link" target="_blank">Fantix AI</a>.
               </p>
-              <p>
-                
-              </p>              
+              <p>Interests fields:</p>
+                <ul class="interests-container">
+                    <li>Deep Learning</li>
+                    <li>Deepfakes</li>
+                    <li>AI for Neuroscience</li>
+                </ul>
+              </p>
             </div>
             <div class="home-img padd-15">
-              <img src="images/profile.jpg" alt="">
+              <div>
+                <img src="images/profile.jpg" alt="Orazio Pontorno">
+              </div>
             </div>
           </div>   
           <!-- Container per i pulsanti social -->
-          <footer class="footer">
+          <footer>
             <div class="container">  
-                <div class="social-links">
-                    <!-- Academic Links -->
-                    <a href="https://scholar.google.com/citations?user=9yPen3sAAAAJ" class="social-btn scholar">
-                        <i data-lucide="scholar"></i>
-                        Scholar
-                    </a>
-                    
-                    <a href="https://www.scopus.com/authid/detail.uri?authorId=58898116500" class="social-btn scopus">
-                        <i data-lucide="book-open"></i>
-                        Scopus
-                    </a>
-                    
-                    <a href="https://orcid.org/0009-0009-0381-9971" class="social-btn orcid">
-                        <i data-lucide="fingerprint"></i>
-                        ORCID
-                    </a>
-                    
-                    <!-- Professional Links -->
-                    <a href="https://www.linkedin.com/in/orazio-pontorno" class="social-btn linkedin">
-                        <i data-lucide="linkedin"></i>
-                        LinkedIn
-                    </a>
-                    
-                    <a href="https://github.com/opontorno" class="social-btn github">
-                        <i data-lucide="github"></i>
-                        GitHub
-                    </a>
-                    
-                    <a href="https://twitter.com/opontorno" class="social-btn twitter">
-                        <i data-lucide="twitter"></i>
-                        X
-                    </a>
-                </div>
+              <div class="social-icons">
+                
+                <a href="mailto:orazio.pontorno@phd.unict.it", target="_blank"><i class="fa-solid fa-envelope"></i></a>
+
+                <a href="https://www.linkedin.com/in/opontorno" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+                
+                <a href="https://twitter.com/opontorno" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+                
+                <a href="https://github.com/opontorno" target="_blank"><i class="fa-brands fa-github"></i></a>
+                
+                <a href="https://www.scopus.com/authid/detail.uri?authorId=58898116500" target="_blank">
+                    <i class="fa-solid fa-database"></i> <!-- No official icon, using database symbol -->
+                </a>
+                <a href="https://scholar.google.com/citations?user=9yPen3sAAAAJ" target="_blank">
+                    <i class="fa-solid fa-graduation-cap"></i> <!-- No official icon, using graduation cap -->
+                </a>
+                <a href="https://orcid.org/0009-0009-0381-9971" target="_blank"><i class="fa-brands fa-orcid"></i></a>
+              </div>
             </div>
           </footer>
         </div>
       </section>
       <!-- ===== Home Section End ===== -->
+
+
+
+
+
+
+
+
+
+
       <!-- ===== About Section Start ===== -->
-      <section class="about section" id="about"> 
+      <section class="about section" id="cv"> 
         <div class="container">
           <div class="row">
             <div class="section-title padd-15">
@@ -303,86 +317,60 @@
         </div>
       </section>
       <!-- ===== About Section End ===== -->
-      <!-- ===== Services Section Start ===== -->
-      <section class="service section" id="services">
+
+
+
+
+
+
+
+      <!-- ===== research Section Start ===== -->
+      <section class="service section" id="research">
         <div class="container">
           <div class="row">
             <div class="section-title padd-15">
-              <h2>Services</h2>
+              <h2>Research</h2>
             </div>
           </div>
-          <div class="row">
-            <!-- ===== Service item Start ====== -->
-            <div class="service-item padd-15">
-              <div class="service-item-inner">
-                <div class="icon">
-                  <i class="fa fa-mobile-alt"></i>
+          <div class="section-title">
+            <h3>Publications</h3>
+          </div>
+          <div class="src_timeline-container">
+            <div class="src_timeline">
+              <div class="src_timeline-item">
+                <img src="images/icpr24_preview.png" alt="Paper preview" class="src_timeline-img">
+                <div class="src_timeline-content">
+                  <div class="src_timeline-date">2024</div>
+                  <h3 class="src_timeline-title">
+                    <a href="https://link.springer.com/chapter/10.1007/978-3-031-78305-0_12" class="external-link" target="_blank" rel="noopener noreferrer">
+                      DeepFeatureX Net: Deep Features eXtractors based Network for discriminating synthetic from real images</h3>
+                    </a>
+                  <div class="src_timeline-authors">Orazio Pontorno, Luca Guarnera, Sebastiano Battiato</div>
+                  <div class="src_timeline-journal">International Conference on Pattern Recognition, 21, 177-193</div>
                 </div>
-                <h4>Web Design</h4>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil velit ab itaque.</p>
+              </div>
+      
+              <div class="src_timeline-item">
+                <img src="images/icip24_preview.png" alt="Paper preview" class="src_timeline-img">
+                <div class="src_timeline-content">
+                  <div class="src_timeline-date">2024</div>
+                  <h3 class="src_timeline-title">
+                    <a href="https://ieeexplore.ieee.org/document/10648013" class="external-link" target="_blank" rel="noopener noreferrer">
+                    On the Exploitation of DCT-Traces in the Generative-AI Domain</h3>
+                    </a>
+                  <div class="src_timeline-authors">Orazio Pontorno, Luca Guarnera, Sebastiano Battiato</div>
+                  <div class="src_timeline-journal">2024 IEEE International Conference on Image Processing (ICIP), 3806-3812</div>
+                </div>
               </div>
             </div>
-            <!-- ===== Service item End ====== -->
-             <!-- ===== Service item Start ====== -->
-             <div class="service-item padd-15">
-              <div class="service-item-inner">
-                <div class="icon">
-                  <i class="fa fa-laptop-code"></i>
-                </div>
-                <h4>Web Design</h4>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil velit ab itaque.</p>
-              </div>
-            </div>
-            <!-- ===== Service item End ====== -->
-             <!-- ===== Service item Start ====== -->
-             <div class="service-item padd-15">
-              <div class="service-item-inner">
-                <div class="icon">
-                  <i class="fa fa-palette"></i>
-                </div>
-                <h4>Web Design</h4>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil velit ab itaque.</p>
-              </div>
-            </div>
-            <!-- ===== Service item End ====== -->
-             <!-- ===== Service item Start ====== -->
-             <div class="service-item padd-15">
-              <div class="service-item-inner">
-                <div class="icon">
-                  <i class="fa fa-code"></i>
-                </div>
-                <h4>Web Design</h4>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil velit ab itaque.</p>
-              </div>
-            </div>
-            <!-- ===== Service item End ====== -->
-             <!-- ===== Service item Start ====== -->
-             <div class="service-item padd-15">
-              <div class="service-item-inner">
-                <div class="icon">
-                  <i class="fa fa-search"></i>
-                </div>
-                <h4>Web Design</h4>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil velit ab itaque.</p>
-              </div>
-            </div>
-            <!-- ===== Service item End ====== -->
-             <!-- ===== Service item Start ====== -->
-             <div class="service-item padd-15">
-              <div class="service-item-inner">
-                <div class="icon">
-                  <i class="fa fa-bullhorn"></i>
-                </div>
-                <h4>Web Design</h4>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil velit ab itaque.</p>
-              </div>
-            </div>
-            <!-- ===== Service item End ====== -->
           </div>
         </div>
       </section>
-      <!-- ===== Services Section End ===== -->
+      <!-- ===== research Section End ===== -->
     </div>
+
+
+
     <!-- ===== Main Content End ===== -->
   </div>
   <!-- ===== Main Container End ===== -->
