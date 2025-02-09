@@ -171,150 +171,6 @@ ul
 {
     box-shadow: 0 0 20px rgba(48, 46, 77, 0.15);
 }
-/* aside */
-.aside
-{
-    width: 270px;
-    background: var(--bg-black-100);
-    position: fixed;
-    left: 0;
-    top: 0;
-    padding: 30px;
-    height: 100%;
-    border-right: 1px solid var(--bg-black-50);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 10;
-    transition: all 0.3s ease;
-}
-.aside .logo
-{
-    position: absolute;
-    top: 50px;
-    font-size: 30px;
-    text-transform: capitalize;
-}
-.aside .logo a
-{
-    color: var(--text-black-900);
-    font-weight: 700;
-    padding: 15px 20px;
-    font-size: 30px;
-    letter-spacing: 5px;
-    position: relative;
-}
-.aside .logo a span
-{
-    font-family: 'Clicker Script', cursive;
-    font-size: 40px;
-}
-.aside .logo a::before
-{
-    content: '';
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    border-bottom: 5px solid var(--bg-second);
-    border-left: 5px solid var(--bg-second);
-    bottom: 0;
-    left: 0;
-}
-.aside .logo a::after
-{
-    content: '';
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    border-top: 5px solid var(--bg-second);
-    border-right: 5px solid var(--bg-second);
-    top: 0;
-    right: 0;
-}
-.aside .nav-toggler
-{
-    height: 40px;
-    width: 45px;
-    border: 1px solid var(--bg-black-50);
-    cursor: pointer;
-    position: fixed;
-    left: 300px;
-    top: 20px;
-    border-radius: 5px;
-    background: var(--bg-black-100);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-}
-.aside .nav-toggler span
-{
-    height: 2px;
-    width: 18px;
-    background: var(--bg-second);
-    display: inline-block;
-    position: relative;
-}
-.aside .nav-toggler.open span
-{
-    background-color: transparent;
-}
-.aside .nav-toggler span::before
-{
-    content: '';
-    height: 2px;
-    width: 18px;
-    background: var(--bg-second);
-    position: absolute;
-    top: -6px;
-    left: 0;
-}
-.aside .nav-toggler.open span::before
-{
-    transform: rotate(45deg);
-    top: 0;
-}
-.aside .nav-toggler span::after
-{
-    content: '';
-    height: 2px;
-    width: 18px;
-    background: var(--bg-second);
-    position: absolute;
-    top: 6px;
-    left: 0;
-}
-.aside .nav-toggler.open span::after
-{
-    transform: rotate(-45deg);
-    top: 0;
-}
-.aside .nav
-{
-    margin-top: 50px;
-}
-.aside .nav li
-{
-    margin-bottom: 20px;
-    display: block;
-}
-.aside .nav li a
-{
-    font-size: 16px;
-    font-weight: 600;
-    display: block;
-    border-bottom: 1px solid var(--bg-black-50);
-    color: var(--text-black-900);
-    padding: 5px 15px;
-}
-.aside .nav li a.active
-{
-    color: var(--bg-second);
-}
-.aside .nav li a i
-{
-    margin-right: 15px;
-}
 /* home */
 .home
 {
@@ -592,23 +448,6 @@ h3.my-profession
     {
         padding-top: 70px;
     }
-    .aside
-    {
-        left: -270px;
-    }
-    .aside.open 
-    {
-        left: 0;
-    }
-    .aside .nav-toggler
-    {
-        display: flex;
-        left: 30px;
-    }
-    .aside .nav-toggler.open 
-    {
-        left: 300px;
-    }
     .section
     {
         left: 0;
@@ -706,7 +545,7 @@ h3.my-profession
 
 .social-icons a:hover {
     color: var(--text-black-900);
-    transform: scale(1.1);
+    transform: scale(1.2);
 }
 
 .src_timeline-container {
@@ -752,7 +591,7 @@ h3.my-profession
 }
 
 .src_timeline-img:hover {
-    transform: scale(1.2);
+    transform: scale(1.1);
     z-index: 3; 
 }
 
@@ -790,45 +629,4 @@ h3.my-profession
     color: var(--text-black-900); 
     font-weight: bold;
     text-decoration: none;
-}
-.external-link:hover {
-    transform: scale(1.2);
-    z-index: 3; 
-}
-
-
-/* ========================== Dark/Light Mode Switcher =========================== */
-.style-switcher {
-    position: fixed;
-    right: 20px;
-    top: 60px;
-    padding: 15px;
-    width: 50px;
-    z-index: 101;
-    border-radius: 5px;
-    transition: all 0.3s ease;
-    transform: translateX(100%);
-}
-
-.style-switcher .s-icon {
-    position: absolute;
-    height: 40px;
-    width: 40px;
-    text-align: center;
-    font-size: 20px;
-    background: var(--bg-black-100);
-    color: var(--text-black-900);
-    right: 100%;
-    border: 1px solid var(--bg-black-50);
-    cursor: pointer;
-    transition: all 0.3s ease;
-    border-radius: 50%;
-}
-
-.style-switcher .s-icon i {
-    line-height: 40px;
-}
-
-.style-switcher .day-night {
-    top: 0px;
 }
