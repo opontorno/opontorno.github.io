@@ -427,33 +427,6 @@ h3.my-profession
 }
 
 
-
-.interests-container {
-    display: flex;
-    justify-content: center; /* Center the items */
-    gap: 20px; /* Space between blocks */
-    padding: 0;
-    list-style: none; /* Remove default bullets */
-}
-
-.interests-container li {
-    background: rgba(255, 255, 255, 0.1); /* Light transparent background */
-    padding: 12px 20px; /* Padding inside blocks */
-    border-radius: 10px; /* Rounded corners */
-    font-size: 18px; /* Adjust font size */
-    font-weight: bold;
-    color: white; /* Text color */
-    text-align: center;
-    min-width: 180px; /* Ensure consistent size */
-    transition: transform 0.3s ease-in-out, background 0.3s ease-in-out;
-}
-
-.interests-container li:hover {
-    background: rgba(255, 255, 255, 0.2); /* Slightly brighter on hover */
-    transform: scale(1.05); /* Slightly enlarge */
-}
-
-
 .info-row {
     display: flex;
     flex-wrap: wrap;
@@ -733,10 +706,35 @@ h3.my-profession
     text-shadow: 1px 1px var(--skin-color);
 }
 
+
+.interests-container {
+    display: flex;
+    justify-content: center; /* Center the items */
+    gap: 20px; /* Space between blocks */
+    padding: 0;
+    list-style: none; /* Remove default bullets */
+}
+
+.interests-container li {
+    background: rgba(255, 255, 255, 0.1); /* Light transparent background */
+    padding: 12px 20px; /* Padding inside blocks */
+    border-radius: 10px; /* Rounded corners */
+    font-size: 18px; /* Adjust font size */
+    font-weight: bold;
+    color: white; /* Text color */
+    text-align: center;
+    transition: transform 0.3s ease-in-out, background 0.3s ease-in-out;
+}
+
+.interests-container li:hover {
+    background: rgba(255, 255, 255, 0.2); /* Slightly brighter on hover */
+    transform: scale(1.05); /* Slightly enlarge */
+}
+
 .social-icons {
     display: flex;
     justify-content: center; /* Center horizontally */
-    gap: 30px; /* Space between icons */
+    gap: 20px; /* Space between icons */
     margin-top: 20px;
 }
 
