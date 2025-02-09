@@ -27,6 +27,12 @@ const nav = document.querySelector(".nav"),
               }
           })
       }
+      document.querySelector(".logo a").addEventListener("click", function(event) {
+        event.preventDefault();
+        removeBackSection();
+        showSection(this);
+        updateNav(this);
+        });
       function removeBackSection()
       {
         for(let i=0; i<totalSection; i++)

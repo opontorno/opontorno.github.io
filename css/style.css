@@ -60,21 +60,18 @@ ul
 {
     z-index: 1;
 }
-.section.active
-{
+.section.active {
     z-index: 2;
     opacity: 1;
-    animation: slideSection 1s ease;
+    animation: fadeIn 0.7s ease-in-out;
 }
-@keyframes slideSection
-{
-    0%
-    {
-        transform: translateX(100%);
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
     }
-    100%
-    {
-        transform: translateX(0%);
+    100% {
+        opacity: 1;
     }
 }
 .hidden
@@ -151,7 +148,7 @@ ul
     margin-left: -10px;
     margin-right: -10px;
     position: relative;
-    align-items: stretch;    /* Questo fa sì che tutte le colonne abbiano la stessa altezza */
+    align-items: stretch;
 }
 .btn
 {
@@ -773,7 +770,7 @@ h3.my-profession
 }
 
 .src_timeline-title {
-    font-size: 1.3em;
+    font-size: 1.2em;
     margin-bottom: 10px;
     color: var(--text-black-900);
 }
@@ -793,6 +790,10 @@ h3.my-profession
     color: var(--text-black-900); 
     font-weight: bold;
     text-decoration: none;
+}
+.external-link:hover {
+    transform: scale(1.2);
+    z-index: 3; 
 }
 
 
