@@ -1,0 +1,117 @@
+/* home */
+.home
+{
+    min-height: 100vh;
+    display: flex;
+    color: var(--text-black-900);
+}
+.home .home-info
+{
+    flex: 0 0 100%;
+    max-width: 70%;
+}
+h3.hello
+{
+    font-size: 28px;
+    margin: 15px 0;
+}
+h3.hello span
+{
+    font-family: 'Clicker Script' , cursive;
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--bg-second);
+}
+h3.my-profession
+{
+    font-size: 30px;
+    margin: 15px 0;
+}
+.typing
+{
+    color: var(--bg-second);
+}
+.home-info p
+{
+    margin-bottom: 70px;
+    font-size: 20px;
+    color: var(--text-black-700);
+}
+.home .home-img
+{
+    flex: 0 0 100%;
+    max-width: 30%;
+    text-align: center;
+    position: relative;
+}
+.home .home-img img
+{
+    margin: auto;
+    border-radius: 3px;
+    height: 400px;
+}
+
+.name-highlight {
+    font-size: 3rem;
+    font-weight: bold;
+    color: var(--text-black-900);
+    text-shadow: 1px 1px var(--bg-second);
+}
+
+.interests-container {
+    display: flex;
+    justify-content: center; /* Center the items */
+    flex-wrap: wrap; /* Wrap items to next line */
+    gap: 10px; /* Space between blocks */
+    padding: 0;
+    list-style: none; /* Remove default bullets */
+}
+
+.interests-container li {
+    background: var(--bg-black-100); /* Light transparent background */
+    padding: 12px 20px; /* Padding inside blocks */
+    border-radius: 10px; /* Rounded corners */
+    font-size: 18px; /* Adjust font size */
+    font-weight: bold;
+    color: var(--text-black-900);
+    text-align: center;
+    transition: transform 0.3s ease-in-out, background 0.3s ease-in-out;
+}
+
+.interests-container li:hover {
+    background: rgba(255, 255, 255, 0.2); /* Slightly brighter on hover */
+    transform: scale(1.05); /* Slightly enlarge */
+}
+
+.social-icons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center horizontally */
+    gap: 20px; /* Space between icons */
+    margin-top: 20px;
+}
+
+.social-icons a {
+    font-size: 50px;
+    color: var(--text-black-700);
+    text-decoration: none;
+    transition: color 0.3s, transform 0.2s;
+}
+
+.social-icons a:hover {
+    color: var(--text-black-900);
+    transform: scale(1.2);
+}
+
+@media (max-width: 991px)
+{    
+    .home .home-info
+    {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    .home .home-img
+    {
+        display: auto;
+    }
+}
