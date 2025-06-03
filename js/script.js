@@ -103,3 +103,37 @@ window.addEventListener("load", () => {
         dayNight.querySelector("i").classList.add("fa-moon");
     }
 });
+
+/* ============================== Skills ============================ */
+document.addEventListener("DOMContentLoaded", function () {
+    const today = new Date();
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    const formattedDate = today.toLocaleDateString('en-GB', options);
+    const lastUpdateDiv = document.getElementById("last-update");
+
+    if (lastUpdateDiv) {
+        lastUpdateDiv.textContent = "Last update: " + formattedDate;
+    }
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    const today = new Date();
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    const formattedDate = today.toLocaleDateString('en-GB', options);
+
+    const lastUpdateCV = document.getElementById("last-update-cv");
+    if (lastUpdateCV) {
+        lastUpdateCV.textContent = "Last update: " + formattedDate;
+    }
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    const today = new Date();
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    const formattedDate = today.toLocaleDateString('en-GB', options);
+
+    const lastUpdateCV = document.getElementById("last-update-res");
+    if (lastUpdateCV) {
+        lastUpdateCV.textContent = "Last update: " + formattedDate;
+    }
+});
