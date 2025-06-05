@@ -106,34 +106,22 @@ window.addEventListener("load", () => {
 
 /* ============================== Skills ============================ */
 document.addEventListener("DOMContentLoaded", function () {
-    const today = new Date();
+    const lastUpdateDate = new Date("2025-06-05");
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
-    const formattedDate = today.toLocaleDateString('en-GB', options);
-    const lastUpdateDiv = document.getElementById("last-update");
+    const formattedDate = lastUpdateDate.toLocaleDateString('en-GB', options);
 
+    const lastUpdateDiv = document.getElementById("last-update");
     if (lastUpdateDiv) {
         lastUpdateDiv.textContent = "Last update: " + formattedDate;
     }
-});
-
-document.addEventListener("DOMContentLoaded", function () {
-    const today = new Date();
-    const options = { year: 'numeric', month: 'long', day: 'numeric' };
-    const formattedDate = today.toLocaleDateString('en-GB', options);
 
     const lastUpdateCV = document.getElementById("last-update-cv");
     if (lastUpdateCV) {
         lastUpdateCV.textContent = "Last update: " + formattedDate;
     }
-});
 
-document.addEventListener("DOMContentLoaded", function () {
-    const today = new Date();
-    const options = { year: 'numeric', month: 'long', day: 'numeric' };
-    const formattedDate = today.toLocaleDateString('en-GB', options);
-
-    const lastUpdateCV = document.getElementById("last-update-res");
-    if (lastUpdateCV) {
-        lastUpdateCV.textContent = "Last update: " + formattedDate;
+    const lastUpdateRes = document.getElementById("last-update-res");
+    if (lastUpdateRes) {
+        lastUpdateRes.textContent = "Last update: " + formattedDate;
     }
 });
