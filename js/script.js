@@ -106,7 +106,7 @@ window.addEventListener("load", () => {
 
 /* ============================== Skills ============================ */
 document.addEventListener("DOMContentLoaded", function () {
-    const lastUpdateDate = new Date("2025-06-05");
+    const lastUpdateDate = new Date("2025-08-11");
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
     const formattedDate = lastUpdateDate.toLocaleDateString('en-GB', options);
 
@@ -125,3 +125,27 @@ document.addEventListener("DOMContentLoaded", function () {
         lastUpdateRes.textContent = "Last update: " + formattedDate;
     }
 });
+
+
+/* ============================== Publications Abstract Toggle ============================ */
+function toggleAbstract(abstractId) {
+    const abstractContent = document.getElementById(abstractId);
+    const button = document.querySelector(`[onclick="toggleAbstract('${abstractId}')"]`);
+    
+    if (abstractContent.classList.contains('expanded')) {
+        abstractContent.classList.remove('expanded');
+        button.classList.remove('active');
+    } else {
+        // Chiudi tutti gli altri abstract aperti
+        document.querySelectorAll('.abstract-content.expanded').forEach(content => {
+            content.classList.remove('expanded');
+        });
+        document.querySelectorAll('.abstract-btn.active').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        
+        // Apri quello selezionato
+        abstractContent.classList.add('expanded');
+        button.classList.add('active');
+    }
+}

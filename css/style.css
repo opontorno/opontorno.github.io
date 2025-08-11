@@ -497,3 +497,117 @@ ul
     font-weight: bold;
     text-decoration: none;
 }
+
+/* Stili per i bottoni delle pubblicazioni */
+.publication-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+  flex-wrap: wrap;
+}
+
+.pub-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  color: white;
+}
+
+.abstract-btn {
+  background: var(--bg-second);
+}
+
+.abstract-btn:hover {
+  background: #2a7a5e;
+  transform: translateY(-2px);
+}
+
+.arxiv-btn {
+  background: #b31b1b;
+}
+
+.arxiv-btn:hover {
+  background: #a01818;
+  transform: translateY(-2px);
+}
+
+.publisher-btn {
+  background: #4a5568;
+}
+
+.publisher-btn:hover {
+  background: #2d3748;
+  transform: translateY(-2px);
+}
+
+.github-btn {
+  background: #24292e; /* Colore ufficiale di GitHub */
+}
+
+.github-btn:hover {
+  background: #1b1f23;
+}
+
+/* Stili per l'abstract espandibile */
+.abstract-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+  background: var(--bg-black-100);
+  border-radius: 8px;
+  margin-top: 15px;
+}
+
+.abstract-content.expanded {
+  max-height: 500px;
+}
+
+.abstract-text {
+  padding: 20px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-black-700);
+  text-align: justify;
+}
+
+/* Icona ArXiv personalizzata */
+.arxiv-icon {
+  width: 16px;
+  height: 16px;
+  background: white;
+  color: #b31b1b;
+  border-radius: 3px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 10px;
+}
+
+/* Animazione per il bottone abstract */
+.abstract-btn.active {
+  background: #2a7a5e;
+}
+
+.abstract-btn .fa-chevron-down {
+  transition: transform 0.3s ease;
+}
+
+.abstract-btn.active .fa-chevron-down {
+  transform: rotate(180deg);
+}
+
+/* Responsive per i bottoni */
+@media (max-width: 767px) {
+  .publication-buttons {
+    justify-content: center;
+  }
+}
