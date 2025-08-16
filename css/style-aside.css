@@ -1,5 +1,9 @@
-.aside
-{
+/* ============================================
+   SIDEBAR LATERALE (ASIDE)
+   ============================================ */
+
+/* Container principale della sidebar */
+.aside {
     width: 270px;
     background: var(--bg-black-100);
     position: fixed;
@@ -13,30 +17,47 @@
     align-items: center;
     z-index: 10;
     transition: all 0.3s ease;
+    flex-direction: column;
 }
-.aside .logo
-{
+
+
+/* ============================================
+   LOGO E BRANDING
+   ============================================ */
+
+/* Container del logo */
+.aside .logo {
     position: absolute;
     top: 50px;
     font-size: 30px;
     text-transform: capitalize;
 }
-.aside .logo a
-{
+
+/* Link del logo principale */
+.aside .logo a {
     color: var(--text-black-900);
     font-weight: 700;
     padding: 15px 20px;
     font-size: 30px;
     letter-spacing: 5px;
     position: relative;
+    text-decoration: none;
+    transition: color 0.3s ease;
 }
-.aside .logo a span
-{
+
+.aside .logo a:hover {
+    color: var(--bg-second);
+}
+
+/* Parte stilizzata del logo (nome) */
+.aside .logo a span {
     font-family: 'Clicker Script', cursive;
     font-size: 40px;
+    color: var(--bg-second);
 }
-.aside .logo a::before
-{
+
+/* Angolo decorativo in basso a sinistra del logo */
+.aside .logo a::before {
     content: '';
     position: absolute;
     width: 20px;
@@ -45,9 +66,11 @@
     border-left: 5px solid var(--bg-second);
     bottom: 0;
     left: 0;
+    transition: all 0.3s ease;
 }
-.aside .logo a::after
-{
+
+/* Angolo decorativo in alto a destra del logo */
+.aside .logo a::after {
     content: '';
     position: absolute;
     width: 20px;
@@ -56,9 +79,73 @@
     border-right: 5px solid var(--bg-second);
     top: 0;
     right: 0;
+    transition: all 0.3s ease;
 }
-.aside .nav-toggler
-{
+
+
+/* ============================================
+   MENU DI NAVIGAZIONE
+   ============================================ */
+
+/* Container della navigazione */
+.aside .nav {
+    margin-top: 50px;
+    width: 100%;
+}
+
+/* Elementi del menu */
+.aside .nav li {
+    margin-bottom: 20px;
+    display: block;
+    width: 100%;
+}
+
+/* Link del menu */
+.aside .nav li a {
+    font-size: 16px;
+    font-weight: 600;
+    display: block;
+    border-bottom: 1px solid var(--bg-black-50);
+    color: var(--text-black-900);
+    padding: 15px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Effetto hover sui link del menu */
+.aside .nav li a:hover {
+    color: var(--bg-second);
+    background: rgba(48, 148, 110, 0.1);
+    border-color: var(--bg-second);
+    transform: translateX(5px);
+}
+
+/* Stato attivo del menu */
+.aside .nav li a.active {
+    color: var(--bg-second);
+    background: rgba(48, 148, 110, 0.15);
+    border-color: var(--bg-second);
+    font-weight: 700;
+}
+
+/* Icone nel menu */
+.aside .nav li a i {
+    margin-right: 15px;
+    font-size: 18px;
+    width: 20px;
+    text-align: center;
+}
+
+
+/* ============================================
+   TOGGLE BUTTON PER MOBILE
+   ============================================ */
+
+/* Bottone hamburger per dispositivi mobili */
+.aside .nav-toggler {
     height: 40px;
     width: 45px;
     border: 1px solid var(--bg-black-50);
@@ -66,27 +153,38 @@
     position: fixed;
     left: 300px;
     top: 20px;
-    border-radius: 5px;
+    border-radius: 8px;
     background: var(--bg-black-100);
     display: none;
     align-items: center;
     justify-content: center;
     transition: all 0.3s ease;
+    z-index: 11;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
-.aside .nav-toggler span
-{
+
+.aside .nav-toggler:hover {
+    background: var(--bg-black-50);
+    border-color: var(--bg-second);
+}
+
+/* Linea centrale del bottone hamburger */
+.aside .nav-toggler span {
     height: 2px;
     width: 18px;
     background: var(--bg-second);
     display: inline-block;
     position: relative;
+    transition: all 0.3s ease;
 }
-.aside .nav-toggler.open span
-{
+
+/* Stato aperto del toggle button */
+.aside .nav-toggler.open span {
     background-color: transparent;
 }
-.aside .nav-toggler span::before
-{
+
+/* Linea superiore del bottone hamburger */
+.aside .nav-toggler span::before {
     content: '';
     height: 2px;
     width: 18px;
@@ -94,14 +192,17 @@
     position: absolute;
     top: -6px;
     left: 0;
+    transition: all 0.3s ease;
 }
-.aside .nav-toggler.open span::before
-{
+
+/* Animazione X - linea superiore */
+.aside .nav-toggler.open span::before {
     transform: rotate(45deg);
     top: 0;
 }
-.aside .nav-toggler span::after
-{
+
+/* Linea inferiore del bottone hamburger */
+.aside .nav-toggler span::after {
     content: '';
     height: 2px;
     width: 18px;
@@ -109,74 +210,171 @@
     position: absolute;
     top: 6px;
     left: 0;
+    transition: all 0.3s ease;
 }
-.aside .nav-toggler.open span::after
-{
+
+/* Animazione X - linea inferiore */
+.aside .nav-toggler.open span::after {
     transform: rotate(-45deg);
     top: 0;
 }
-.aside .nav
-{
-    margin-top: 50px;
+
+
+/* ============================================
+   OVERLAY PER MOBILE
+   ============================================ */
+
+/* Overlay scuro quando il menu è aperto su mobile */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 9;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
-.aside .nav li
-{
-    margin-bottom: 20px;
+
+/* Stato attivo dell'overlay */
+.overlay.active {
     display: block;
+    opacity: 1;
 }
-.aside .nav li a
-{
-    font-size: 16px;
-    font-weight: 600;
-    display: block;
-    border-bottom: 1px solid var(--bg-black-50);
-    color: var(--text-black-900);
-    padding: 5px 15px;
-}
-.aside .nav li a.active
-{
-    color: var(--bg-second);
-}
-.aside .nav li a i
-{
-    margin-right: 15px;
-}
-@media (max-width: 1199px)
-{
-    .aside
-    {
+
+
+/* ============================================
+   MEDIA QUERIES - RESPONSIVE DESIGN
+   ============================================ */
+
+/* Desktop medio e tablet (max-width: 1199px) */
+@media (max-width: 1199px) {
+    /* Nascondi la sidebar di default su schermi più piccoli */
+    .aside {
         left: -270px;
         position: fixed;
         width: 270px;
         height: 100%;
         background: var(--bg-black-100);
-        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);        
-        z-index: 3;
+        box-shadow: 2px 0 20px rgba(0, 0, 0, 0.3);
+        z-index: 12;
     }
-    .aside.open 
-    {
+    
+    /* Mostra la sidebar quando ha la classe 'open' */
+    .aside.open {
         left: 0;
     }
-    .overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.5);
-        z-index: 3;
-        display: none; 
-    }
-    .overlay.active {
-        display: auto;
-    }
-    .aside .nav-toggler
-    {
+    
+    /* Mostra il bottone toggle su schermi più piccoli */
+    .aside .nav-toggler {
         display: flex;
         left: 30px;
     }
-    .aside .nav-toggler.open 
-    {
+    
+    /* Sposta il bottone quando la sidebar è aperta */
+    .aside .nav-toggler.open {
         left: 300px;
+        background: var(--bg-black-900);
+    }
+    
+    /* Migliora la leggibilità del menu su mobile */
+    .aside .nav li a {
+        padding: 18px 15px;
+        font-size: 18px;
+        border-radius: 0;
+    }
+    
+    .aside .nav li a i {
+        font-size: 20px;
+        margin-right: 20px;
+    }
+}
+
+/* Tablet (max-width: 991px) */
+@media (max-width: 991px) {
+    .aside {
+        padding: 20px;
+    }
+    
+    .aside .logo {
+        top: 30px;
+    }
+    
+    .aside .logo a {
+        font-size: 26px;
+        letter-spacing: 3px;
+        padding: 10px 15px;
+    }
+    
+    .aside .logo a span {
+        font-size: 36px;
+    }
+    
+    .aside .nav {
+        margin-top: 40px;
+    }
+}
+
+/* Mobile (max-width: 767px) */
+@media (max-width: 767px) {
+    .aside .nav-toggler {
+        height: 45px;
+        width: 50px;
+        left: 20px;
+        top: 15px;
+    }
+    
+    .aside .nav-toggler.open {
+        left: 280px;
+    }
+    
+    .aside .logo a {
+        font-size: 24px;
+        letter-spacing: 2px;
+    }
+    
+    .aside .logo a span {
+        font-size: 32px;
+    }
+    
+    .aside .nav li a {
+        padding: 20px 15px;
+        font-size: 16px;
+    }
+}
+
+/* Mobile molto piccolo (max-width: 480px) */
+@media (max-width: 480px) {
+    .aside {
+        width: 250px;
+        padding: 15px;
+    }
+    
+    .aside.open {
+        left: 0;
+    }
+    
+    .aside .nav-toggler {
+        left: 15px;
+    }
+    
+    .aside .nav-toggler.open {
+        left: 260px;
+    }
+    
+    .aside .logo {
+        top: 20px;
+    }
+    
+    .aside .logo a {
+        font-size: 20px;
+        letter-spacing: 1px;
+        padding: 8px 10px;
+    }
+    
+    .aside .logo a span {
+        font-size: 28px;
     }
 }

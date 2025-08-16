@@ -106,7 +106,7 @@ window.addEventListener("load", () => {
 
 /* ============================== Skills ============================ */
 document.addEventListener("DOMContentLoaded", function () {
-    const lastUpdateDate = new Date("2025-08-11");
+    const lastUpdateDate = new Date("2025-08-16");
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
     const formattedDate = lastUpdateDate.toLocaleDateString('en-GB', options);
 

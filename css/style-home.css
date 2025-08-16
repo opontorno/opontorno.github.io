@@ -1,116 +1,319 @@
-.home
-{
+/* ============================================
+   SEZIONE HOME - PAGINA PRINCIPALE
+   ============================================ */
+
+/* Container principale della home page */
+.home {
     min-height: 100vh;
     display: flex;
     color: var(--text-black-900);
+    align-items: center;
 }
-.home .home-info
-{
-    flex: 0 0 100%;
+
+/* ============================================
+   AREA INFORMAZIONI PERSONALI
+   ============================================ */
+
+/* Container delle informazioni di presentazione */
+.home .home-info {
+    flex: 0 0 60%;
     max-width: 60%;
+    padding-right: 30px;
 }
-h3.hello
-{
+
+/* Saluto iniziale */
+h3.hello {
     font-size: 28px;
     margin: 15px 0;
+    color: var(--text-black-900);
 }
-h3.hello span
-{
-    font-family: 'Clicker Script' , cursive;
+
+/* Nome in evidenza nel saluto */
+h3.hello span {
+    font-family: 'Clicker Script', cursive;
     font-size: 30px;
     font-weight: 700;
     color: var(--bg-second);
 }
-h3.my-profession
-{
+
+/* Titolo della professione */
+h3.my-profession {
     font-size: 30px;
     margin: 15px 0;
+    color: var(--text-black-900);
 }
-.typing
-{
+
+/* Effetto typing per il testo animato */
+.typing {
     color: var(--bg-second);
+    font-weight: 600;
 }
-.home-info p
-{
+
+/* Paragrafo di presentazione */
+.home-info p {
     margin-bottom: 70px;
     font-size: 20px;
     color: var(--text-black-700);
-}
-.home .home-img
-{
-    flex: 0 0 100%;
-    max-width: 35%;
-    text-align: left;
-    position: relative;
-}
-.home .home-img img
-{
-    margin: auto;
-    border-radius: 5px;
-    height: 350px;
+    line-height: 1.6;
+    text-align: justify;
 }
 
+/* Nome principale in evidenza */
 .name-highlight {
     font-size: 3rem;
     font-weight: bold;
     color: var(--text-black-900);
-    text-shadow: 1px 1px var(--bg-second);
+    text-shadow: 2px 2px 0px var(--bg-second);
+    margin: 20px 0;
+    display: block;
 }
 
+
+/* ============================================
+   AREA IMMAGINE PROFILO
+   ============================================ */
+
+/* Container dell'immagine di profilo */
+.home .home-img {
+    flex: 0 0 40%;
+    max-width: 40%;
+    text-align: center;
+    position: relative;
+}
+
+/* Stile dell'immagine di profilo */
+.home .home-img img {
+    max-width: 100%;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.home .home-img img:hover {
+    transform: scale(1.05);
+}
+
+
+/* ============================================
+   SEZIONE INTERESSI
+   ============================================ */
+
+/* Container principale degli interessi */
 .interests-container {
     display: flex;
-    justify-content: center; /* Center the items */
-    flex-wrap: wrap; /* Wrap items to next line */
-    gap: 10px; /* Space between blocks */
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
     padding: 0;
-    list-style: none; /* Remove default bullets */
+    list-style: none;
+    margin: 30px 0;
 }
 
+/* Singoli blocchi degli interessi */
 .interests-container li {
-    background: var(--bg-black-100); /* Light transparent background */
-    padding: 12px 20px; /* Padding inside blocks */
-    border-radius: 10px; /* Rounded corners */
-    font-size: 18px; /* Adjust font size */
-    font-weight: bold;
+    background: var(--bg-black-100);
+    padding: 12px 20px;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: 500;
     color: var(--text-black-900);
     text-align: center;
-    transition: transform 0.3s ease-in-out, background 0.3s ease-in-out;
+    border: 2px solid transparent;
+    transition: all 0.3s ease-in-out;
+    cursor: default;
 }
 
+/* Effetto hover sui blocchi interessi */
 .interests-container li:hover {
-    background: rgba(255, 255, 255, 0.2); /* Slightly brighter on hover */
-    transform: scale(1.05); /* Slightly enlarge */
+    background: var(--bg-second);
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(48, 148, 110, 0.4);
+    border-color: var(--bg-second);
 }
 
+
+/* ============================================
+   ICONE SOCIAL MEDIA
+   ============================================ */
+
+/* Container delle icone social */
 .social-icons {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center; /* Center horizontally */
-    gap: 20px; /* Space between icons */
-    margin-top: 20px;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 40px;
+    padding: 20px 0;
 }
 
+/* Stile delle singole icone social */
 .social-icons a {
-    font-size: 50px;
+    font-size: 40px;
     color: var(--text-black-700);
     text-decoration: none;
-    transition: color 0.3s, transform 0.2s;
+    padding: 15px;
+    border-radius: 50%;
+    background: var(--bg-black-100);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 70px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
+/* Effetto hover sulle icone social */
 .social-icons a:hover {
-    color: var(--text-black-900);
-    transform: scale(1.2);
+    color: white;
+    background: var(--bg-second);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(48, 148, 110, 0.4);
 }
 
-@media (max-width: 991px)
-{    
-    .home .home-info
-    {
+/* Animazioni specifiche per diverse piattaforme social */
+.social-icons a[href*="linkedin"]:hover {
+    background: #0077b5;
+}
+
+.social-icons a[href*="github"]:hover {
+    background: #333;
+}
+
+.social-icons a[href*="twitter"]:hover {
+    background: #1da1f2;
+}
+
+.social-icons a[href*="instagram"]:hover {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+}
+
+
+/* ============================================
+   MEDIA QUERIES - RESPONSIVE DESIGN
+   ============================================ */
+
+/* Tablet e dispositivi piccoli (max-width: 991px) */
+@media (max-width: 991px) {
+    .home {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+    }
+    
+    .home .home-info {
         flex: 0 0 100%;
         max-width: 100%;
+        padding-right: 0;
+        margin-bottom: 40px;
     }
-    .home .home-img
-    {
-        display: auto;
+    
+    .home .home-img {
+        flex: 0 0 100%;
+        max-width: 100%;
+        display: block;
+    }
+    
+    .home .home-img img {
+        height: 300px;
+    }
+    
+    .name-highlight {
+        font-size: 2.5rem;
+    }
+    
+    h3.hello {
+        font-size: 24px;
+    }
+    
+    h3.my-profession {
+        font-size: 26px;
+    }
+    
+    .home-info p {
+        font-size: 18px;
+        margin-bottom: 40px;
+    }
+}
+
+/* Mobile (max-width: 767px) */
+@media (max-width: 767px) {
+    .home {
+        padding: 15px;
+    }
+    
+    .name-highlight {
+        font-size: 2rem;
+        text-shadow: 1px 1px 0px var(--bg-second);
+    }
+    
+    h3.hello {
+        font-size: 20px;
+    }
+    
+    h3.hello span {
+        font-size: 24px;
+    }
+    
+    h3.my-profession {
+        font-size: 22px;
+    }
+    
+    .home-info p {
+        font-size: 16px;
+        margin-bottom: 30px;
+    }
+    
+    .home .home-img img {
+        height: 250px;
+    }
+    
+    .interests-container {
+        gap: 10px;
+    }
+    
+    .interests-container li {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+    
+    .social-icons {
+        gap: 15px;
+        margin-top: 30px;
+    }
+    
+    .social-icons a {
+        font-size: 30px;
+        width: 60px;
+        height: 60px;
+    }
+}
+
+/* Mobile molto piccolo (max-width: 480px) */
+@media (max-width: 480px) {
+    .name-highlight {
+        font-size: 1.8rem;
+    }
+    
+    .interests-container {
+        justify-content: center;
+    }
+    
+    .interests-container li {
+        flex: 0 1 auto;
+        min-width: fit-content;
+    }
+    
+    .social-icons {
+        gap: 12px;
+    }
+    
+    .social-icons a {
+        width: 50px;
+        height: 50px;
+        font-size: 25px;
     }
 }

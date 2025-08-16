@@ -1,53 +1,84 @@
+/* ============================================
+   IMPORTAZIONE FONT E VARIABILI CSS
+   ============================================ */
+
+/* Importa i font da Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Clicker+Script&family=Poppins:wght@200;300;400;500;600;700&display=swap');
-:root
-{
-    --bg-black-900:#e9e9e9;
-    --bg-black-100:#f2f2f2;
-    --bg-black-50:#c5c5c5;
-    --bg-second:#30946e;
-    --text-black-900:#1c1c1c;
-    --text-black-700:#222222;
+
+/* Variabili CSS per i colori - Tema Chiaro */
+:root {
+    --bg-black-900: #e9e9e9;     /* Sfondo principale chiaro */
+    --bg-black-100: #f2f2f2;     /* Sfondo secondario chiaro */
+    --bg-black-50: #c5c5c5;      /* Bordi e divisori */
+    --bg-second: #30946e;        /* Colore principale (verde) */
+    --text-black-900: #1c1c1c;   /* Testo principale scuro */
+    --text-black-700: #222222;   /* Testo secondario */
 }
-body.dark 
-{
-    --bg-black-900:#1c1c1c;
-    --bg-black-100:#222222;
-    --bg-black-50:#393939;
-    --bg-second:#30946e;
-    --text-black-900:#e9e9e9;
-    --text-black-700:#f2f2f2;
+
+/* Variabili CSS per i colori - Tema Scuro */
+body.dark {
+    --bg-black-900: #1c1c1c;     /* Sfondo principale scuro */
+    --bg-black-100: #222222;     /* Sfondo secondario scuro */
+    --bg-black-50: #393939;      /* Bordi e divisori scuri */
+    --bg-second: #30946e;        /* Colore principale rimane uguale */
+    --text-black-900: #e9e9e9;   /* Testo principale chiaro */
+    --text-black-700: #f2f2f2;   /* Testo secondario chiaro */
 }
-body
-{
-    line-height: 1.5;
-    font-size: 16px;
-    font-family: serif;
-}
-*
-{
+
+
+/* ============================================
+   RESET E STILI BASE
+   ============================================ */
+
+/* Reset universale per rimuovere margini e padding di default */
+* {
     margin: 0;
     padding: 0;
     outline: none;
     text-decoration: none;
     box-sizing: border-box;
 }
-::before,::after
-{
+
+/* Applica box-sizing anche agli pseudo-elementi */
+::before,
+::after {
     box-sizing: border-box;
 }
-ul
-{
+
+/* Stili base del body */
+body {
+    line-height: 1.5;
+    font-size: 16px;
+    font-family: 'Poppins', serif;
+    overflow-x: hidden;
+}
+
+/* Reset delle liste */
+ul {
     list-style: none;
 }
-.section
-{
+
+
+/* ============================================
+   LAYOUT PRINCIPALE E SEZIONI
+   ============================================ */
+
+/* Container principale per contenuto centrato */
+.container {
+    max-width: 1100px;
+    width: 100%;
+    margin: auto;
+}
+
+/* Sezioni principali della pagina */
+.section {
     background: var(--bg-black-900);
     min-height: 100vh;
     display: block;
     padding: 0 30px;
     opacity: 1;
     position: fixed;
-    left: 270px;
+    left: 270px;  /* Spazio per sidebar */
     top: 0;
     right: 0;
     bottom: 0;
@@ -56,64 +87,89 @@ ul
     overflow-x: hidden;
     transition: all 0.3s ease;
 }
-.section.back-section
-{
-    z-index: 1;
-}
+
+/* Sezione attiva (visibile) */
 .section.active {
     z-index: 2;
     opacity: 1;
     animation: fadeIn 0.7s ease-in-out;
 }
 
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
+/* Sezione di background */
+.section.back-section {
+    z-index: 1;
 }
-.hidden
-{
-    display: none !important;
-}
-.padd-15
-{
-    padding-left: 15px;
-    padding-right: 15px;
-}
-.padd-10
-{
-    padding-left: 7px;
-    padding-right: 7px;
-}
-.container
-{
-    max-width: 1100px;
-    width: 100%;
-    margin: auto;
-}
-.section .container
-{
+
+/* Container interno delle sezioni */
+.section .container {
     padding-top: 60px;
     padding-bottom: 70px;
 }
-.section-title
-{
+
+/* Animazione fade in per le sezioni */
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+
+/* ============================================
+   CLASSI UTILITY
+   ============================================ */
+
+/* Nasconde completamente un elemento */
+.hidden {
+    display: none !important;
+}
+
+/* Padding laterale standard */
+.padd-15 {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Padding laterale ridotto */
+.padd-10 {
+    padding-left: 7px;
+    padding-right: 7px;
+}
+
+/* Sistema di griglia flessibile */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -10px;
+    margin-right: -10px;
+    position: relative;
+    align-items: stretch;
+}
+
+/* Ombra per elementi */
+.shadow-dark {
+    box-shadow: 0 0 20px rgba(48, 46, 77, 0.15);
+}
+
+
+/* ============================================
+   TITOLI E BOTTONI
+   ============================================ */
+
+/* Titoli delle sezioni */
+.section-title {
     flex: 0 0 100%;
     max-width: 100%;
     margin-bottom: 60px;
 }
-.section-title h2
-{
+
+.section-title h2 {
     font-size: 40px;
     color: var(--text-black-900);
     font-weight: 700;
     position: relative;
 }
-.section-title h2::before
-{
+
+/* Linee decorative sotto i titoli */
+.section-title h2::before {
     content: '';
     height: 4px;
     width: 50px;
@@ -122,8 +178,8 @@ ul
     top: 100%;
     left: 0;
 }
-.section-title h2::after
-{
+
+.section-title h2::after {
     content: '';
     height: 4px;
     width: 25px;
@@ -134,24 +190,16 @@ ul
     margin-top: 8px;
 }
 
-.section-title h3
-{
+/* Titoli secondari */
+.section-title h3 {
     font-size: 30px;
     color: var(--text-black-900);
     font-weight: 700;
     position: relative;
 }
 
-.row {
-    display: flex;
-    flex-wrap: wrap;
-    margin-left: -10px;
-    margin-right: -10px;
-    position: relative;
-    align-items: stretch;
-}
-.btn
-{
+/* Bottoni standard */
+.btn {
     font-size: 16px;
     font-weight: 500;
     padding: 12px 35px;
@@ -162,113 +210,123 @@ ul
     border: none;
     background: var(--bg-second);
     transition: all 0.3s ease;
-}
-.btn:hover
-{
-    transform: scale(1.05);
-}
-.shadow-dark
-{
-    box-shadow: 0 0 20px rgba(48, 46, 77, 0.15);
+    cursor: pointer;
 }
 
-/* About */
-.about .about-content
-{
+.btn:hover {
+    transform: scale(1.05);
+}
+
+
+/* ============================================
+   SEZIONE ABOUT - INFORMAZIONI PERSONALI
+   ============================================ */
+
+.about .about-content {
     flex: 0 0 100%;
     max-width: 100%;
 }
-.about .about-content .about-text
-{
+
+/* Testo introduttivo */
+.about .about-content .about-text {
     flex: 0 0 100%;
     max-width: 100%;
 }
-.about .about-content .about-text h3
-{
+
+.about .about-content .about-text h3 {
     font-size: 24px;
     margin-bottom: 15px;
     font-weight: 700;
     color: var(--text-black-900);
 }
-.about .about-content .about-text h3 span
-{
+
+.about .about-content .about-text h3 span {
     color: var(--bg-second);
 }
-.about .about-content .about-text p
-{
+
+.about .about-content .about-text p {
     font-size: 16px;
     line-height: 25px;
     color: var(--text-black-700);
 }
+
+/* Layout a tre colonne per info personali e skills */
 .about .about-content .personal-info,
 .about .about-content .skills {
-    flex: 0 0 33.333333%;    /* Ogni colonna occuperà esattamente un terzo dello spazio */
+    flex: 0 0 33.333333%;
     max-width: 33.333333%;
     margin-top: 40px;
-    padding: 0 15px;         /* Manteniamo lo spazio tra le colonne */
+    padding: 0 15px;
 }
 
-
+/* Container per informazioni personali */
 .info-row {
     display: flex;
     flex-wrap: wrap;
-    margin: 0 -10px;  /* Compensa il padding degli elementi figli */
+    margin: 0 -10px;
 }
+
 .about .about-content .personal-info .info-item {
-    flex: 0 0 auto;         /* Permette agli elementi di mantenere la loro larghezza naturale */
-    margin-bottom: 15px;    /* Spazio tra le righe quando vanno a capo */
-    margin-right: 20px;     /* Spazio tra gli elementi orizzontali */
+    flex: 0 0 auto;
+    margin-bottom: 15px;
+    margin-right: 20px;
 }
+
 .about .about-content .personal-info .info-item p {
-    display: inline-block;  /* Mantiene il testo sulla stessa riga */
-    white-space: nowrap;    /* Previene l'andare a capo del testo */
+    display: inline-block;
+    white-space: nowrap;
     font-weight: 600;
     padding: 10px 0;
     font-size: 16px;
     color: var(--text-black-900);
     border-bottom: 1px solid var(--bg-black-50);
 }
+
 .about .about-content .personal-info .info-item p span {
     display: inline-block;
     font-weight: 400;
     color: var(--text-black-700);
     margin-left: 4px;
 }
-.about .about-content .personal-info .buttons
-{
+
+/* Bottoni nell'area info personali */
+.about .about-content .personal-info .buttons {
     margin-top: 30px;
 }
-.about .about-content .personal-info .buttons .btn
-{
+
+.about .about-content .personal-info .buttons .btn {
     margin-top: 10px;
 }
-.about .about-content .skills .skill-item
-{
+
+
+/* ============================================
+   SEZIONE SKILLS - COMPETENZE
+   ============================================ */
+
+.about .about-content .skills .skill-item {
     flex: 0 0 100%;
     max-width: 100%;
+    margin-bottom: 25px;
 }
-.about .about-content .skills .skill-item h5
-{
+
+.about .about-content .skills .skill-item h5 {
     line-height: 40px;
     font-weight: 600;
     font-size: 16px;
     color: var(--text-black-900);
     text-transform: capitalize;
 }
-.about .about-content .skills .skill-item .progress
-{
+
+/* Barra di progresso per le skills */
+.about .about-content .skills .skill-item .progress {
     background-color: var(--bg-black-50);
     height: 7px;
     border-radius: 4px;
     width: 100%;
     position: relative;
 }
-.about .about-content .skills .skill-item
-{
-    margin-bottom: 25px;
-}
-.about .about-content .skills .skill-item .progress .progress-in
-{
+
+.about .about-content .skills .skill-item .progress .progress-in {
     position: absolute;
     left: 0;
     top: 0;
@@ -276,8 +334,9 @@ ul
     border-radius: 4px;
     background-color: var(--bg-second);
 }
-.about .about-content .skills .skill-item .skill-percent
-{
+
+/* Percentuale delle skills */
+.about .about-content .skills .skill-item .skill-percent {
     position: absolute;
     right: 0;
     color: var(--text-black-900);
@@ -285,27 +344,34 @@ ul
     font-weight: 400;
     line-height: 40px;
 }
+
+
+/* ============================================
+   TIMELINE - FORMAZIONE ED ESPERIENZA
+   ============================================ */
+
+/* Layout per formazione ed esperienza */
 .about .about-content .education,
-.about .about-content .experience
-{
+.about .about-content .experience {
     flex: 0 0 50%;
     max-width: 50%;
     margin-top: 30px;
 }
-.about .about-content h3.title 
-{
+
+.about .about-content h3.title {
     font-size: 24px;
     margin-bottom: 30px;
     font-weight: 700;
     color: var(--text-black-900);
 }
-.about .about-content .timeline-box
-{
+
+/* Container della timeline */
+.about .about-content .timeline-box {
     flex: 0 0 100%;
     max-width: 100%;
 }
-.about .about-content .timeline
-{
+
+.about .about-content .timeline {
     background-color: var(--bg-black-100);
     padding: 30px 15px;
     border: 1px solid var(--bg-black-50);
@@ -313,18 +379,20 @@ ul
     width: 100%;
     position: relative;
 }
-.about .about-content .timeline .timeline-item
-{
+
+/* Elementi della timeline */
+.about .about-content .timeline .timeline-item {
     position: relative;
     padding-left: 37px;
     padding-bottom: 50px;
 }
-.about .about-content .timeline .timeline-item:last-child
-{
+
+.about .about-content .timeline .timeline-item:last-child {
     padding-bottom: 0;
 }
-.about .about-content .timeline .timeline-item::before
-{
+
+/* Linea verticale della timeline */
+.about .about-content .timeline .timeline-item::before {
     content: '';
     width: 1px;
     position: absolute;
@@ -333,8 +401,9 @@ ul
     top: 0;
     background-color: var(--bg-second);
 }
-.about .about-content .timeline .circle-dot
-{
+
+/* Punto circolare della timeline */
+.about .about-content .timeline .circle-dot {
     position: absolute;
     left: 0;
     top: 0;
@@ -343,102 +412,63 @@ ul
     border-radius: 50%;
     background-color: var(--bg-second);
 }
-.about .about-content .timeline .timeline-date
-{
+
+/* Contenuto degli elementi della timeline */
+.about .about-content .timeline .timeline-date {
     font-weight: 400;
     font-size: 14px;
     margin-bottom: 12px;
     color: var(--text-black-700);
 }
-.about .about-content .timeline .timeline-date .fa 
-{
+
+.about .about-content .timeline .timeline-date .fa {
     margin-right: 5px;
 }
-.about .about-content .timeline .timeline-title
-{
+
+.about .about-content .timeline .timeline-title {
     font-weight: 700;
     font-size: 18px;
     margin-bottom: 15px;
     text-transform: capitalize;
     color: var(--text-black-900);
 }
-.about .about-content .timeline .timeline-text
-{
+
+.about .about-content .timeline .timeline-text {
     line-height: 25px;
     font-size: 16px;
     text-align: justify;
     color: var(--text-black-700);
 }
-@media (max-width:1199px)
-{
-    .section .container
-    {
-        padding-top: 70px;
-    }
-    .section
-    {
-        left: 0;
-    }
-    .section.open 
-    {
-        left: 270px;
-    }
-    .about .about-content .personal-info .info-item p span 
-    {
-        display: block;
-        margin-left: 0;
-    }
-}
-@media (max-width:991px)
-{
-    .contact .contact-info-item,
-    .portfolio .portfolio-item,
-    .service .service-item
-    {
-        flex: 0 0 50%;
-        max-width: 50%;
-    }
-}
-@media (max-width:767px)
-{
-    .contact .contact-form .col-6,
-    .contact .contact-info-item,
-    .portfolio .portfolio-item,
-    .service .service-item,
-    .about .about-content .experience,
-    .about .about-content .education,
-    .about .about-content .skills,
-    .about .about-content .personal-info
-    {
-        flex: 0 0 100%;
-        max-width: 100%;
-    }
-}
+
+
+/* ============================================
+   TIMELINE PUBBLICAZIONI
+   ============================================ */
 
 .src_timeline-container {
     max-width: 1000px;
     margin: 0 auto;
     padding: 20px;
 }
-    
+
 .src_timeline {
     position: relative;
     padding: 20px 0;
 }
 
+/* Linea verticale principale della timeline pubblicazioni */
 .src_timeline::before {
     content: '';
     position: absolute;
     width: 4px;
     background-color: var(--bg-second);
-    top: 0;
-    bottom: 0;
-    top: 30px;  /* Modificato per iniziare dopo il primo elemento */
-    bottom: 30px;  /* Modificato per terminare prima dell'ultimo elemento */
+    top: 30px;
+    bottom: 30px;
     left: 75px;
     margin-left: -2px;
 }
 
+/* Elementi della timeline pubblicazioni */
 .src_timeline-item {
     display: flex;
     align-items: flex-start;
@@ -446,6 +476,7 @@ ul
     position: relative;
 }
 
+/* Immagini delle pubblicazioni */
 .src_timeline-img {
     width: 150px;
     height: 210px;
@@ -459,9 +490,10 @@ ul
 
 .src_timeline-img:hover {
     transform: scale(1.1);
-    z-index: 3; 
+    z-index: 3;
 }
 
+/* Contenuto delle pubblicazioni */
 .src_timeline-content {
     padding: 20px;
     border-radius: 0px;
@@ -492,122 +524,191 @@ ul
     color: var(--text-black-700);
 }
 
+/* Link esterni */
 .external-link {
-    color: var(--text-black-900); 
+    color: var(--text-black-900);
     font-weight: bold;
     text-decoration: none;
 }
 
-/* Stili per i bottoni delle pubblicazioni */
+
+/* ============================================
+   BOTTONI DELLE PUBBLICAZIONI
+   ============================================ */
+
 .publication-buttons {
-  display: flex;
-  gap: 10px;
-  margin-top: 15px;
-  flex-wrap: wrap;
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    flex-wrap: wrap;
 }
 
+/* Stile base dei bottoni pubblicazioni */
 .pub-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 16px;
-  border: none;
-  border-radius: 20px;
-  font-size: 14px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  text-decoration: none;
-  color: white;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: white;
 }
 
+/* Bottone Abstract */
 .abstract-btn {
-  background: var(--bg-second);
+    background: var(--bg-second);
 }
 
 .abstract-btn:hover {
-  background: #2a7a5e;
-  transform: translateY(-2px);
+    background: #2a7a5e;
+    transform: translateY(-2px);
 }
 
+.abstract-btn.active {
+    background: #2a7a5e;
+}
+
+/* Bottone ArXiv */
 .arxiv-btn {
-  background: #b31b1b;
+    background: #b31b1b;
 }
 
 .arxiv-btn:hover {
-  background: #a01818;
-  transform: translateY(-2px);
+    background: #a01818;
+    transform: translateY(-2px);
 }
 
+/* Bottone Publisher */
 .publisher-btn {
-  background: #4a5568;
+    background: #4a5568;
 }
 
 .publisher-btn:hover {
-  background: #2d3748;
-  transform: translateY(-2px);
+    background: #2d3748;
+    transform: translateY(-2px);
 }
 
+/* Bottone GitHub */
 .github-btn {
-  background: #24292e; /* Colore ufficiale di GitHub */
+    background: #24292e;
 }
 
 .github-btn:hover {
-  background: #1b1f23;
-}
-
-/* Stili per l'abstract espandibile */
-.abstract-content {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease-out;
-  background: var(--bg-black-100);
-  border-radius: 8px;
-  margin-top: 15px;
-}
-
-.abstract-content.expanded {
-  max-height: 500px;
-}
-
-.abstract-text {
-  padding: 20px;
-  font-size: 14px;
-  line-height: 1.6;
-  color: var(--text-black-700);
-  text-align: justify;
+    background: #1b1f23;
+    transform: translateY(-2px);
 }
 
 /* Icona ArXiv personalizzata */
 .arxiv-icon {
-  width: 16px;
-  height: 16px;
-  background: white;
-  color: #b31b1b;
-  border-radius: 3px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  font-size: 10px;
+    width: 16px;
+    height: 16px;
+    background: white;
+    color: #b31b1b;
+    border-radius: 3px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 10px;
 }
 
-/* Animazione per il bottone abstract */
-.abstract-btn.active {
-  background: #2a7a5e;
+
+/* ============================================
+   ABSTRACT ESPANDIBILE
+   ============================================ */
+
+.abstract-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    background: var(--bg-black-100);
+    border-radius: 8px;
+    margin-top: 15px;
 }
 
+.abstract-content.expanded {
+    max-height: 500px;
+}
+
+.abstract-text {
+    padding: 20px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-black-700);
+    text-align: justify;
+}
+
+/* Animazione freccia del bottone abstract */
 .abstract-btn .fa-chevron-down {
-  transition: transform 0.3s ease;
+    transition: transform 0.3s ease;
 }
 
 .abstract-btn.active .fa-chevron-down {
-  transform: rotate(180deg);
+    transform: rotate(180deg);
 }
 
-/* Responsive per i bottoni */
+
+/* ============================================
+   MEDIA QUERIES - RESPONSIVE DESIGN
+   ============================================ */
+
+/* Desktop large (max-width: 1199px) */
+@media (max-width: 1199px) {
+    .section .container {
+        padding-top: 70px;
+    }
+    
+    .section {
+        left: 0;
+        width: 100%;
+    }
+    
+    .section.open {
+        left: 270px;
+    }
+    
+    .about .about-content .personal-info .info-item p span {
+        display: block;
+        margin-left: 0;
+    }
+    
+    .aside.open + .main-content .section {
+        left: 270px;
+    }
+}
+
+/* Tablet (max-width: 991px) */
+@media (max-width: 991px) {
+    .contact .contact-info-item,
+    .portfolio .portfolio-item,
+    .service .service-item,
+    .src_timeline-title {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+}
+
+/* Mobile (max-width: 767px) */
 @media (max-width: 767px) {
-  .publication-buttons {
-    justify-content: center;
-  }
+    .contact .contact-form .col-6,
+    .contact .contact-info-item,
+    .portfolio .portfolio-item,
+    .service .service-item,
+    .about .about-content .experience,
+    .about .about-content .education,
+    .about .about-content .skills,
+    .about .about-content .personal-info,
+    .src_timeline-title {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    
+    .publication-buttons {
+        justify-content: center;
+    }
 }
