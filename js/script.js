@@ -5,22 +5,28 @@ const nav = document.querySelector(".nav"),
       allSection = document.querySelectorAll(".section"),
       totalSection = allSection.length;
 
-// Aggiunta dell'overlay al body
+// Add overlay to body
 const overlay = document.createElement("div");
 overlay.classList.add("overlay");
 document.body.appendChild(overlay);
 
+// Smooth scroll behavior
+document.documentElement.style.scrollBehavior = 'smooth';
+
 for (let i = 0; i < totalNavList; i++) {
     const a = navList[i].querySelector("a");
-    a.addEventListener("click", function () {
+    a.addEventListener("click", function (e) {
+        e.preventDefault();
         removeBackSection();
         for (let j = 0; j < totalNavList; j++) {
             if (navList[j].querySelector("a").classList.contains("active")) {
                 addBackSection(j);
             }
             navList[j].querySelector("a").classList.remove("active");
+            navList[j].querySelector("a").removeAttribute("aria-current");
         }
         this.classList.add("active");
+        this.setAttribute("aria-current", "page");
         showSection(this);
         if (window.innerWidth < 1200) {
             asideSectionTogglerBtn();
@@ -73,14 +79,18 @@ navTogglerBtn.addEventListener("click", () => {
 overlay.addEventListener("click", () => {
     aside.classList.remove("open");
     navTogglerBtn.classList.remove("open");
+    navTogglerBtn.setAttribute("aria-expanded", "false");
     overlay.classList.remove("active");
 });
 
 function asideSectionTogglerBtn() {
     aside.classList.toggle("open");
     navTogglerBtn.classList.toggle("open");
+    
+    const isOpen = aside.classList.contains("open");
+    navTogglerBtn.setAttribute("aria-expanded", isOpen);
 
-    if (aside.classList.contains("open")) {
+    if (isOpen) {
         overlay.classList.add("active");
     } else {
         overlay.classList.remove("active");
@@ -104,9 +114,9 @@ window.addEventListener("load", () => {
     }
 });
 
-/* ============================== Skills ============================ */
+/* ============================== Last Update Date ============================ */
 document.addEventListener("DOMContentLoaded", function () {
-    const lastUpdateDate = new Date("2025-08-16");
+    const lastUpdateDate = new Date("2026-02-12");
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
     const formattedDate = lastUpdateDate.toLocaleDateString('en-GB', options);
 
@@ -136,7 +146,7 @@ function toggleAbstract(abstractId) {
         abstractContent.classList.remove('expanded');
         button.classList.remove('active');
     } else {
-        // Chiudi tutti gli altri abstract aperti
+        // Close all other open abstracts
         document.querySelectorAll('.abstract-content.expanded').forEach(content => {
             content.classList.remove('expanded');
         });
@@ -144,8 +154,84 @@ function toggleAbstract(abstractId) {
             btn.classList.remove('active');
         });
         
-        // Apri quello selezionato
+        // Open the selected one
         abstractContent.classList.add('expanded');
         button.classList.add('active');
     }
 }
+
+/* ============================== Publications Filters ============================ */
+window.addEventListener('DOMContentLoaded', function() {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const timelineItems = document.querySelectorAll('.src_timeline-item');
+    
+    if (filterButtons.length === 0 || timelineItems.length === 0) return;
+    
+    filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const filterValue = this.getAttribute('data-filter');
+            
+            // Update active button
+            filterButtons.forEach(btn => {
+                btn.classList.remove('active');
+                btn.setAttribute('aria-pressed', 'false');
+            });
+            this.classList.add('active');
+            this.setAttribute('aria-pressed', 'true');
+            
+            // Filter publications
+            timelineItems.forEach(item => {
+                if (filterValue === 'all') {
+                    item.style.display = 'flex';
+                    setTimeout(() => item.classList.add('show'), 10);
+                } else if (filterValue === 'journal' || filterValue === 'conference') {
+                    if (item.getAttribute('data-type') === filterValue) {
+                        item.style.display = 'flex';
+                        setTimeout(() => item.classList.add('show'), 10);
+                    } else {
+                        item.classList.remove('show');
+                        setTimeout(() => item.style.display = 'none', 300);
+                    }
+                } else {
+                    // Year filter
+                    if (item.getAttribute('data-year') === filterValue) {
+                        item.style.display = 'flex';
+                        setTimeout(() => item.classList.add('show'), 10);
+                    } else {
+                        item.classList.remove('show');
+                        setTimeout(() => item.style.display = 'none', 300);
+                    }
+                }
+            });
+        });
+    });
+    
+    // Initialize all items as visible
+    timelineItems.forEach(item => {
+        item.classList.add('show');
+    });
+});
+
+/* ============================== Scroll to Top Button ============================ */
+window.addEventListener('DOMContentLoaded', function() {
+    const scrollToTopBtn = document.querySelector('.scroll-to-top');
+    
+    if (!scrollToTopBtn) return;
+    
+    // Show/hide button on scroll
+    window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 300) {
+            scrollToTopBtn.classList.add('visible');
+        } else {
+            scrollToTopBtn.classList.remove('visible');
+        }
+    });
+    
+    // Scroll to top on click
+    scrollToTopBtn.addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+});

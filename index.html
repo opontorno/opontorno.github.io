@@ -4,34 +4,103 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Orazio Pontorno - AI Researcher & Ph.D. in Artificial Intelligence. Specializing in Deep Learning, Deepfake Detection, Mathematical Modelling, and Graph Theory.">
+  <meta name="keywords" content="Orazio Pontorno, AI Researcher, Deep Learning, Deepfake Detection, Mathematical Modelling, Graph Theory, Artificial Intelligence, PhD">
+  <meta name="author" content="Orazio Pontorno">
+  
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="Orazio Pontorno - AI Researcher & Ph.D. in Artificial Intelligence">
+  <meta property="og:description" content="AI Researcher specializing in Deep Learning, Deepfake Detection, and Mathematical Modelling. Ph.D. from Campus Bio-Medico University of Rome.">
+  <meta property="og:image" content="https://opontorno.github.io/images/profile.jpg">
+  <meta property="og:url" content="https://opontorno.github.io">
+  <meta property="og:type" content="profile">
+  <meta property="profile:first_name" content="Orazio">
+  <meta property="profile:last_name" content="Pontorno">
+  
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@opontorno">
+  <meta name="twitter:creator" content="@opontorno">
+  <meta name="twitter:title" content="Orazio Pontorno - AI Researcher & Ph.D.">
+  <meta name="twitter:description" content="AI Researcher specializing in Deep Learning, Deepfake Detection, and Mathematical Modelling.">
+  <meta name="twitter:image" content="https://opontorno.github.io/images/profile.jpg">
+  
+  <!-- Favicon -->
   <link rel="icon" type="image/png" href="images/brain-graph_v2.png">
-  <title>opontorno</title>
-  <!-- ===== CSS Files ===== -->
+  
+  <!-- Performance: Preconnect to external domains -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  
+  <title>Orazio Pontorno - AI Researcher & Ph.D. in Artificial Intelligence</title>
+  
+  <!-- CSS Files -->
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/style-switcher.css">
   <link rel="stylesheet" href="css/style-aside.css">
   <link rel="stylesheet" href="css/style-home.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  
+  <!-- Schema.org JSON-LD for rich snippets -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Orazio Pontorno",
+    "jobTitle": "AI Researcher",
+    "description": "AI Researcher with expertise in Deep Learning, Deepfake Detection, and Mathematical Modelling",
+    "url": "https://opontorno.github.io",
+    "image": "https://opontorno.github.io/images/profile.jpg",
+    "sameAs": [
+      "https://www.linkedin.com/in/opontorno",
+      "https://twitter.com/opontorno",
+      "https://github.com/opontorno",
+      "https://orcid.org/0009-0009-0381-9971",
+      "https://www.scopus.com/authid/detail.uri?authorId=58898116500"
+    ],
+    "alumniOf": [
+      {
+        "@type": "EducationalOrganization",
+        "name": "Campus Bio-Medico University of Rome",
+        "description": "Ph.D. in Artificial Intelligence"
+      },
+      {
+        "@type": "EducationalOrganization",
+        "name": "University of Catania",
+        "description": "Master's degree in Data Science"
+      }
+    ],
+    "knowsAbout": ["Deep Learning", "Artificial Intelligence", "Deepfake Detection", "Mathematical Modelling", "Graph Theory", "Hypergraph Theory"]
+  }
+  </script>
 </head>
 
 
 <body class="dark">
+  <!-- Skip to main content for accessibility -->
+  <a href="#main-content" class="skip-to-main">Skip to main content</a>
+  
   <!-- ===== Main Container Start ===== -->
   <div class="main-container">
     <!-- ===== Aside Start ===== -->
-    <div class="aside">
+    <aside class="aside" role="navigation" aria-label="Main navigation">
       <div class="logo">
-        <a href="#home"><span>OP</span></a>
+        <a href="#home" aria-label="Home - Orazio Pontorno"><span>OP</span></a>
       </div>
-      <div class="nav-toggler">
+      <button class="nav-toggler" aria-label="Toggle navigation menu" aria-expanded="false">
         <span></span>
-      </div>
-      <ul class="nav">
-        <li><a href="#home" class="active"><i class="fa fa-home"></i> Home</a></li>
-        <li><a href="#cv"><i class="fa fa-user"></i>Curriculum Vitae</a></li>
-        <li><a href="#activities"><i class="fa fa-search"></i>Activities</a></li>
-      </ul>
-    </div>
+      </button>
+      <nav>
+        <ul class="nav">
+          <li><a href="#home" class="active" aria-current="page"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
+          <li><a href="#cv"><i class="fa fa-user" aria-hidden="true"></i> Curriculum Vitae</a></li>
+          <li><a href="#activities"><i class="fa fa-search" aria-hidden="true"></i> Activities</a></li>
+        </ul>
+      </nav>
+    </aside>
     <!-- ===== Aside End ===== -->
 
 
@@ -42,30 +111,31 @@
 
 
     <!-- ===== Main Content Start ===== -->
-    <div class="main-content">
+    <main class="main-content" id="main-content" role="main">
       <section class="home active section" id="home"> 
         <div class="container">
           <div class="row">
             <div class="home-img padd-15">
               <div>
-                <img src="images/profile.jpg" alt="Orazio Pontorno">
+                <img src="images/profile.jpg" alt="Portrait photo of Orazio Pontorno, AI Researcher" loading="eager">
               </div>
             </div>
             <div class="home-info padd-15">
               <h3 class="name-highlight">Orazio Pontorno</h3>
               <p>
-                AI Researcher for 
-                <a href="https://www.life360.com/" class="external-link" target="_blank" rel="noopener noreferrer">Life360</a>.<br>
-                Ph.D. Student in Artificial Intelligence at 
-                <a href="https://www.unicampus.it/" class="external-link" target="_blank" rel="noopener noreferrer">UCBM</a>
+                AI Researcher | 
+                <!-- for <a href="https://www.life360.com/" class="external-link" target="_blank" rel="noopener noreferrer">Life360</a>.<br> -->
+                Ph.D. in Artificial Intelligence 
+                <!-- for <a href="https://www.unicampus.it/" class="external-link" target="_blank" rel="noopener noreferrer">UCBM</a>
                 in collaboration with 
-                <a href="https://www.unict.it/" class="external-link" target="_blank" rel="noopener noreferrer">UniCt</a>.
+                <a href="https://www.unict.it/" class="external-link" target="_blank" rel="noopener noreferrer">UniCt</a>. -->
               </p>
               <p>Interests fields:</p>
                 <ul class="interests-container">
                     <li>Deep Learning</li>
+                    <li>Mathematical Modelling</li>
                     <li>Deepfakes</li>
-                    <li>AI for Neuroscience</li>
+                    <li>Graph & Hypergraph Theory</li>
                 </ul>
               </p>
             </div>
@@ -74,25 +144,25 @@
           <footer>
             <div class="container">
                 <!-- <h3>Let's get in touch</h3> -->
-                <div class="social-icons">
+                <div class="social-icons" role="navigation" aria-label="Social media links">
 
-                  <a href="mailto:orazio.pontorno@phd.unict.it" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-envelope"></i></a>
+                  <a href="mailto:orazio.pontorno@phd.unict.it" aria-label="Email Orazio Pontorno" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-envelope" aria-hidden="true"></i></a>
                   
-                  <a href="https://t.me/opontorno" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-telegram"></i></a>
+                  <a href="https://t.me/opontorno" aria-label="Telegram profile" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-telegram" aria-hidden="true"></i></a>
 
-                  <a href="https://www.linkedin.com/in/opontorno" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin"></i></a>
+                  <a href="https://www.linkedin.com/in/opontorno" aria-label="LinkedIn profile" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin" aria-hidden="true"></i></a>
                   
-                  <a href="https://twitter.com/opontorno" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-x-twitter"></i></a>
+                  <a href="https://twitter.com/opontorno" aria-label="Twitter profile" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a>
                   
-                  <a href="https://github.com/opontorno" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i></a>
+                  <a href="https://github.com/opontorno" aria-label="GitHub profile" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github" aria-hidden="true"></i></a>
                   
-                  <a href="https://www.scopus.com/authid/detail.uri?authorId=58898116500" target="_blank" rel="noopener noreferrer">
-                      <i class="fa-solid fa-graduation-cap"></i>
+                  <a href="https://www.scopus.com/authid/detail.uri?authorId=58898116500" aria-label="Scopus author profile" target="_blank" rel="noopener noreferrer">
+                      <i class="fa-solid fa-graduation-cap" aria-hidden="true"></i>
                   </a>
-                  <!-- <a href="https://scholar.google.com/scholar?hl=it&as_sdt=0%2C5&q=author%3A%27Orazio+Pontorno%27&btnG=" target="_blank" rel="noopener noreferrer">
-                      <i class="fa-brands fa-google-scholar"></i> 
-                  </a> -->
-                  <a href="https://orcid.org/0009-0009-0381-9971" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-orcid"></i></a>
+                  <a href="https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=author%3A%27Orazio+Pontorno%27&btnG=" aria-label="Google Scholar profile" target="_blank" rel="noopener noreferrer">
+                      <i class="fa-brands fa-google-scholar" aria-hidden="true"></i> 
+                  </a>
+                  <a href="https://orcid.org/0009-0009-0381-9971" aria-label="ORCID profile" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-orcid" aria-hidden="true"></i></a>
                 </div>
             </div>
           </footer>
@@ -124,9 +194,9 @@
                 <div class="about-text padd-15">
                   <h3>Biography</h3>
                   <p>
-                    Currently pioneering as an AI Researcher at Life360, where I focus on developing innovative machine learning solutions 
-                    to enhance advertising strategies. I am also pursuing a PhD in Artificial Intelligence at Università Campus Bio-Medico 
-                    di Roma. My work bridges academic research and industry applications, with a strong interest in advancing AI technologies.
+                  AI Researcher with a strong background in applied mathematics, and solid experience as a Data Scientist and ML Engineer in both academic and industrial contexts. My work focuses on machine learning and deep learning, with particular emphasis on generative models, synthetic media analysis, deepfake detection, statistical modeling, and graph and hypergraph-based models. <br>
+                  I hold a PhD in Artificial Intelligence from Campus Bio-Medico University of Rome, along with a Master’s degree in Data Science and a Bachelor’s degree in Mathematics from the University of Catania.<br>
+                  My experience spans both academia and industry, including international research activity at the State University of New York Polytechnic Institute (Utica, NY) and applied work as a Data Scientist and AI Researcher in industrial settings. I combine rigorous applied mathematics with experimental AI research and real-world deployment of advanced models.
                   </p>
                 </div>
               </div>
@@ -135,7 +205,7 @@
                   <h3 class="title">About Me</h3>
                   <div class="vertical">
                     <div class="info-item padd-15">
-                      <p>Birthday : <span>13 Oct 1999</span></p>
+                      <p>Birthday : <span>10-13-1999</span></p>
                     </div>
                     <div class="info-item padd-15">
                       <p>Email : <span>orazio.pontorno@phd.unict.it</span></p>
@@ -273,9 +343,18 @@
                         <div class="timeline-item">
                           <div class="circle-dot"></div>
                           <h3 class="timeline-date">
-                            <i class="fa fa-calendar"></i> 03/2025 - today
+                            <i class="fa fa-calendar"></i> 01/2026 - 06/2026
                           </h3>
-                          <h4 class="timeline-title">AI Researcher<br>Life360 · Full Time</h4>
+                          <h4 class="timeline-title">Visiting Researcher<br><em>University of New York, Utica, NY· Full Time</em></h4>
+                          <p class="timeline-text">Research activity focused on developing advanced methodologies for Deepfake Detection in Medical Imaging. The work involves engineering deep learning algorithms to identify synthetic manipulations in clinical data, ensuring the authenticity and integrity of images used for medical diagnosis and digital health security.</p>
+                        </div>
+                        <!-- ===== timeline item ===== -->
+                        <div class="timeline-item">
+                          <div class="circle-dot"></div>
+                          <h3 class="timeline-date">
+                            <i class="fa fa-calendar"></i> 03/2025 - 12/2025
+                          </h3>
+                          <h4 class="timeline-title">AI Researcher<br><em>Life360 · Full Time</em></h4>
                           <p class="timeline-text">Research and develop cutting-edge ML models for personalized ad experiences and contextual targeting. Explore deep learning, reinforcement learning, and NLP for innovative ad solutions.</p>
                         </div>
                         <!-- ===== timeline item ===== -->
@@ -284,7 +363,7 @@
                           <h3 class="timeline-date">
                             <i class="fa fa-calendar"></i> 04/2024 - 02/2025
                           </h3>
-                          <h4 class="timeline-title">Data Scientist<br>Fantix Inc. · Contract</h4>
+                          <h4 class="timeline-title">Data Scientist<br><em>Fantix Inc. · Contract</em></h4>
                           <p class="timeline-text">Research and development of enrichment models based on Machine Learning systems.</p>
                         </div>
                         <!-- ===== timeline item ===== -->
@@ -293,7 +372,7 @@
                           <h3 class="timeline-date">
                             <i class="fa fa-calendar"></i> 04/2023 - 06/2023
                           </h3>
-                          <h4 class="timeline-title">Student Research Assistant<br>iCTLab s.r.l. · Internship</h4>
+                          <h4 class="timeline-title">Student Research Assistant<br><em>iCTLab s.r.l. · Internship</em></h4>
                           <p class="timeline-text">Research activities aimed at developing deep learning algorithms in the field of Deepfakes Analysis and Detection.</p>
                         </div>
                         <!-- ===== timeline item ===== -->
@@ -302,7 +381,7 @@
                           <h3 class="timeline-date">
                             <i class="fa fa-calendar"></i> 02/2023 - 08/2023
                           </h3>
-                          <h4 class="timeline-title">Research Assistant<br>Vicosystems s.r.l. · Scholarship</h4>
+                          <h4 class="timeline-title">Research Assistant<br><em>Vicosystems s.r.l. · Scholarship</em></h4>
                           <p class="timeline-text">Analysis and implementation of deep learning techniques based on GAN networks for anomaly detection in a time-series dataset.</p>
                         </div>
                       </div>
@@ -334,13 +413,23 @@
           <div class="section-title">
             <h3>Publications</h3>
           </div>
+          
+          <!-- Publication Filters -->
+          <div class="publication-filters">
+            <button class="filter-btn active" data-filter="all" aria-pressed="true">All</button>
+            <button class="filter-btn" data-filter="2025" aria-pressed="false">2025</button>
+            <button class="filter-btn" data-filter="2024" aria-pressed="false">2024</button>
+            <button class="filter-btn" data-filter="journal" aria-pressed="false">Journals</button>
+            <button class="filter-btn" data-filter="conference" aria-pressed="false">Conferences</button>
+          </div>
+          
           <div class="src_timeline-container">
             <div class="src_timeline">
 
               <!-- BEGIN ITEM -->
-              <div class="src_timeline-item">
+              <div class="src_timeline-item" data-year="2025" data-type="journal">
                 <a href="https://doi.org/10.1007/s11042-025-21060-1" class="external-link" target="_blank" rel="noopener noreferrer">
-                  <img src="images/paper_previews/MTA_preview.png" alt="Paper preview" class="src_timeline-img">
+                  <img src="images/paper_previews/MTA_preview.png" alt="Preview of DeepFeatureX-SN paper" class="src_timeline-img" loading="lazy">
                 </a>
                 <div class="src_timeline-content">
                   <div class="src_timeline-date">2025</div>
@@ -392,9 +481,9 @@
               <!-- END ITEM -->
               
               <!-- BEGIN ITEM -->
-              <div class="src_timeline-item">
+              <div class="src_timeline-item" data-year="2025" data-type="conference">
                 <a href="" class="external-link" target="_blank" rel="noopener noreferrer">
-                  <img src="images/paper_previews/WILD.png" alt="Paper preview" class="src_timeline-img">
+                  <img src="images/paper_previews/WILD.png" alt="Preview of WILD dataset paper" class="src_timeline-img" loading="lazy">
                 </a>
                 <div class="src_timeline-content">
                   <div class="src_timeline-date">2025</div>
@@ -445,9 +534,9 @@
               <!-- END ITEM -->
 
               <!-- BEGIN ITEM -->
-              <div class="src_timeline-item">
+              <div class="src_timeline-item" data-year="2024" data-type="conference">
                 <a href="https://doi.org/10.1007/978-3-031-78305-0_12" class="external-link" target="_blank" rel="noopener noreferrer">
-                  <img src="images/paper_previews/icpr24_preview.png" alt="Paper preview" class="src_timeline-img">
+                  <img src="images/paper_previews/icpr24_preview.png" alt="Preview of DeepFeatureX Net paper" class="src_timeline-img" loading="lazy">
                 </a>
                 <div class="src_timeline-content">
                   <div class="src_timeline-date">2024</div>
@@ -496,9 +585,9 @@
               <!-- END ITEM -->
 
               <!-- BEGIN ITEM -->
-              <div class="src_timeline-item">
+              <div class="src_timeline-item" data-year="2024" data-type="conference">
                 <a href="https://doi.org/10.1109/ICIP51287.2024.10648013" class="external-link" target="_blank" rel="noopener noreferrer">
-                  <img src="images/paper_previews/icip24_preview.png" alt="Paper preview" class="src_timeline-img">
+                  <img src="images/paper_previews/icip24_preview.png" alt="Preview of DCT-Traces paper" class="src_timeline-img" loading="lazy">
                 </a>
                 <div class="src_timeline-content">
                   <div class="src_timeline-date">2024</div>
@@ -554,16 +643,16 @@
         <div id="last-update-res" style="font-size: 1em; text-align: center; margin-top: 30px; color: gray;"></div>
       </section>
       <!-- ===== activities Section End ===== -->
-    </div>
-
-
-
+    </main>
     <!-- ===== Main Content End ===== -->
   </div>
   <!-- ===== Main Container End ===== -->
 
 
-
+  <!-- ===== Scroll to Top Button ===== -->
+  <button class="scroll-to-top" aria-label="Scroll to top" title="Scroll to top">
+    <i class="fas fa-arrow-up" aria-hidden="true"></i>
+  </button>
 
   <!-- ===== Dark/Light Mode Toggle ===== --> 
   <div class="style-switcher">
