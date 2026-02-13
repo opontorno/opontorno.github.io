@@ -137,29 +137,6 @@ if (lastUpdateRes) {
     lastUpdateRes.textContent = "Last update: " + formattedDate;
 }
 
-/* ============================== Publications Abstract Toggle ============================ */
-function toggleAbstract(abstractId) {
-    const abstractContent = document.getElementById(abstractId);
-    const button = document.querySelector(`[onclick="toggleAbstract('${abstractId}')"]`);
-    
-    if (abstractContent.classList.contains('expanded')) {
-        abstractContent.classList.remove('expanded');
-        button.classList.remove('active');
-    } else {
-        // Close all other open abstracts
-        document.querySelectorAll('.abstract-content.expanded').forEach(content => {
-            content.classList.remove('expanded');
-        });
-        document.querySelectorAll('.abstract-btn.active').forEach(btn => {
-            btn.classList.remove('active');
-        });
-        
-        // Open the selected one
-        abstractContent.classList.add('expanded');
-        button.classList.add('active');
-    }
-}
-
 /* ============================== Publications Filters ============================ */
 const filterButtons = document.querySelectorAll('.filter-btn');
 const timelineItems = document.querySelectorAll('.src_timeline-item');
@@ -234,3 +211,142 @@ if (scrollToTopBtn) {
 }
 
 } // End of initializeWebsite function
+
+/* ============================== Call Initialization ============================ */
+// Execute when DOM is fully loaded
+document.addEventListener('DOMContentLoaded', function() {
+    initializeWebsite();
+    
+    // Handle Activities internal navigation
+    const activitiesNavLinks = document.querySelectorAll('.activities-nav .nav-item');
+    
+    if (activitiesNavLinks.length > 0) {
+        activitiesNavLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                console.log('Navigation link clicked:', this.getAttribute('href')); // Debug log
+                
+                const targetHref = this.getAttribute('href');
+                const activitiesSection = document.getElementById('activities');
+                const targetElement = document.querySelector(targetHref);
+                
+                if (!activitiesSection || !targetElement) {
+                    console.error('Section or target element not found!');
+                    return;
+                }
+                
+                // Check if activities section is already active
+                const alreadyActive = activitiesSection.classList.contains('active');
+                
+                if (!alreadyActive) {
+                    // Activate activities section first
+                    document.querySelectorAll('.section').forEach(section => {
+                        section.classList.remove('active');
+                        section.classList.remove('back-section');
+                    });
+                    activitiesSection.classList.add('active');
+                    
+                    // Update nav
+                    document.querySelectorAll('.nav a').forEach(navLink => {
+                        navLink.classList.remove('active');
+                        navLink.removeAttribute('aria-current');
+                    });
+                    const activitiesNavLink = document.querySelector('.nav a[href="#activities"]');
+                    if (activitiesNavLink) {
+                        activitiesNavLink.classList.add('active');
+                        activitiesNavLink.setAttribute('aria-current', 'page');
+                    }
+                }
+                
+                // Scroll to target element within the section
+                // Use a small delay to ensure section is rendered if it was just activated
+                const delay = alreadyActive ? 0 : 200;
+                setTimeout(() => {
+                    const targetPosition = targetElement.offsetTop;
+                    console.log('Scrolling to position:', targetPosition); // Debug log
+                    
+                    // Scroll the section container to the target element
+                    activitiesSection.scrollTo({
+                        top: targetPosition - 100, // 100px offset from top
+                        behavior: 'smooth'
+                    });
+                }, delay);
+            });
+        });
+    }
+    
+    // Handle CTA buttons in home section
+    const ctaButtons = document.querySelectorAll('.btn-primary, .btn-secondary');
+    ctaButtons.forEach(button => {
+        if (button.getAttribute('href') && button.getAttribute('href').startsWith('#')) {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetSection = document.getElementById(targetId);
+                
+                if (targetSection) {
+                    // Hide all sections
+                    document.querySelectorAll('.section').forEach(section => {
+                        section.classList.remove('active');
+                        section.classList.remove('back-section');
+                    });
+                    
+                    // Show target section
+                    targetSection.classList.add('active');
+                    
+                    // Update navigation
+                    document.querySelectorAll('.nav a').forEach(navLink => {
+                        navLink.classList.remove('active');
+                        navLink.removeAttribute('aria-current');
+                    });
+                    
+                    const navLink = document.querySelector(`.nav a[href="#${targetId}"]`);
+                    if (navLink) {
+                        navLink.classList.add('active');
+                        navLink.setAttribute('aria-current', 'page');
+                    }
+                    
+                    // Close mobile menu if open
+                    if (window.innerWidth < 1200) {
+                        const aside = document.querySelector('.aside');
+                        const navToggler = document.querySelector('.nav-toggler');
+                        const overlay = document.querySelector('.overlay');
+                        
+                        aside.classList.remove('open');
+                        navToggler.classList.remove('open');
+                        navToggler.setAttribute('aria-expanded', 'false');
+                        overlay.classList.remove('active');
+                    }
+                    
+                    // Scroll to top of section
+                    window.scrollTo({top: 0, behavior: 'smooth'});
+                }
+            });
+        }
+    });
+});
+
+// Make toggleAbstract globally available
+window.toggleAbstract = function(abstractId) {
+    const abstractContent = document.getElementById(abstractId);
+    const button = document.querySelector(`[onclick="toggleAbstract('${abstractId}')"]`);
+    
+    if (abstractContent && button) {
+        if (abstractContent.classList.contains('expanded')) {
+            abstractContent.classList.remove('expanded');
+            button.classList.remove('active');
+        } else {
+            // Close all other open abstracts
+            document.querySelectorAll('.abstract-content.expanded').forEach(content => {
+                content.classList.remove('expanded');
+            });
+            document.querySelectorAll('.abstract-btn.active').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Open the selected one
+            abstractContent.classList.add('expanded');
+            button.classList.add('active');
+        }
+    }
+};
