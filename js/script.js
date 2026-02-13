@@ -1,3 +1,6 @@
+/* ============================== Initialization Function ============================ */
+function initializeWebsite() {
+
 /* ============================== Aside ============================ */
 const nav = document.querySelector(".nav"),
       navList = nav.querySelectorAll("li"),
@@ -115,27 +118,24 @@ window.addEventListener("load", () => {
 });
 
 /* ============================== Last Update Date ============================ */
-document.addEventListener("DOMContentLoaded", function () {
-    const lastUpdateDate = new Date("2026-02-12");
-    const options = { year: 'numeric', month: 'long', day: 'numeric' };
-    const formattedDate = lastUpdateDate.toLocaleDateString('en-GB', options);
+const lastUpdateDate = new Date("2026-02-12");
+const options = { year: 'numeric', month: 'long', day: 'numeric' };
+const formattedDate = lastUpdateDate.toLocaleDateString('en-GB', options);
 
-    const lastUpdateDiv = document.getElementById("last-update");
-    if (lastUpdateDiv) {
-        lastUpdateDiv.textContent = "Last update: " + formattedDate;
-    }
+const lastUpdateDiv = document.getElementById("last-update");
+if (lastUpdateDiv) {
+    lastUpdateDiv.textContent = "Last update: " + formattedDate;
+}
 
-    const lastUpdateCV = document.getElementById("last-update-cv");
-    if (lastUpdateCV) {
-        lastUpdateCV.textContent = "Last update: " + formattedDate;
-    }
+const lastUpdateCV = document.getElementById("last-update-cv");
+if (lastUpdateCV) {
+    lastUpdateCV.textContent = "Last update: " + formattedDate;
+}
 
-    const lastUpdateRes = document.getElementById("last-update-res");
-    if (lastUpdateRes) {
-        lastUpdateRes.textContent = "Last update: " + formattedDate;
-    }
-});
-
+const lastUpdateRes = document.getElementById("last-update-res");
+if (lastUpdateRes) {
+    lastUpdateRes.textContent = "Last update: " + formattedDate;
+}
 
 /* ============================== Publications Abstract Toggle ============================ */
 function toggleAbstract(abstractId) {
@@ -161,12 +161,10 @@ function toggleAbstract(abstractId) {
 }
 
 /* ============================== Publications Filters ============================ */
-window.addEventListener('DOMContentLoaded', function() {
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const timelineItems = document.querySelectorAll('.src_timeline-item');
-    
-    if (filterButtons.length === 0 || timelineItems.length === 0) return;
-    
+const filterButtons = document.querySelectorAll('.filter-btn');
+const timelineItems = document.querySelectorAll('.src_timeline-item');
+
+if (filterButtons.length > 0 && timelineItems.length > 0) {
     filterButtons.forEach(button => {
         button.addEventListener('click', function() {
             const filterValue = this.getAttribute('data-filter');
@@ -210,13 +208,12 @@ window.addEventListener('DOMContentLoaded', function() {
     timelineItems.forEach(item => {
         item.classList.add('show');
     });
-});
+}
 
 /* ============================== Scroll to Top Button ============================ */
-window.addEventListener('DOMContentLoaded', function() {
-    const scrollToTopBtn = document.querySelector('.scroll-to-top');
-    
-    if (!scrollToTopBtn) return;
+const scrollToTopBtn = document.querySelector('.scroll-to-top');
+
+if (scrollToTopBtn) {
     
     // Show/hide button on scroll
     window.addEventListener('scroll', function() {
@@ -234,4 +231,6 @@ window.addEventListener('DOMContentLoaded', function() {
             behavior: 'smooth'
         });
     });
-});
+}
+
+} // End of initializeWebsite function

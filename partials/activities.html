@@ -1,0 +1,354 @@
+<!-- ===== activities Section Start ===== -->
+<section class="service section" id="activities">
+  <div class="container">
+    <div class="row">
+      <div class="section-title padd-15">
+        <h2>Research Activities</h2>
+      </div>
+    </div>
+    
+    <!-- Section Description -->
+    <div class="row">
+      <div class="section-description padd-15">
+        <p>Overview of my research contributions including publications, workshop organization, and reviewing activities in the field of Artificial Intelligence and Deep Learning.</p>
+      </div>
+    </div>
+    
+    <!-- Navigation Menu -->
+    <div class="activities-nav">
+      <a href="#publications" class="nav-item">
+        <i class="fas fa-file-alt"></i>
+        <span>Publications</span>
+      </a>
+      <a href="#workshops " class="nav-item">
+        <i class="fas fa-trophy"></i>
+        <span>Workshops & Challenges</span>
+      </a>
+      <a href="#reviewing" class="nav-item">
+        <i class="fas fa-pencil-alt"></i>
+        <span>Reviewing Activity</span>
+      </a>
+    </div>
+    
+    <div class="section-title" id="publications">
+      <h3>Publications</h3>
+    </div>
+    
+    <!-- Publication Filters -->
+    <div class="publication-filters">
+      <button class="filter-btn active" data-filter="all" aria-pressed="true">All</button>
+      <button class="filter-btn" data-filter="2025" aria-pressed="false">2025</button>
+      <button class="filter-btn" data-filter="2024" aria-pressed="false">2024</button>
+      <button class="filter-btn" data-filter="journal" aria-pressed="false">Journals</button>
+      <button class="filter-btn" data-filter="conference" aria-pressed="false">Conferences</button>
+    </div>
+    
+    <div class="src_timeline-container">
+      <div class="src_timeline">
+
+        <!-- BEGIN ITEM -->
+        <div class="src_timeline-item" data-year="2025" data-type="journal">
+          <a href="https://doi.org/10.1007/s11042-025-21060-1" class="external-link" target="_blank" rel="noopener noreferrer">
+            <img src="images/paper_previews/MTA_preview.png" alt="Preview of DeepFeatureX-SN paper" class="src_timeline-img" loading="lazy">
+          </a>
+          <div class="src_timeline-content">
+            <div class="src_timeline-date">2025</div>
+            <h3 class="src_timeline-title">
+              <a href="https://doi.org/10.1007/s11042-025-21060-1" class="external-link" target="_blank" rel="noopener noreferrer">
+                DeepFeatureX-SN: Generalization of deepfake detection via contrastive learning
+              </a>
+              <span class="publication-type-badge badge-journal">Journal</span>
+            </h3>
+            <div class="src_timeline-authors">Orazio Pontorno, Luca Guarnera, Sebastiano Battiato</div>
+            <div class="src_timeline-journal">Multimedia Tools and Applications (2025): 1-20.</div>
+            
+            <div class="publication-buttons">
+              <button class="pub-btn abstract-btn" onclick="toggleAbstract('abstract-4')">
+                <i class="fas fa-file-text"></i>
+                Abstract
+                <i class="fas fa-chevron-down"></i>
+              </button>
+              <a href="https://doi.org/10.1007/s11042-025-21060-1" class="pub-btn publisher-btn" target="_blank" rel="noopener noreferrer">
+                <i class="fas fa-external-link-alt"></i>
+                Springer
+              </a>
+              <a href="https://github.com/mfs-iplab/DeepFeatureX-SN" class="pub-btn github-btn">
+                <i class="fab fa-github"></i>
+                GitHub
+              </a>
+            </div>
+            <div class="abstract-content" id="abstract-4">
+              <div class="abstract-text">
+                The rapid advancement of generative artificial intelligence, particularly in the domains of Generative Adversarial Networks (GANs) and 
+                Diffusion Models (DMs), has led to the creation of increasingly sophisticated deepfakes. These synthetic images pose significant challenges
+                for detection systems and present growing concerns in the realm of Cybersecurity. The potential misuse of deepfakes for disinformation, 
+                fraud, and identity theft underscores the critical need for robust detection methods. This paper introduces DeepFeatureX-SN ('Deep Features 
+                eXtractors based Siamese Network'), an innovative deep learning model designed to address the complex task of not only distinguishing 
+                between real and synthetic images but also identifying the specific employed generative technique (GAN or DM). Our approach makes use of a 
+                tripartite structure of specialized base models, each trained using Siamese networks and contrastive learning techniques, to extract 
+                discriminative features unique to real, GAN-generated, and DM-generated images. These features are then combined through a CNN-based 
+                classifier for final categorization. Extensive experiments demonstrate the model's superior performance, with a detection accuracy of 
+                97.29%, strong generalization to unseen generative architectures (achieving an average accuracy of 67.40%, which surpasses most existing 
+                approaches by over 10%) and robustness against various image manipulations, all of which are crucial for real-world Cybersecurity 
+                applications. DeepFeatureX-SN achieves state-of-the-art results across multiple datasets, showing particular strength in detecting images 
+                from novel GAN and DM implementations. Furthermore, a comprehensive ablation study validates the effectiveness of each component in our 
+                proposed architecture. This research contributes significantly to the field, offering a more nuanced and accurate approach to identifying 
+                and categorizing synthetic images. The results obtained in the different configurations in the generalization tests demonstrate the good 
+                capabilities of the model, outperforming methods found in the literature.
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- END ITEM -->
+        
+        <!-- BEGIN ITEM -->
+        <div class="src_timeline-item" data-year="2025" data-type="conference">
+          <a href="" class="external-link" target="_blank" rel="noopener noreferrer">
+            <img src="images/paper_previews/WILD.png" alt="Preview of WILD dataset paper" class="src_timeline-img" loading="lazy">
+          </a>
+          <div class="src_timeline-content">
+            <div class="src_timeline-date">2025</div>
+            <h3 class="src_timeline-title">
+              <a href="" class="external-link" target="_blank" rel="noopener noreferrer">
+                WILD: a new in-the-Wild Image Linkage Dataset for synthetic image attribution
+              </a>
+              <span class="publication-type-badge badge-conference">Conference</span>
+            </h3>
+            <div class="src_timeline-authors">Bongini P., Mandelli S., Montibeller A., et al.</div>
+            <div class="src_timeline-journal">International Joint Conference on Neural Networks</div>
+            
+            <div class="publication-buttons">
+              <button class="pub-btn abstract-btn" onclick="toggleAbstract('abstract-3')">
+                <i class="fas fa-file-text"></i>
+                Abstract
+                <i class="fas fa-chevron-down"></i>
+              </button>
+              <a href="https://arxiv.org/abs/2504.19595" class="pub-btn arxiv-btn" target="_blank" rel="noopener noreferrer">
+                <span class="arxiv-icon">ar</span>
+                ArXiv
+              </a>
+              <a href="https://doi.org/10.1109/IJCNN64981.2025.11227289" class="pub-btn publisher-btn" target="_blank" rel="noopener noreferrer">
+                <i class="fas fa-external-link-alt"></i>
+                IEEE
+              </a>
+            </div>
+            <div class="abstract-content" id="abstract-3">
+              <div class="abstract-text">
+                Synthetic image source attribution is an open challenge, with an increasing number of image generators being released yearly. The complexity 
+                and the sheer number of available generative techniques, as well as the scarcity of high-quality open source datasets of diverse nature for 
+                this task, make training and benchmarking synthetic image source attribution models very challenging. WILD is a new in-the-Wild Image Linkage
+                Dataset designed to provide a powerful training and benchmarking tool for synthetic image attribution models. The dataset is built out of a 
+                closed set of 10 popular commercial generators, which constitutes the training base of attribution models, and an open set of 10 additional 
+                generators, simulating a real-world in-the-wild scenario. Each generator is represented by 1,000 images, for a total of 10,000 images in the
+                closed set and 10,000 images in the open set. Half of the images are post-processed with a wide range of operators. WILD allows benchmarking
+                attribution models in a wide range of tasks, including closed and open set identification and verification, and robust attribution with 
+                respect to post-processing and adversarial attacks. Models trained on WILD are expected to benefit from the challenging scenario represented
+                by the dataset itself. Moreover, an assessment of seven baseline methodologies on closed and open set attribution is presented, including 
+                obustness tests with respect to post-processing.
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- END ITEM -->
+
+        <!-- BEGIN ITEM -->
+        <div class="src_timeline-item" data-year="2024" data-type="conference">
+          <a href="https://doi.org/10.1007/978-3-031-78305-0_12" class="external-link" target="_blank" rel="noopener noreferrer">
+            <img src="images/paper_previews/icpr24_preview.png" alt="Preview of DeepFeatureX Net paper" class="src_timeline-img" loading="lazy">
+          </a>
+          <div class="src_timeline-content">
+            <div class="src_timeline-date">2024</div>
+            <h3 class="src_timeline-title">
+              <a href="https://doi.org/10.1007/978-3-031-78305-0_12" class="external-link" target="_blank" rel="noopener noreferrer">
+                DeepFeatureX Net: Deep Features eXtractors based Network for discriminating synthetic from real images
+              </a>
+              <span class="publication-type-badge badge-conference">Conference</span>
+            </h3>
+            <div class="src_timeline-authors">Orazio Pontorno, Luca Guarnera, Sebastiano Battiato</div>
+            <div class="src_timeline-journal">International Conference on Pattern Recognition, 21, 177-193</div>
+            
+            <div class="publication-buttons">
+              <button class="pub-btn abstract-btn" onclick="toggleAbstract('abstract-2')">
+                <i class="fas fa-file-text"></i>
+                Abstract
+                <i class="fas fa-chevron-down"></i>
+              </button>
+              <a href="https://arxiv.org/abs/2404.15697" class="pub-btn arxiv-btn" target="_blank" rel="noopener noreferrer">
+                <span class="arxiv-icon">ar</span>
+                ArXiv
+              </a>
+              <a href="https://doi.org/10.1007/978-3-031-78305-0_12" class="pub-btn publisher-btn" target="_blank" rel="noopener noreferrer">
+                <i class="fas fa-external-link-alt"></i>
+                Springer
+              </a>
+              <a href="https://github.com/mfs-iplab/block-based_deepfake-detection" class="pub-btn github-btn">
+                <i class="fab fa-github"></i>
+                GitHub
+              </a>
+            </div>
+            <div class="abstract-content" id="abstract-2">
+              <div class="abstract-text">
+                Deepfakes, synthetic images generated by deep learning algorithms, represent one of the biggest challenges in the field of Digital Forensics. 
+                The scientific community is working to develop approaches that can discriminate the origin of digital images (real or AI-generated). However, 
+                these methodologies face the challenge of generalization, that is, the ability to discern the nature of an image even if it is generated by 
+                an architecture not seen during training. This usually leads to a drop in performance. In this context, we propose a novel approach based on 
+                three blocks called Base Models, each of which is responsible for extracting the discriminative features of a specific image class (Diffusion 
+                Model-generated, GAN-generated, or REAL) as it is trained by exploiting deliberately unbalanced datasets. The features extracted from each 
+                block are then concatenated and processed to discriminate the origin of the input image. Experimental results showed that this approach not 
+                only demonstrates good robust capabilities to JPEG compression and other various attacks but also outperforms state-of-the-art methods in 
+                several generalization tests.
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- END ITEM -->
+
+        <!-- BEGIN ITEM -->
+        <div class="src_timeline-item" data-year="2024" data-type="conference">
+          <a href="https://doi.org/10.1109/ICIP51287.2024.10648013" class="external-link" target="_blank" rel="noopener noreferrer">
+            <img src="images/paper_previews/icip24_preview.png" alt="Preview of DCT-Traces paper" class="src_timeline-img" loading="lazy">
+          </a>
+          <div class="src_timeline-content">
+            <div class="src_timeline-date">2024</div>
+            <h3 class="src_timeline-title">
+              <a href="https://doi.org/10.1109/ICIP51287.2024.10648013" class="external-link" target="_blank" rel="noopener noreferrer">
+                On the Exploitation of DCT-Traces in the Generative-AI Domain
+              </a>
+              <span class="publication-type-badge badge-conference">Conference</span>
+            </h3>
+            <div class="src_timeline-authors">Orazio Pontorno, Luca Guarnera, Sebastiano Battiato</div>
+            <div class="src_timeline-journal">2024 IEEE International Conference on Image Processing (ICIP), 3806-3812</div>
+            
+            <div class="publication-buttons">
+              <button class="pub-btn abstract-btn" onclick="toggleAbstract('abstract-1')">
+                <i class="fas fa-file-text"></i>
+                Abstract
+                <i class="fas fa-chevron-down"></i>
+              </button>
+              <a href="https://arxiv.org/abs/2402.02209" class="pub-btn arxiv-btn" target="_blank" rel="noopener noreferrer">
+                <span class="arxiv-icon">ar</span>
+                ArXiv
+              </a>
+              <a href="https://doi.org/10.1109/ICIP51287.2024.10648013" class="pub-btn publisher-btn" target="_blank" rel="noopener noreferrer">
+                <i class="fas fa-external-link-alt"></i>
+                IEEE
+              </a>
+              <a href="https://github.com/opontorno/dcts_analysis_deepfakes" class="pub-btn github-btn">
+                <i class="fab fa-github"></i>
+                GitHub
+              </a>
+            </div>
+            <div class="abstract-content" id="abstract-1">
+              <div class="abstract-text">
+                Deepfakes represent one of the toughest challenges in the world of Cybersecurity and Digital Forensics, especially considering the 
+                high-quality results obtained with recent generative AI-based solutions. Almost all generative models leave unique traces in synthetic 
+                data that, if analyzed and identified in detail, can be exploited to improve the generalization limitations of existing deepfake 
+                detectors. In this paper we analyzed deepfake images in the frequency domain generated by both GAN and Diffusion Model engines, 
+                examining in detail the underlying statistical distribution of Discrete Cosine Transform (DCT) coefficients. Recognizing that not all 
+                coefficients contribute equally to image detection, we hypothesize the existence of a unique "discriminative fingerprint", embedded in 
+                specific combinations of coefficients. To identify them, Machine Learning classifiers were trained on various combinations of coefficients. 
+                In addition, the Explainable AI (XAI) LIME algorithm was used to search for intrinsic discriminative combinations of coefficients. Finally, 
+                we performed a robustness test to analyze the persistence of traces by applying JPEG compression. The experimental results reveal the 
+                existence of traces left by the generative models that are more discriminative and persistent at JPEG attacks.
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- END ITEM -->
+        
+      </div>
+    </div>
+
+    <!-- Workshop & Challenge Organization Section -->
+    <div class="section-title" id="workshops" style="margin-top: 80px;">
+      <h3>Workshop & Challenge Organization</h3>
+    </div>
+    
+    <div class="organization-container">
+      <!-- Add your workshops/challenges here - Example structure -->
+      <div class="org-item">
+        <div class="org-icon">
+          <i class="fas fa-trophy"></i>
+        </div>
+        <div class="org-content">
+          <h4 class="org-title">Challenge on Synthetic Image Detection</h4>
+          <div class="org-meta">
+            <span class="org-role"><i class="fas fa-user-tie"></i> Organizer</span>
+            <span class="org-conference"><i class="fas fa-building"></i> International Conference Name</span>
+            <span class="org-year"><i class="fas fa-calendar"></i> 2024</span>
+          </div>
+          <p class="org-description">
+            Description of the challenge/workshop and its objectives in the context of AI research.
+          </p>
+          <a href="#" class="org-link" target="_blank" rel="noopener noreferrer">
+            <i class="fas fa-external-link-alt"></i> Event Website
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Reviewing Activity Section -->
+    <div class="section-title" id="reviewing" style="margin-top: 80px;">
+      <h3>Reviewing Activity</h3>
+    </div>
+
+    <div class="reviewing-container">
+      <!-- Journals Review -->
+      <div class="review-category">
+        <h4 class="review-category-title">
+          <i class="fas fa-book"></i> Journal Reviewer
+        </h4>
+        <div class="review-items">
+          <!-- Add your journal reviews here - Example -->
+          <div class="review-badge journal-badge">
+            <span class="badge-name">IEEE Transactions on Pattern Analysis</span>
+            <span class="badge-years">2024-Present</span>
+          </div>
+          <div class="review-badge journal-badge">
+            <span class="badge-name">Journal of Artificial Intelligence Research</span>
+            <span class="badge-years">2023-Present</span>
+          </div>
+          <div class="review-badge journal-badge">
+            <span class="badge-name">Computer Vision and Image Understanding</span>
+            <span class="badge-years">2024</span>
+          </div>
+          <!-- Add more journals as needed -->
+        </div>
+      </div>
+
+      <!-- Conferences Review -->
+      <div class="review-category">
+        <h4 class="review-category-title">
+          <i class="fas fa-users"></i> Conference Reviewer
+        </h4>
+        <div class="review-items">
+          <!-- Add your conference reviews here - Example -->
+          <div class="review-badge conference-badge">
+            <span class="badge-name">CVPR</span>
+            <span class="badge-years">2024, 2025</span>
+          </div>
+          <div class="review-badge conference-badge">
+            <span class="badge-name">ICCV</span>
+            <span class="badge-years">2024</span>
+          </div>
+          <div class="review-badge conference-badge">
+            <span class="badge-name">ECCV</span>
+            <span class="badge-years">2024</span>
+          </div>
+          <div class="review-badge conference-badge">
+            <span class="badge-name">NeurIPS</span>
+            <span class="badge-years">2025</span>
+          </div>
+          <div class="review-badge conference-badge">
+            <span class="badge-name">ICML</span>
+            <span class="badge-years">2024</span>
+          </div>
+          <!-- Add more conferences as needed -->
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div id="last-update-res" style="font-size: 1em; text-align: center; margin-top: 30px; color: gray;"></div>
+</section>
+<!-- ===== activities Section End ===== -->
