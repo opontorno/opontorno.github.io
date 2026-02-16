@@ -1,0 +1,37 @@
+{
+  "publications": 6,
+  "citations": 18,
+  "projects": 5,
+  "collaborations": 3,
+  "last_updated": "2026-02-16",
+  "h_index": 2,
+  "source": "Scopus API (Full Metrics)",
+  "avg_citations": 3.0,
+  "most_cited": 8,
+  "publications_details": [
+    {
+      "title": "DeepFeatureX-SN: Generalization of deepfake detection via contrastive learning",
+      "citations": 2
+    },
+    {
+      "title": "(DFF '25) 1st Deepfake Forensics Workshop: Detection, Attribution, Recognition, and Adversarial Challenges in the Era of AI-Generated Media",
+      "citations": 0
+    },
+    {
+      "title": "Adversarial Attacks on Deepfake Detectors: A Challenge in the Era of AI-Generated Media (AADD-2025)",
+      "citations": 0
+    },
+    {
+      "title": "DeepFeatureX Net: Deep Features eXtractors Based Network for Discriminating Synthetic from Real Images",
+      "citations": 6
+    },
+    {
+      "title": "WILD: a new in-the-Wild Image Linkage Dataset for synthetic image attribution",
+      "citations": 2
+    },
+    {
+      "title": "ON THE EXPLOITATION OF DCT-TRACES IN THE GENERATIVE-AI DOMAIN",
+      "citations": 8
+    }
+  ]
+}

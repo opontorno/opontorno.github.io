@@ -1542,6 +1542,30 @@ section[id] {
     vertical-align: middle;
 }
 
+.citation-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 11px;
+    font-weight: 600;
+    margin-left: 8px;
+    vertical-align: middle;
+    background: linear-gradient(135deg, var(--skin-color) 0%, #2a8d6f 100%);
+    color: white;
+    box-shadow: 0 2px 8px rgba(48, 148, 110, 0.25);
+    transition: all 0.3s ease;
+}
+
+.citation-badge i {
+    font-size: 10px;
+    margin-right: 4px;
+}
+
+.citation-badge:hover {
+    box-shadow: 0 4px 12px rgba(48, 148, 110, 0.4);
+    transform: translateY(-2px);
+}
+
 .badge-journal {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;

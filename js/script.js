@@ -1,6 +1,60 @@
 /* ============================== Initialization Function ============================ */
 function initializeWebsite() {
 
+/* ============================== Load Stats from JSON (Updated by Scopus API) ============================ */
+fetch('data/stats.json')
+    .then(response => response.json())
+    .then(data => {
+        // Update stat numbers with counter animation (all automatic from Scopus)
+        if (data.publications) animateValue('stat-publications', 0, data.publications, 1500);
+        if (data.citations) animateValue('stat-citations', 0, data.citations, 1500);
+        if (data.h_index) animateValue('stat-h-index', 0, data.h_index, 1200);
+        if (data.most_cited) animateValue('stat-most-cited', 0, data.most_cited, 1500);
+        
+        console.log('📊 Stats loaded from Scopus (updated:', data.last_updated + ')');
+    })
+    .catch(error => {
+        console.log('ℹ️ Using default stats');
+    });
+
+// Counter animation function
+function animateValue(id, start, end, duration) {
+    const element = document.getElementById(id);
+    if (!element) return;
+    
+    const range = end - start;
+    const increment = range / (duration / 16);
+    let current = start;
+    
+    const timer = setInterval(() => {
+        current += increment;
+        if ((increment > 0 && current >= end) || (increment < 0 && current <= end)) {
+            current = end;
+            clearInterval(timer);
+        }
+        element.textContent = Math.floor(current) + '+';
+    }, 16);
+}
+
+// Counter animation for decimal values
+function animateValueDecimal(id, start, end, duration) {
+    const element = document.getElementById(id);
+    if (!element) return;
+    
+    const range = end - start;
+    const increment = range / (duration / 16);
+    let current = start;
+    
+    const timer = setInterval(() => {
+        current += increment;
+        if ((increment > 0 && current >= end) || (increment < 0 && current <= end)) {
+            current = end;
+            clearInterval(timer);
+        }
+        element.textContent = current.toFixed(1);
+    }, 16);
+}
+
 /* ============================== Aside ============================ */
 const nav = document.querySelector(".nav"),
       navList = nav.querySelectorAll("li"),
