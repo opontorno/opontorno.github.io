@@ -118,7 +118,7 @@ window.addEventListener("load", () => {
 });
 
 /* ============================== Last Update Date ============================ */
-const lastUpdateDate = new Date("2026-02-12");
+const lastUpdateDate = new Date("2026-02-16");
 const options = { year: 'numeric', month: 'long', day: 'numeric' };
 const formattedDate = lastUpdateDate.toLocaleDateString('en-GB', options);
 

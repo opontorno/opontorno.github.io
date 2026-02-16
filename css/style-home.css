@@ -49,12 +49,42 @@
     color: var(--text-black-700);
     margin: 0 0 30px 0;
     line-height: 1.4;
+    overflow: hidden;
+    position: relative;
 }
 
 .role-title .divider {
     color: var(--bg-second);
     margin: 0 10px;
     font-weight: 300;
+}
+
+/* Horizontal rotating slider */
+.rotating-wrapper {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.rotating-slider {
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+    animation: slideHorizontal 20s linear infinite;
+}
+
+.rotating-slider .role-item {
+    display: inline-block;
+    padding: 0;
+}
+
+@keyframes slideHorizontal {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
 }
 
 /* Quick Facts */
@@ -282,11 +312,13 @@
 
 .interests-row {
     margin: 50px 0;
+    text-align: center;
 }
 
 .interests-header {
     text-align: center;
     margin-bottom: 30px;
+    width: 100%;
 }
 
 .interests-header h3 {
