@@ -1,0 +1,44 @@
+name: Update Statistics (Scopus + GitHub)
+
+on:
+  schedule:
+    - cron: '0 3 * * *'
+  workflow_dispatch:
+
+jobs:
+  update-stats:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests
+      
+      - name: Update statistics from Scopus
+        env:
+          SCOPUS_API_KEY: ${{ secrets.SCOPUS_API_KEY }}
+          SCOPUS_AUTHOR_ID: ${{ secrets.SCOPUS_AUTHOR_ID }}
+        run: |
+          python scripts/update_stats.py
+      
+      - name: Update statistics from GitHub
+        env:
+          GITHUB_USERNAME: opontorno
+        run: |
+          python scripts/update_github_stats.py
+      
+      - name: Commit and push if changed
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add data/stats.json
+          git diff --quiet && git diff --staged --quiet || (git commit -m "🤖 Auto-update: Statistics [$(date +'%Y-%m-%d')]" && git push)

@@ -42,6 +42,7 @@
   <link rel="stylesheet" href="css/style-switcher.css">
   <link rel="stylesheet" href="css/style-aside.css">
   <link rel="stylesheet" href="css/style-home.css">
+  <link rel="stylesheet" href="css/style-projects.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   
   <!-- Schema.org JSON-LD for rich snippets -->
@@ -98,6 +99,7 @@
           <li><a href="#home" class="active" aria-current="page"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
           <li><a href="#cv"><i class="fa fa-user" aria-hidden="true"></i> Curriculum Vitae</a></li>
           <li><a href="#activities"><i class="fa fa-search" aria-hidden="true"></i> Research Activities</a></li>
+          <li><a href="#projects"><i class="fa fa-code" aria-hidden="true"></i> Projects & Development</a></li>
         </ul>
       </nav>
     </aside>
@@ -179,7 +181,24 @@
             </div>
           </div>
 
-          <!-- Stats Section -->
+          <!-- Research Interests -->
+          <div class="row interests-row">
+            <div class="interests-header">
+              <h3>Research Interests</h3>
+            </div>
+            <ul class="interests-container">
+              <li><i class="fas fa-brain"></i> Deep Learning</li>
+              <li><i class="fas fa-robot"></i> Generative Models</li>
+              <li><i class="fas fa-mask"></i> Deepfake Detection</li>
+              <li><i class="fas fa-calculator"></i> Mathematical Modelling</li>
+              <li><i class="fas fa-network-wired"></i> Graph & Hypergraph Models</li>
+            </ul>
+          </div>
+
+          <!-- Research Stats Section -->
+          <div class="row stats-section-header">
+            <h3><i class="fas fa-chart-bar"></i> Research Stats</h3>
+          </div>
           <div class="row stats-row">
             <div class="stat-card padd-15">
               <div class="stat-icon">
@@ -218,19 +237,54 @@
               </div>
             </div>
           </div>
+          <div class="row stats-source">
+            <p><i class="fas fa-info-circle"></i> Source: Scopus</p>
+          </div>
 
-          <!-- Research Interests -->
-          <div class="row interests-row">
-            <div class="interests-header">
-              <h3>Research Interests</h3>
+          <!-- Development Stats Section -->
+          <div class="row stats-section-header">
+            <h3><i class="fab fa-github"></i> Development Stats</h3>
+          </div>
+          <div class="row stats-row">
+            <div class="stat-card padd-15">
+              <div class="stat-icon">
+                <i class="fas fa-code-branch"></i>
+              </div>
+              <div class="stat-content">
+                <h3 class="stat-number" id="stat-repos">12+</h3>
+                <p class="stat-label">Public Repos</p>
+              </div>
             </div>
-            <ul class="interests-container">
-              <li><i class="fas fa-brain"></i> Deep Learning</li>
-              <li><i class="fas fa-robot"></i> Generative Models</li>
-              <li><i class="fas fa-mask"></i> Deepfake Detection</li>
-              <li><i class="fas fa-calculator"></i> Mathematical Modelling</li>
-              <li><i class="fas fa-network-wired"></i> Graph & Hypergraph Models</li>
-            </ul>
+            <div class="stat-card padd-15">
+              <div class="stat-icon">
+                <i class="fas fa-star"></i>
+              </div>
+              <div class="stat-content">
+                <h3 class="stat-number" id="stat-stars">21+</h3>
+                <p class="stat-label">Total Stars</p>
+              </div>
+            </div>
+            <div class="stat-card padd-15">
+              <div class="stat-icon">
+                <i class="fas fa-users"></i>
+              </div>
+              <div class="stat-content">
+                <h3 class="stat-number" id="stat-followers">22+</h3>
+                <p class="stat-label">Followers</p>
+              </div>
+            </div>
+            <div class="stat-card padd-15">
+              <div class="stat-icon">
+                <i class="fas fa-code-fork"></i>
+              </div>
+              <div class="stat-content">
+                <h3 class="stat-number" id="stat-forks">10+</h3>
+                <p class="stat-label">Total Forks</p>
+              </div>
+            </div>
+          </div>
+          <div class="row stats-source">
+            <p><i class="fas fa-info-circle"></i> Source: GitHub</p>
           </div>
 
           <!-- Social Icons -->
@@ -878,6 +932,131 @@
         <div id="last-update-res" style="font-size: 1em; text-align: center; margin-top: 30px; color: gray;"></div>
       </section>
       <!-- ===== activities Section End ===== -->
+
+      <!-- ===== Projects Section Start ===== -->
+      <section class="projects section" id="projects">
+        <div class="container">
+          <div class="row">
+            <div class="section-title padd-15">
+              <h2>Projects & Development</h2>
+            </div>
+          </div>
+
+          <!-- GitHub Stats (no header) -->
+          <div class="row stats-row">
+            <div class="stat-card padd-15">
+              <div class="stat-icon">
+                <i class="fas fa-code-branch"></i>
+              </div>
+              <div class="stat-content">
+                <h3 class="stat-number" id="projects-repos">12</h3>
+                <p class="stat-label">Repositories</p>
+              </div>
+            </div>
+            <div class="stat-card padd-15">
+              <div class="stat-icon">
+                <i class="fas fa-star"></i>
+              </div>
+              <div class="stat-content">
+                <h3 class="stat-number" id="projects-stars">21</h3>
+                <p class="stat-label">Total Stars</p>
+              </div>
+            </div>
+            <div class="stat-card padd-15">
+              <div class="stat-icon">
+                <i class="fas fa-code-fork"></i>
+              </div>
+              <div class="stat-content">
+                <h3 class="stat-number" id="projects-forks">10</h3>
+                <p class="stat-label">Total Forks</p>
+              </div>
+            </div>
+            <div class="stat-card padd-15">
+              <div class="stat-icon">
+                <i class="fas fa-users"></i>
+              </div>
+              <div class="stat-content">
+                <h3 class="stat-number" id="projects-followers">22</h3>
+                <p class="stat-label">Followers</p>
+              </div>
+            </div>
+          </div>
+          <div class="row stats-source">
+            <p><i class="fas fa-info-circle"></i> Source: GitHub</p>
+          </div>
+
+          <!-- Quick Insights -->
+          <div class="row" style="margin-top: 40px;">
+            <div class="projects-header padd-15">
+              <h3><i class="fas fa-lightbulb"></i> Quick Insights</h3>
+            </div>
+          </div>
+          <div class="row insights-row">
+            <div class="insight-card padd-15">
+              <div class="insight-icon">
+                <i class="fas fa-trophy"></i>
+              </div>
+              <div class="insight-content">
+                <h4 class="insight-label">Most Starred</h4>
+                <p class="insight-value" id="insight-most-starred">-</p>
+              </div>
+            </div>
+            <div class="insight-card padd-15">
+              <div class="insight-icon">
+                <i class="fas fa-code"></i>
+              </div>
+              <div class="insight-content">
+                <h4 class="insight-label">Primary Language</h4>
+                <p class="insight-value" id="insight-primary-lang">-</p>
+              </div>
+            </div>
+            <div class="insight-card padd-15">
+              <div class="insight-icon">
+                <i class="fas fa-fire"></i>
+              </div>
+              <div class="insight-content">
+                <h4 class="insight-label">Top Topic</h4>
+                <p class="insight-value" id="insight-top-topic">-</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Featured Projects -->
+          <div class="row" style="margin-top: 60px;">
+            <div class="projects-header padd-15">
+              <h3><i class="fas fa-rocket"></i> Featured Repositories</h3>
+            </div>
+          </div>
+          <div class="row">
+            <div class="projects-grid padd-15" id="projects-container">
+              <!-- Projects will be dynamically loaded from stats.json -->
+            </div>
+          </div>
+
+          <!-- Technology Stack & Topics Side by Side -->
+          <div class="row" style="margin-top: 60px;">
+            <div class="dual-section padd-15">
+              <div class="dual-section-item">
+                <div class="projects-header">
+                  <h3><i class="fas fa-code"></i> Technology Stack</h3>
+                </div>
+                <div class="languages-chart" id="languages-chart">
+                  <!-- Languages will be dynamically loaded -->
+                </div>
+              </div>
+              <div class="dual-section-item">
+                <div class="projects-header">
+                  <h3><i class="fas fa-tags"></i> Project Topics</h3>
+                </div>
+                <div class="topics-cloud" id="topics-cloud">
+                  <!-- Topics will be dynamically loaded -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- ===== Projects Section End ===== -->
     </main>
     <!-- ===== Main Content End ===== -->
   </div>

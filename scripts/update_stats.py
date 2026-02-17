@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
 Script to automatically update statistics from Scopus API
+Can be run locally or via GitHub Actions
 """
 
 import json
@@ -8,6 +9,16 @@ import os
 from datetime import datetime
 import requests
 from pathlib import Path
+
+# Load environment variables from .env file if it exists (for local testing)
+env_file = Path(__file__).parent.parent / '.env'
+if env_file.exists():
+    with open(env_file) as f:
+        for line in f:
+            line = line.strip()
+            if line and not line.startswith('#') and '=' in line:
+                key, value = line.split('=', 1)
+                os.environ[key] = value
 
 # Your configuration
 SCOPUS_API_KEY = os.getenv("SCOPUS_API_KEY")

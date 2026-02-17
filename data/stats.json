@@ -33,5 +33,124 @@
       "title": "ON THE EXPLOITATION OF DCT-TRACES IN THE GENERATIVE-AI DOMAIN",
       "citations": 8
     }
-  ]
+  ],
+  "github": {
+    "public_repos": 12,
+    "total_stars": 21,
+    "followers": 22,
+    "total_forks": 10,
+    "top_languages": [
+      {
+        "name": "Jupyter Notebook",
+        "percentage": 98.7
+      },
+      {
+        "name": "Python",
+        "percentage": 0.6
+      },
+      {
+        "name": "CSS",
+        "percentage": 0.2
+      },
+      {
+        "name": "HTML",
+        "percentage": 0.2
+      },
+      {
+        "name": "NetLogo",
+        "percentage": 0.1
+      }
+    ],
+    "featured_projects": [
+      {
+        "name": "Hybrid-Quantum-Neural-Network-for-binary-classification",
+        "description": "Final project for the university course 'Quantum Computer Programming', held in the academic year 2022/2023. The purpose of this project is to investigate the structure of a hybrid neural network. To do this, I made use of the 'qiskit' library, which allows useful tools for constructing a classical-quantum neural network.",
+        "url": "https://github.com/opontorno/Hybrid-Quantum-Neural-Network-for-binary-classification",
+        "stars": 6,
+        "forks": 5,
+        "language": "Jupyter Notebook",
+        "topics": [
+          "deep-learning",
+          "neural-network",
+          "pytorch",
+          "qiskit",
+          "quantum-computing",
+          "quantum-machine-learning"
+        ],
+        "updated_at": "2026-01-18T13:47:01Z"
+      },
+      {
+        "name": "dcts_analysis_deepfakes",
+        "description": "Official implementation of the paper ``On the Exploitation of DCT-Traces in Generative-AI Domain', accepted for publication at the ICIP 2024 conference.",
+        "url": "https://github.com/opontorno/dcts_analysis_deepfakes",
+        "stars": 4,
+        "forks": 1,
+        "language": "Python",
+        "topics": [
+          "dct",
+          "deepfakes",
+          "generative-ai"
+        ],
+        "updated_at": "2025-11-27T18:20:17Z"
+      },
+      {
+        "name": "Traffic-lights-recognition",
+        "description": "Final project for the postgraduate course 'School in AI: Deep learning, Vision and Language for industry', held in the year 2022.The basic idea of this project  is to build a model emulating the behaviour of an autonomous driving car in the management of the action to be taken upon recognition of a traffic light.",
+        "url": "https://github.com/opontorno/Traffic-lights-recognition",
+        "stars": 4,
+        "forks": 0,
+        "language": "Jupyter Notebook",
+        "topics": [
+          "classification",
+          "computer-vision",
+          "object-detection",
+          "yolov5"
+        ],
+        "updated_at": "2025-11-03T12:02:52Z"
+      },
+      {
+        "name": "opontorno.github.io",
+        "description": null,
+        "url": "https://github.com/opontorno/opontorno.github.io",
+        "stars": 2,
+        "forks": 0,
+        "language": "CSS",
+        "topics": [],
+        "updated_at": "2026-02-16T23:07:40Z"
+      },
+      {
+        "name": "classifying-butterfly-species-in-MATLAB",
+        "description": "Final project for the university course 'Neural Computing', held in the academic year 2022/2023.The purpose of this work is to build an architecture of a neural network that can learn to correctly recognize and classify the family to which a butterfly belongs. To do this, we will train the network using the dataset '*Butterfly & Moths",
+        "url": "https://github.com/opontorno/classifying-butterfly-species-in-MATLAB",
+        "stars": 1,
+        "forks": 0,
+        "language": "MATLAB",
+        "topics": [
+          "convolutional-neural-networks",
+          "deep-learning",
+          "deep-neural-networks",
+          "matlab"
+        ],
+        "updated_at": "2023-07-08T10:50:51Z"
+      },
+      {
+        "name": "DeepFeatureX-SN",
+        "description": "Official implementation of the paper ``DeepFeatureX-SN: Generalization of deepfake detection via contrastive learning'', accepted for publication at the Springer journal 'Multimedia Tools and Application'.",
+        "url": "https://github.com/opontorno/DeepFeatureX-SN",
+        "stars": 1,
+        "forks": 2,
+        "language": "Python",
+        "topics": [
+          "computer-vision",
+          "deep-learning",
+          "deepfakes",
+          "machine-learning",
+          "multimedia-forensics"
+        ],
+        "updated_at": "2025-11-27T18:16:21Z"
+      }
+    ],
+    "last_updated": "2026-02-16",
+    "source": "GitHub API"
+  }
 }

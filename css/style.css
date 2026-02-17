@@ -1577,3 +1577,295 @@ section[id] {
     color: white;
     box-shadow: 0 2px 8px rgba(245, 87, 108, 0.3);
 }
+/* ============================== Hex Skills Grid ============================ */
+.hexagon-skills-container {
+    max-width: 900px;
+    margin: 40px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 20px;
+}
+
+.hex-skill {
+    width: 140px;
+    height: 160px;
+    position: relative;
+    opacity: 0;
+    animation: hexFadeIn 0.6s ease forwards;
+}
+
+.hex-skill:nth-child(1) { animation-delay: 0.1s; }
+.hex-skill:nth-child(2) { animation-delay: 0.2s; }
+.hex-skill:nth-child(3) { animation-delay: 0.3s; }
+.hex-skill:nth-child(4) { animation-delay: 0.4s; }
+.hex-skill:nth-child(5) { animation-delay: 0.5s; }
+.hex-skill:nth-child(6) { animation-delay: 0.6s; }
+.hex-skill:nth-child(7) { animation-delay: 0.7s; }
+.hex-skill:nth-child(8) { animation-delay: 0.8s; }
+
+@keyframes hexFadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+.hex-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform: rotate(30deg);
+}
+
+.hex-shape {
+    width: 100%;
+    height: 100%;
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+    background: linear-gradient(135deg, var(--bg-black-100), var(--bg-black-50));
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    border: 2px solid transparent;
+}
+
+.hex-shape::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--bg-second), #2a7a5e);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.hex-skill:hover .hex-shape {
+    border-color: var(--bg-second);
+    transform: scale(1.1);
+    box-shadow: 0 10px 30px rgba(48, 148, 110, 0.3);
+}
+
+.hex-skill:hover .hex-shape::before {
+    opacity: 0.15;
+}
+
+.hex-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-30deg);
+    text-align: center;
+    width: 100px;
+    z-index: 2;
+}
+
+.hex-icon {
+    font-size: 2.2rem;
+    color: var(--bg-second);
+    margin-bottom: 8px;
+    transition: all 0.4s ease;
+}
+
+.hex-skill:hover .hex-icon {
+    transform: scale(1.15);
+    color: var(--bg-second);
+}
+
+.hex-name {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-black-900);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    line-height: 1.2;
+}
+
+.hex-level {
+    font-size: 0.7rem;
+    color: var(--text-black-700);
+    margin-top: 4px;
+    font-weight: 500;
+}
+
+.skills.hexagonal-grid {
+    width: 100%;
+    max-width: 100%;
+}
+
+.skills.hexagonal-grid .row {
+    width: 100%;
+    justify-content: center;
+}
+
+@media (max-width: 768px) {
+    .hex-skill {
+        width: 110px;
+        height: 130px;
+    }
+    
+    .hex-content {
+        width: 80px;
+    }
+    
+    .hex-icon {
+        font-size: 1.8rem;
+    }
+    
+    .hex-name {
+        font-size: 0.75rem;
+    }
+    
+    .hexagon-skills-container {
+        gap: 5px;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hex-skill {
+        width: 90px;
+        height: 110px;
+    }
+    
+    .hex-icon {
+        font-size: 1.5rem;
+    }
+    
+    .hex-name {
+        font-size: 0.7rem;
+    }
+}
+
+/* ============================== Interactive Timeline ============================ */
+.timeline-filters {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.timeline-filter-btn {
+    background: var(--bg-black-100);
+    color: var(--text-black-700);
+    border: 2px solid transparent;
+    padding: 10px 25px;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.timeline-filter-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: var(--bg-second);
+    opacity: 0.1;
+    transform: translate(-50%, -50%);
+    transition: width 0.4s ease, height 0.4s ease;
+}
+
+.timeline-filter-btn:hover::before {
+    width: 200px;
+    height: 200px;
+}
+
+.timeline-filter-btn.active {
+    background: var(--bg-second);
+    color: white;
+    border-color: var(--bg-second);
+}
+
+.timeline-filter-btn:hover:not(.active) {
+    border-color: var(--bg-second);
+    color: var(--bg-second);
+}
+
+.timeline-item {
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+}
+
+.timeline-item.hidden {
+    display: none;
+    opacity: 0;
+}
+
+.timeline-item:hover {
+    transform: translateX(10px);
+}
+
+.timeline-item.expanded {
+    background: var(--bg-black-50);
+    border-radius: 12px;
+    padding: 15px;
+    margin: 10px 0;
+}
+
+.timeline-text {
+    line-height: 1.7;
+    font-size: 15px;
+    color: var(--text-black-700);
+    margin-top: 10px;
+}
+
+.circle-dot {
+    transition: all 0.3s ease;
+}
+
+.timeline-item:hover .circle-dot {
+    background: var(--bg-second);
+    transform: scale(1.3);
+    box-shadow: 0 0 20px rgba(48, 148, 110, 0.5);
+}
+
+.timeline-item.expanded .circle-dot {
+    background: var(--bg-second);
+    transform: scale(1.4);
+}
+
+.expand-indicator {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    width: 30px;
+    height: 30px;
+    background: var(--bg-second);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 0.8rem;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.timeline-item:hover .expand-indicator {
+    opacity: 1;
+}
+
+.timeline-item.expanded .expand-indicator {
+    opacity: 1;
+    transform: rotate(180deg);
+}
+
+@media (max-width: 768px) {
+    .timeline-filters {
+        gap: 10px;
+    }
+    
+    .timeline-filter-btn {
+        padding: 8px 18px;
+        font-size: 0.85rem;
+    }
+}

@@ -5,20 +5,71 @@ function initializeWebsite() {
 fetch('data/stats.json')
     .then(response => response.json())
     .then(data => {
-        // Update stat numbers with counter animation (all automatic from Scopus)
+        // Update Scopus stat numbers with counter animation
         if (data.publications) animateValue('stat-publications', 0, data.publications, 1500);
         if (data.citations) animateValue('stat-citations', 0, data.citations, 1500);
         if (data.h_index) animateValue('stat-h-index', 0, data.h_index, 1200);
         if (data.most_cited) animateValue('stat-most-cited', 0, data.most_cited, 1500);
         
+        // Update GitHub stat numbers with counter animation
+        if (data.github) {
+            if (data.github.public_repos) animateValue('stat-repos', 0, data.github.public_repos, 1500);
+            if (data.github.total_stars) animateValue('stat-stars', 0, data.github.total_stars, 1500);
+            if (data.github.followers) animateValue('stat-followers', 0, data.github.followers, 1500);
+            if (data.github.total_forks) animateValue('stat-forks', 0, data.github.total_forks, 1500);
+            
+            // Update Projects page stats (without plus sign)
+            if (data.github.public_repos) animateValue('projects-repos', 0, data.github.public_repos, 1500, false);
+            if (data.github.total_stars) animateValue('projects-stars', 0, data.github.total_stars, 1500, false);
+            if (data.github.total_forks) animateValue('projects-forks', 0, data.github.total_forks, 1500, false);
+            if (data.github.followers) animateValue('projects-followers', 0, data.github.followers, 1500, false);
+            
+            // Load featured projects
+            if (data.github.featured_projects && data.github.featured_projects.length > 0) {
+                loadFeaturedProjects(data.github.featured_projects);
+                loadTopicsCloud(data.github.featured_projects);
+                loadQuickInsights(data.github.featured_projects, data.github.top_languages);
+            }
+            
+            // Load language distribution
+            if (data.github.top_languages) {
+                loadLanguageDistribution(data.github.top_languages);
+            }
+        }
+        
+        // Update "Last update" dates from stats.json
+        if (data.last_updated) {
+            const lastUpdateDate = new Date(data.last_updated);
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            const formattedDate = lastUpdateDate.toLocaleDateString('en-GB', options);
+            
+            const lastUpdateDiv = document.getElementById("last-update");
+            if (lastUpdateDiv) {
+                lastUpdateDiv.textContent = "Last update: " + formattedDate;
+            }
+            
+            const lastUpdateCV = document.getElementById("last-update-cv");
+            if (lastUpdateCV) {
+                lastUpdateCV.textContent = "Last update: " + formattedDate;
+            }
+            
+            const lastUpdateRes = document.getElementById("last-update-res");
+            if (lastUpdateRes) {
+                lastUpdateRes.textContent = "Last update: " + formattedDate;
+            }
+        }
+        
         console.log('📊 Stats loaded from Scopus (updated:', data.last_updated + ')');
+        if (data.github) {
+            console.log('🐙 GitHub stats loaded');
+        }
     })
     .catch(error => {
         console.log('ℹ️ Using default stats');
     });
 
 // Counter animation function
-function animateValue(id, start, end, duration) {
+function animateValue(id, start, end, duration, showPlus = true) {
     const element = document.getElementById(id);
     if (!element) return;
     
@@ -32,7 +83,7 @@ function animateValue(id, start, end, duration) {
             current = end;
             clearInterval(timer);
         }
-        element.textContent = Math.floor(current) + '+';
+        element.textContent = Math.floor(current) + (showPlus ? '+' : '');
     }, 16);
 }
 
@@ -53,6 +104,232 @@ function animateValueDecimal(id, start, end, duration) {
         }
         element.textContent = current.toFixed(1);
     }, 16);
+}
+
+// Load and display featured projects
+function loadFeaturedProjects(projects) {
+    const container = document.getElementById('projects-container');
+    if (!container || !projects.length) return;
+    
+    container.innerHTML = '';
+    
+    projects.forEach((project, index) => {
+        const card = document.createElement('div');
+        card.className = 'project-card';
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(30px)';
+        
+        // Limit topics to first 4
+        const topicsHTML = project.topics && project.topics.length > 0
+            ? project.topics.slice(0, 4).map(topic => 
+                `<span class="project-topic">${topic}</span>`
+              ).join('')
+            : '';
+        
+        card.innerHTML = `
+            <div class="project-header">
+                <div class="project-title">
+                    <h4>${project.name.replace(/-/g, ' ')}</h4>
+                </div>
+                ${project.language ? `<span class="project-language">${project.language}</span>` : ''}
+            </div>
+            <p class="project-description">${project.description || 'No description available'}</p>
+            <div class="project-footer">
+                ${topicsHTML ? `<div class="project-topics">${topicsHTML}</div>` : '<div class="project-topics"></div>'}
+                <div class="project-stats">
+                    <div class="project-stat-group">
+                        <span class="project-stat">
+                            <i class="fas fa-star"></i> ${project.stars}
+                        </span>
+                        <span class="project-stat">
+                            <i class="fas fa-code-fork"></i> ${project.forks}
+                        </span>
+                    </div>
+                    <a href="${project.url}" class="project-link" target="_blank" rel="noopener noreferrer">
+                        GitHub <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+            </div>
+        `;
+        
+        container.appendChild(card);
+        
+        // Animate card entrance
+        setTimeout(() => {
+            card.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+        }, index * 100);
+    });
+}
+
+// Load and display language distribution
+function loadLanguageDistribution(languages) {
+    const container = document.getElementById('languages-chart');
+    if (!container || !languages) return;
+    
+    container.innerHTML = '';
+    
+    // Get language class name for icon
+    function getLanguageClass(lang) {
+        return lang.toLowerCase().replace(/\s+/g, '').replace(/\+/g, 'p');
+    }
+    
+    // Handle both array format [{name, percentage}] and object format {lang: percentage}
+    let sortedLangs;
+    if (Array.isArray(languages)) {
+        sortedLangs = languages
+            .sort((a, b) => b.percentage - a.percentage)
+            .slice(0, 10)  // Top 10 languages
+            .map(lang => [lang.name, lang.percentage]);
+    } else {
+        sortedLangs = Object.entries(languages)
+            .sort((a, b) => b[1] - a[1])
+            .slice(0, 10);  // Top 10 languages
+    }
+    
+    sortedLangs.forEach(([language, percentage], index) => {
+        const bar = document.createElement('div');
+        bar.className = 'language-bar';
+        
+        const langClass = getLanguageClass(language);
+        
+        bar.innerHTML = `
+            <div class="language-header">
+                <div class="language-name">
+                    <span class="language-icon ${langClass}"></span>
+                    ${language}
+                </div>
+                <span class="language-percent">${percentage}%</span>
+            </div>
+            <div class="language-progress">
+                <div class="language-progress-bar" data-percentage="${percentage}" style="width: 0%"></div>
+            </div>
+        `;
+        
+        container.appendChild(bar);
+        
+        // Animate progress bar
+        setTimeout(() => {
+            const progressBar = bar.querySelector('.language-progress-bar');
+            progressBar.style.width = percentage + '%';
+        }, (index + 1) * 200);
+    });
+}
+
+// Load and display topics cloud
+function loadTopicsCloud(projects) {
+    const container = document.getElementById('topics-cloud');
+    if (!container || !projects) return;
+    
+    container.innerHTML = '';
+    
+    // Extract and count all topics
+    const topicsCount = {};
+    projects.forEach(project => {
+        if (project.topics && Array.isArray(project.topics)) {
+            project.topics.forEach(topic => {
+                topicsCount[topic] = (topicsCount[topic] || 0) + 1;
+            });
+        }
+    });
+    
+    // Sort topics by count
+    const sortedTopics = Object.entries(topicsCount)
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 10); // Show top 10 topics
+    
+    if (sortedTopics.length === 0) {
+        container.innerHTML = '<p style="color: var(--text-black-700); text-align: center; width: 100%;">No topics found</p>';
+        return;
+    }
+    
+    // Get max count for sizing
+    const maxCount = sortedTopics[0][1];
+    
+    sortedTopics.forEach(([topic, count], index) => {
+        const tag = document.createElement('div');
+        tag.className = 'topic-tag';
+        
+        // Add size class based on count
+        if (count >= maxCount * 0.7) {
+            tag.classList.add('size-lg');
+        } else if (count >= maxCount * 0.4) {
+            tag.classList.add('size-md');
+        } else {
+            tag.classList.add('size-sm');
+        }
+        
+        tag.innerHTML = `
+            <span class="topic-name">${topic}</span>
+            <span class="topic-count">${count}</span>
+        `;
+        
+        // Add animation delay
+        tag.style.opacity = '0';
+        tag.style.transform = 'scale(0.8)';
+        
+        container.appendChild(tag);
+        
+        // Animate tag entrance
+        setTimeout(() => {
+            tag.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+            tag.style.opacity = '1';
+            tag.style.transform = 'scale(1)';
+        }, index * 50);
+    });
+}
+
+// Load quick insights
+function loadQuickInsights(projects, languages) {
+    // Most starred project
+    const mostStarred = projects.reduce((max, project) => 
+        project.stars > max.stars ? project : max, projects[0]);
+    
+    const mostStarredEl = document.getElementById('insight-most-starred');
+    if (mostStarredEl && mostStarred) {
+        mostStarredEl.innerHTML = `
+            <span>${mostStarred.name.replace(/-/g, ' ')}</span>
+            <i class="fas fa-star" style="font-size: 0.9rem;"></i>
+            <span style="font-size: 1rem; color: var(--bg-second);">${mostStarred.stars}</span>
+        `;
+    }
+    
+    // Primary language
+    const primaryLangEl = document.getElementById('insight-primary-lang');
+    if (primaryLangEl && languages) {
+        let primaryLang;
+        if (Array.isArray(languages)) {
+            primaryLang = languages[0]?.name || 'N/A';
+        } else {
+            const sorted = Object.entries(languages).sort((a, b) => b[1] - a[1]);
+            primaryLang = sorted[0]?.[0] || 'N/A';
+        }
+        primaryLangEl.textContent = primaryLang;
+    }
+    
+    // Top topic
+    const topicsCount = {};
+    projects.forEach(project => {
+        if (project.topics && Array.isArray(project.topics)) {
+            project.topics.forEach(topic => {
+                topicsCount[topic] = (topicsCount[topic] || 0) + 1;
+            });
+        }
+    });
+    
+    const topTopicEl = document.getElementById('insight-top-topic');
+    if (topTopicEl) {
+        const sortedTopics = Object.entries(topicsCount).sort((a, b) => b[1] - a[1]);
+        if (sortedTopics.length > 0) {
+            topTopicEl.innerHTML = `
+                <span>${sortedTopics[0][0]}</span>
+                <span style="font-size: 0.9rem; color: var(--bg-second);">(${sortedTopics[0][1]} repos)</span>
+            `;
+        } else {
+            topTopicEl.textContent = 'N/A';
+        }
+    }
 }
 
 /* ============================== Aside ============================ */
@@ -170,26 +447,6 @@ window.addEventListener("load", () => {
         dayNight.querySelector("i").classList.add("fa-moon");
     }
 });
-
-/* ============================== Last Update Date ============================ */
-const lastUpdateDate = new Date("2026-02-16");
-const options = { year: 'numeric', month: 'long', day: 'numeric' };
-const formattedDate = lastUpdateDate.toLocaleDateString('en-GB', options);
-
-const lastUpdateDiv = document.getElementById("last-update");
-if (lastUpdateDiv) {
-    lastUpdateDiv.textContent = "Last update: " + formattedDate;
-}
-
-const lastUpdateCV = document.getElementById("last-update-cv");
-if (lastUpdateCV) {
-    lastUpdateCV.textContent = "Last update: " + formattedDate;
-}
-
-const lastUpdateRes = document.getElementById("last-update-res");
-if (lastUpdateRes) {
-    lastUpdateRes.textContent = "Last update: " + formattedDate;
-}
 
 /* ============================== Publications Filters ============================ */
 const filterButtons = document.querySelectorAll('.filter-btn');
@@ -404,3 +661,46 @@ window.toggleAbstract = function(abstractId) {
         }
     }
 };
+/* ============================== Timeline Interactive Features ============================ */
+// Timeline filters
+document.addEventListener('DOMContentLoaded', () => {
+    const filterBtns = document.querySelectorAll('.timeline-filter-btn');
+    const timelineItems = document.querySelectorAll('.timeline-item');
+    
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const filter = this.getAttribute('data-filter');
+            
+            // Update active button
+            filterBtns.forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            
+            // Filter timeline items
+            timelineItems.forEach(item => {
+                const type = item.getAttribute('data-type');
+                
+                if (filter === 'all' || filter === type) {
+                    item.classList.remove('hidden');
+                    setTimeout(() => {
+                        item.style.opacity = '1';
+                        item.style.transform = 'translateY(0)';
+                    }, 50);
+                } else {
+                    item.style.opacity = '0';
+                    item.style.transform = 'translateY(-20px)';
+                    setTimeout(() => {
+                        item.classList.add('hidden');
+                    }, 300);
+                }
+            });
+        });
+    });
+    
+    // Timeline item expand/collapse
+    timelineItems.forEach(item => {
+        item.addEventListener('click', function(e) {
+            e.stopPropagation();
+            this.classList.toggle('expanded');
+        });
+    });
+});

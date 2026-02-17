@@ -10,6 +10,7 @@ __pycache__/
 venv/
 env/
 ENV/
+*.md
 
 # OS
 .DS_Store
@@ -20,3 +21,4 @@ Thumbs.db
 .idea/
 *.swp
 *.swo
+.env
