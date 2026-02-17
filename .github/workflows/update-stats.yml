@@ -1,4 +1,4 @@
-name: Update Statistics (Scopus + GitHub)
+name: Update Statistics (Semantic Scholar + GitHub)
 
 on:
   schedule:
@@ -23,10 +23,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install requests
       
-      - name: Update statistics from Scopus
+      - name: Update statistics from Semantic Scholar
         env:
-          SCOPUS_API_KEY: ${{ secrets.SCOPUS_API_KEY }}
-          SCOPUS_AUTHOR_ID: ${{ secrets.SCOPUS_AUTHOR_ID }}
+          SEMANTIC_SCHOLAR_AUTHOR_ID: ${{ secrets.SEMANTIC_SCHOLAR_AUTHOR_ID }}
         run: |
           python scripts/update_stats.py
       

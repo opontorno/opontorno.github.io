@@ -249,9 +249,13 @@
    ============================================ */
 
 .stats-section-header {
-    text-align: center;
+    text-align: left;
     margin: 60px 0 30px 0;
     width: 100%;
+}
+
+.stats-section-header.text-center {
+    text-align: center;
 }
 
 .stats-section-header h3 {
@@ -265,16 +269,26 @@
     padding-bottom: 15px;
 }
 
+.stats-section-header.text-center h3 {
+    display: flex;
+    margin: 0 auto;
+}
+
 .stats-section-header h3::after {
     content: '';
     position: absolute;
     bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 0;
     width: 60px;
     height: 4px;
-    background: linear-gradient(90deg, transparent 0%, var(--bg-second) 50%, transparent 100%);
+    background: linear-gradient(90deg, var(--bg-second) 0%, rgba(48, 148, 110, 0.3) 100%);
     border-radius: 2px;
+}
+
+.stats-section-header.text-center h3::after {
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(90deg, transparent 0%, var(--bg-second) 50%, transparent 100%);
 }
 
 .stats-section-header h3 i {
@@ -577,11 +591,16 @@
     border-color: #a6ce39;
 }
 
-.social-icons a[href*="scopus"]:hover,
-.social-icons a[href*="scholar"]:hover {
+.social-icons a[href*="scopus"]:hover {
     color: white;
-    background: var(--bg-second);
-    border-color: var(--bg-second);
+    background: #f26522;
+    border-color: #f26522;
+}
+
+.social-icons a[href*="semanticscholar"]:hover {
+    color: white;
+    background: #1857B6;
+    border-color: #1857B6;
 }
 
 

@@ -1,11 +1,11 @@
 /* ============================== Initialization Function ============================ */
 function initializeWebsite() {
 
-/* ============================== Load Stats from JSON (Updated by Scopus API) ============================ */
+/* ============================== Load Stats from JSON (Updated by Semantic Scholar API) ============================ */
 fetch('data/stats.json')
     .then(response => response.json())
     .then(data => {
-        // Update Scopus stat numbers with counter animation
+        // Update research stat numbers with counter animation
         if (data.publications) animateValue('stat-publications', 0, data.publications, 1500);
         if (data.citations) animateValue('stat-citations', 0, data.citations, 1500);
         if (data.h_index) animateValue('stat-h-index', 0, data.h_index, 1200);
@@ -37,6 +37,29 @@ fetch('data/stats.json')
             }
         }
         
+        // Update paper citations automatically
+        if (data.publications_details) {
+            updatePaperCitations(data.publications_details);
+        }
+        
+        // Update Research Activities statistics
+        if (data.publications) animateValue('research-publications', 0, data.publications, 1500);
+        if (data.citations) animateValue('research-citations', 0, data.citations, 1500);
+        if (data.h_index) animateValue('research-h-index', 0, data.h_index, 1200, false);
+        if (data.most_cited) animateValue('research-most-cited', 0, data.most_cited, 1500);
+        if (data.coauthors) animateValue('research-coauthors', 0, data.coauthors, 1500);
+        if (data.influential_citations !== undefined) animateValue('research-influential', 0, data.influential_citations, 1500, false);
+        if (data.years_active) animateValue('research-years', 0, data.years_active, 1200, false);
+        if (data.avg_citations) animateValueDecimal('research-avg-citations', 0, data.avg_citations, 1500);
+        
+        // Update co-authors count if available
+        if (data.coauthors) {
+            const coauthorsEl = document.getElementById('stat-coauthors');
+            if (coauthorsEl) {
+                animateValue('stat-coauthors', 0, data.coauthors, 1500);
+            }
+        }
+        
         // Update "Last update" dates from stats.json
         if (data.last_updated) {
             const lastUpdateDate = new Date(data.last_updated);
@@ -59,7 +82,7 @@ fetch('data/stats.json')
             }
         }
         
-        console.log('📊 Stats loaded from Scopus (updated:', data.last_updated + ')');
+        console.log('📊 Stats loaded from Semantic Scholar (updated:', data.last_updated + ')');
         if (data.github) {
             console.log('🐙 GitHub stats loaded');
         }
@@ -104,6 +127,52 @@ function animateValueDecimal(id, start, end, duration) {
         }
         element.textContent = current.toFixed(1);
     }, 16);
+}
+
+// Update paper citations from stats.json
+function updatePaperCitations(publications) {
+    // Mapping between paper keys and titles in stats.json
+    const paperMapping = {
+        'deepfeaturex-sn': 'DeepFeatureX-SN',
+        'wild': 'WILD',
+        'deepfeaturex-net': 'DeepFeatureX Net',
+        'dct-traces': 'DCT-Traces'
+    };
+    
+    // Get all timeline items with citation badges
+    const timelineItems = document.querySelectorAll('.src_timeline-item[data-paper-key]');
+    
+    timelineItems.forEach(item => {
+        const paperKey = item.getAttribute('data-paper-key');
+        const citationBadge = item.querySelector('.citation-badge');
+        
+        if (!citationBadge || !paperKey) return;
+        
+        // Find matching publication in stats.json by title pattern
+        const publication = publications.find(pub => {
+            const pubTitle = pub.title.toLowerCase();
+            const searchKey = paperMapping[paperKey];
+            
+            if (!searchKey) return false;
+            
+            return pubTitle.includes(searchKey.toLowerCase());
+        });
+        
+        if (publication) {
+            const citations = publication.citations || 0;
+            const citationText = citations === 1 ? '1 citation' : `${citations} citations`;
+            citationBadge.innerHTML = `<i class="fas fa-quote-right"></i> ${citationText}`;
+            
+            // Add animation
+            citationBadge.style.opacity = '0';
+            setTimeout(() => {
+                citationBadge.style.transition = 'opacity 0.5s ease';
+                citationBadge.style.opacity = '1';
+            }, 100);
+        }
+    });
+    
+    console.log('✅ Paper citations updated from Semantic Scholar');
 }
 
 // Load and display featured projects
