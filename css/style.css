@@ -239,7 +239,7 @@ ul {
     font-weight: 700;
     position: relative;
     padding-bottom: 15px;
-    margin-bottom: 25px;
+    margin-bottom: 0px;
 }
 
 .section-title h3::after {
@@ -385,9 +385,9 @@ section[id] {
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 60px;
+    width: 80px;
     height: 4px;
-    background: linear-gradient(90deg, var(--bg-second) 0%, #2a7a5e 100%);
+    background: linear-gradient(90deg, var(--bg-second) 0%, rgba(48, 148, 110, 0.3) 100%);
     border-radius: 2px;
 }
 

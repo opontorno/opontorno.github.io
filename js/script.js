@@ -60,9 +60,15 @@ fetch('data/stats.json')
             }
         }
         
-        // Update "Last update" dates from stats.json
-        if (data.last_updated) {
-            const lastUpdateDate = new Date(data.last_updated);
+        // Update "Last update" dates from manual config (config.js) or stats.json
+        // Priority: config.js > stats.json (manual override)
+        const updateSource = (typeof WEBSITE_CONFIG !== 'undefined' && WEBSITE_CONFIG.lastUpdate) 
+            ? WEBSITE_CONFIG.lastUpdate 
+            : data.last_updated;
+        
+        if (updateSource) {
+            // Add time to avoid timezone conversion issues
+            const lastUpdateDate = new Date(updateSource + 'T00:00:00');
             const options = { year: 'numeric', month: 'long', day: 'numeric' };
             const formattedDate = lastUpdateDate.toLocaleDateString('en-GB', options);
             
