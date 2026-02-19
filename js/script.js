@@ -86,6 +86,11 @@ fetch('data/stats.json')
             if (lastUpdateRes) {
                 lastUpdateRes.textContent = "Last update: " + formattedDate;
             }
+            
+            const lastUpdateProjects = document.getElementById("last-update-projects");
+            if (lastUpdateProjects) {
+                lastUpdateProjects.textContent = "Last update: " + formattedDate;
+            }
         }
         
         console.log('📊 Stats loaded from Semantic Scholar (updated:', data.last_updated + ')');

@@ -470,6 +470,88 @@ section[id] {
    SEZIONE SKILLS - COMPETENZE
    ============================================ */
 
+/* Container per i tag delle skills */
+.about .about-content .skills .skills-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+/* Singolo tag skill */
+.about .about-content .skills .skill-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 16px;
+    background: var(--bg-black-100);
+    color: var(--text-black-900);
+    border: 1px solid var(--bg-black-50);
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+}
+
+.about .about-content .skills .skill-tag:hover {
+    background: var(--bg-black-50);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Tooltip con stelle per skills */
+.about .about-content .skills .skill-tag::after {
+    content: attr(data-stars-display);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-8px);
+    background: rgba(0, 0, 0, 0.9);
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 16px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    z-index: 1000;
+    letter-spacing: 2px;
+}
+
+.about .about-content .skills .skill-tag::before {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(4px);
+    border: 6px solid transparent;
+    border-top-color: rgba(0, 0, 0, 0.9);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.about .about-content .skills .skill-tag:hover::after,
+.about .about-content .skills .skill-tag:hover::before {
+    opacity: 1;
+}
+
+/* Genera il contenuto delle stelle in base all'attributo data-stars */
+.about .about-content .skills .skill-tag[data-stars="1"]::after { content: "★☆☆☆☆"; }
+.about .about-content .skills .skill-tag[data-stars="2"]::after { content: "★★☆☆☆"; }
+.about .about-content .skills .skill-tag[data-stars="3"]::after { content: "★★★☆☆"; }
+.about .about-content .skills .skill-tag[data-stars="4"]::after { content: "★★★★☆"; }
+.about .about-content .skills .skill-tag[data-stars="5"]::after { content: "★★★★★"; }
+
+/* Colore stelle verde */
+.about .about-content .skills .skill-tag[data-stars]::after {
+    color: var(--bg-second);
+}
+
+/* Stili vecchi mantenuti per compatibilità */
 .about .about-content .skills .skill-item {
     flex: 0 0 100%;
     max-width: 100%;
@@ -510,6 +592,146 @@ section[id] {
     top: -40px;
     font-weight: 400;
     line-height: 40px;
+}
+
+
+/* ============================================
+   CERTIFICATIONS - CERTIFICAZIONI
+   ============================================ */
+
+.about .about-content .certifications-container {
+    flex: 0 0 100%;
+    max-width: 100%;
+    margin-top: 0;
+}
+
+.certifications-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+    width: 100%;
+}
+
+.cert-card {
+    background: linear-gradient(135deg, var(--bg-black-100) 0%, var(--bg-black-50) 100%);
+    padding: 20px;
+    border-radius: 12px;
+    border: 2px solid transparent;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.cert-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--bg-second), #2a7a5e);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cert-card:hover {
+    border-color: var(--bg-second);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(48, 148, 110, 0.15);
+}
+
+.cert-card:hover::before {
+    transform: scaleX(1);
+}
+
+.cert-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.cert-icon {
+    width: 45px;
+    height: 45px;
+    background: linear-gradient(135deg, var(--bg-second) 0%, #2a7a5e 100%);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+.cert-card:hover .cert-icon {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.cert-date {
+    background: var(--bg-second);
+    color: var(--text-black-900);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border: 1px solid var(--bg-black-50);
+}
+
+.cert-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.cert-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text-black-900);
+    margin: 0 0 10px 0;
+    line-height: 1.3;
+}
+
+.cert-issuer {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-black-700);
+    margin: 0 0 12px 0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.cert-issuer i {
+    font-size: 0.85rem;
+    opacity: 0.7;
+}
+
+.cert-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.85rem;
+    color: var(--bg-second);
+    font-weight: 600;
+    text-decoration: none;
+    margin-top: auto;
+    transition: all 0.3s ease;
+}
+
+.cert-link:hover {
+    color: #2a7a5e;
+    gap: 8px;
+}
+
+.cert-link i {
+    font-size: 0.75rem;
 }
 
 
@@ -1550,10 +1772,17 @@ section[id] {
     font-weight: 600;
     margin-left: 8px;
     vertical-align: middle;
-    background: linear-gradient(135deg, var(--skin-color) 0%, #2a8d6f 100%);
+    background: linear-gradient(135deg, var(--bg-second) 0%, #2a8d6f 100%);
     color: white;
     box-shadow: 0 2px 8px rgba(48, 148, 110, 0.25);
     transition: all 0.3s ease;
+}
+
+/* Fix per tema light - testo più scuro */
+body:not(.dark) .citation-badge {
+    background: linear-gradient(135deg, var(--bg-second) 0%, #2a8d6f 100%);
+    color: white;
+    font-weight: 700;
 }
 
 .citation-badge i {

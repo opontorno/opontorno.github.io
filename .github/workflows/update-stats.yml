@@ -2,7 +2,7 @@ name: Update Statistics (Semantic Scholar + GitHub)
 
 on:
   schedule:
-    - cron: '0 3 * * *'
+    - cron: '0 3 * * 1'  # Every Monday at 3am UTC (weekly update)
   workflow_dispatch:
 
 permissions:
