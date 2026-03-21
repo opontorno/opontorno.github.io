@@ -3,7 +3,7 @@
    ============================================ */
 
 /* Importa i font da Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Clicker+Script&family=Poppins:wght@200;300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Clicker+Script&family=Manrope:wght@400;500;600;700;800&family=Merriweather:wght@400;700;900&display=swap');
 
 /* Variabili CSS per i colori - Tema Chiaro */
 :root {
@@ -49,8 +49,20 @@ body.dark {
 body {
     line-height: 1.5;
     font-size: 16px;
-    font-family: 'Poppins', serif;
+    font-family: 'Manrope', sans-serif;
     overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.section-title h2,
+.section-title h3,
+.aside .nav li a {
+    font-family: 'Merriweather', serif;
 }
 
 /* Reset delle liste */

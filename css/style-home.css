@@ -422,6 +422,10 @@
 
 /* Singoli blocchi degli interessi */
 .interests-container li {
+    list-style: none;
+}
+
+.interest-link {
     background: var(--bg-black-100);
     padding: 14px 24px;
     border-radius: 25px;
@@ -433,18 +437,19 @@
     gap: 10px;
     border: 2px solid var(--bg-black-50);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    cursor: default;
+    cursor: pointer;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    text-decoration: none;
 }
 
-.interests-container li i {
+.interest-link i {
     font-size: 1.1rem;
     color: var(--bg-second);
     transition: all 0.3s ease;
 }
 
 /* Effetto hover sui blocchi interessi */
-.interests-container li:hover {
+.interest-link:hover {
     background: linear-gradient(135deg, var(--bg-second) 0%, #2a7a5e 100%);
     color: white;
     transform: translateY(-5px);
@@ -452,7 +457,7 @@
     border-color: var(--bg-second);
 }
 
-.interests-container li:hover i {
+.interest-link:hover i {
     color: white;
     transform: scale(1.1);
 }
@@ -686,7 +691,7 @@
         font-size: 1.5rem;
     }
     
-    .interests-container li {
+    .interest-link {
         padding: 10px 18px;
         font-size: 0.85rem;
     }
