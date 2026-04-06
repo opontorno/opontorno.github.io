@@ -1,13 +1,13 @@
 {
   "publications": 6,
-  "citations": 28,
+  "citations": 29,
   "projects": 5,
   "collaborations": 3,
-  "last_updated": "2026-03-30",
+  "last_updated": "2026-04-06",
   "h_index": 3,
   "source": "Semantic Scholar API",
-  "avg_citations": 4.7,
-  "most_cited": 14,
+  "avg_citations": 4.8,
+  "most_cited": 16,
   "publications_details": [
     {
       "title": "(DFF '25) 1st Deepfake Forensics Workshop: Detecti",
@@ -36,7 +36,7 @@
     },
     {
       "title": "On the Exploitation of DCT-Traces in the Generativ",
-      "citations": 14,
+      "citations": 16,
       "year": 2024
     }
   ],
@@ -122,7 +122,7 @@
         "forks": 0,
         "language": "CSS",
         "topics": [],
-        "updated_at": "2026-03-23T03:53:23Z"
+        "updated_at": "2026-03-30T04:00:40Z"
       },
       {
         "name": "classifying-butterfly-species-in-MATLAB",
@@ -156,7 +156,7 @@
         "updated_at": "2025-11-27T18:16:21Z"
       }
     ],
-    "last_updated": "2026-03-30",
+    "last_updated": "2026-04-06",
     "source": "GitHub API"
   },
   "author_id": "2282534052",
