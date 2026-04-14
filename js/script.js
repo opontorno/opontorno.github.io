@@ -513,11 +513,19 @@ function asideSectionTogglerBtn() {
 
 /* ========================== Dark/Light Mode Toggle =========================== */
 const dayNight = document.querySelector(".day-night");
+let themeSwitchTimeout;
 
 dayNight.addEventListener("click", () => {
+    document.body.classList.add("theme-switching");
+
     dayNight.querySelector("i").classList.toggle("fa-sun");
     dayNight.querySelector("i").classList.toggle("fa-moon");
     document.body.classList.toggle("dark");
+
+    clearTimeout(themeSwitchTimeout);
+    themeSwitchTimeout = setTimeout(() => {
+        document.body.classList.remove("theme-switching");
+    }, 320);
 });
 
 window.addEventListener("load", () => {
