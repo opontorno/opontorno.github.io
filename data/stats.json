@@ -3,7 +3,7 @@
   "citations": 31,
   "projects": 5,
   "collaborations": 3,
-  "last_updated": "2026-04-20",
+  "last_updated": "2026-04-27",
   "h_index": 3,
   "source": "Semantic Scholar API",
   "avg_citations": 5.2,
@@ -42,7 +42,7 @@
   ],
   "github": {
     "public_repos": 12,
-    "total_stars": 22,
+    "total_stars": 21,
     "followers": 22,
     "total_forks": 10,
     "top_languages": [
@@ -72,7 +72,7 @@
         "name": "Hybrid-Quantum-Neural-Network-for-binary-classification",
         "description": "Final project for the university course 'Quantum Computer Programming', held in the academic year 2022/2023. The purpose of this project is to investigate the structure of a hybrid neural network. To do this, I made use of the 'qiskit' library, which allows useful tools for constructing a classical-quantum neural network.",
         "url": "https://github.com/opontorno/Hybrid-Quantum-Neural-Network-for-binary-classification",
-        "stars": 7,
+        "stars": 6,
         "forks": 5,
         "language": "Jupyter Notebook",
         "topics": [
@@ -83,7 +83,7 @@
           "quantum-computing",
           "quantum-machine-learning"
         ],
-        "updated_at": "2026-03-28T09:04:33Z"
+        "updated_at": "2026-04-24T08:11:03Z"
       },
       {
         "name": "dcts_analysis_deepfakes",
@@ -122,7 +122,7 @@
         "forks": 0,
         "language": "CSS",
         "topics": [],
-        "updated_at": "2026-04-16T18:27:45Z"
+        "updated_at": "2026-04-20T04:05:48Z"
       },
       {
         "name": "classifying-butterfly-species-in-MATLAB",
@@ -156,7 +156,7 @@
         "updated_at": "2025-11-27T18:16:21Z"
       }
     ],
-    "last_updated": "2026-04-20",
+    "last_updated": "2026-04-27",
     "source": "GitHub API"
   },
   "author_id": "2282534052",
