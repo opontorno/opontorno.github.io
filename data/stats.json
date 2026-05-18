@@ -1,12 +1,12 @@
 {
   "publications": 6,
-  "citations": 31,
+  "citations": 32,
   "projects": 5,
   "collaborations": 3,
-  "last_updated": "2026-05-11",
+  "last_updated": "2026-05-18",
   "h_index": 3,
   "source": "Semantic Scholar API",
-  "avg_citations": 5.2,
+  "avg_citations": 5.3,
   "most_cited": 16,
   "publications_details": [
     {
@@ -21,17 +21,17 @@
     },
     {
       "title": "WILD: a new in-the-Wild Image Linkage Dataset for ",
-      "citations": 9,
+      "citations": 10,
       "year": 2025
     },
     {
       "title": "Adversarial Attacks on Deepfake Detectors: A Chall",
-      "citations": 0,
+      "citations": 1,
       "year": 2025
     },
     {
       "title": "DeepFeatureX Net: Deep Features eXtractors based N",
-      "citations": 7,
+      "citations": 8,
       "year": 2024
     },
     {
@@ -122,7 +122,7 @@
         "forks": 0,
         "language": "CSS",
         "topics": [],
-        "updated_at": "2026-05-04T04:17:36Z"
+        "updated_at": "2026-05-11T04:25:05Z"
       },
       {
         "name": "classifying-butterfly-species-in-MATLAB",
@@ -156,7 +156,7 @@
         "updated_at": "2025-11-27T18:16:21Z"
       }
     ],
-    "last_updated": "2026-05-11",
+    "last_updated": "2026-05-18",
     "source": "GitHub API"
   },
   "author_id": "2282534052",
