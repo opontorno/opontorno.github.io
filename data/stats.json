@@ -1,13 +1,13 @@
 {
   "publications": 6,
-  "citations": 36,
+  "citations": 39,
   "projects": 5,
   "collaborations": 3,
-  "last_updated": "2026-06-15",
+  "last_updated": "2026-06-22",
   "h_index": 3,
   "source": "Semantic Scholar API",
-  "avg_citations": 6.0,
-  "most_cited": 16,
+  "avg_citations": 6.5,
+  "most_cited": 17,
   "publications_details": [
     {
       "title": "(DFF '25) 1st Deepfake Forensics Workshop: Detecti",
@@ -16,7 +16,7 @@
     },
     {
       "title": "DeepFeatureX-SN: Generalization of deepfake detect",
-      "citations": 3,
+      "citations": 4,
       "year": 2025
     },
     {
@@ -31,12 +31,12 @@
     },
     {
       "title": "DeepFeatureX Net: Deep Features eXtractors based N",
-      "citations": 9,
+      "citations": 10,
       "year": 2024
     },
     {
       "title": "On the Exploitation of DCT-Traces in the Generativ",
-      "citations": 16,
+      "citations": 17,
       "year": 2024
     }
   ],
@@ -122,7 +122,7 @@
         "forks": 0,
         "language": "CSS",
         "topics": [],
-        "updated_at": "2026-06-08T04:31:27Z"
+        "updated_at": "2026-06-15T04:33:57Z"
       },
       {
         "name": "classifying-butterfly-species-in-MATLAB",
@@ -156,7 +156,7 @@
         "updated_at": "2025-11-27T18:16:21Z"
       }
     ],
-    "last_updated": "2026-06-15",
+    "last_updated": "2026-06-22",
     "source": "GitHub API"
   },
   "author_id": "2282534052",
