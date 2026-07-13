@@ -1,12 +1,12 @@
 {
-  "publications": 6,
+  "publications": 7,
   "citations": 39,
   "projects": 5,
   "collaborations": 3,
-  "last_updated": "2026-07-06",
+  "last_updated": "2026-07-13",
   "h_index": 3,
   "source": "Semantic Scholar API",
-  "avg_citations": 6.5,
+  "avg_citations": 5.6,
   "most_cited": 18,
   "publications_details": [
     {
@@ -26,7 +26,7 @@
     },
     {
       "title": "WILD: a new in-the-Wild Image Linkage Dataset for ",
-      "citations": 11,
+      "citations": 13,
       "year": 2025
     },
     {
@@ -46,18 +46,18 @@
     }
   ],
   "github": {
-    "public_repos": 12,
-    "total_stars": 21,
+    "public_repos": 13,
+    "total_stars": 22,
     "followers": 24,
-    "total_forks": 10,
+    "total_forks": 9,
     "top_languages": [
       {
         "name": "Jupyter Notebook",
-        "percentage": 98.5
+        "percentage": 98.1
       },
       {
         "name": "Python",
-        "percentage": 0.6
+        "percentage": 1.0
       },
       {
         "name": "CSS",
@@ -78,7 +78,7 @@
         "description": "Final project for the university course 'Quantum Computer Programming', held in the academic year 2022/2023. The purpose of this project is to investigate the structure of a hybrid neural network. To do this, I made use of the 'qiskit' library, which allows useful tools for constructing a classical-quantum neural network.",
         "url": "https://github.com/opontorno/Hybrid-Quantum-Neural-Network-for-binary-classification",
         "stars": 6,
-        "forks": 5,
+        "forks": 4,
         "language": "Jupyter Notebook",
         "topics": [
           "deep-learning",
@@ -127,7 +127,7 @@
         "forks": 0,
         "language": "CSS",
         "topics": [],
-        "updated_at": "2026-06-29T04:30:02Z"
+        "updated_at": "2026-07-06T04:26:36Z"
       },
       {
         "name": "classifying-butterfly-species-in-MATLAB",
@@ -161,7 +161,7 @@
         "updated_at": "2025-11-27T18:16:21Z"
       }
     ],
-    "last_updated": "2026-07-06",
+    "last_updated": "2026-07-13",
     "source": "GitHub API"
   },
   "author_id": "2282534052",
