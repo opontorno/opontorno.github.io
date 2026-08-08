@@ -1140,6 +1140,27 @@ section[id] {
     box-shadow: 0 4px 15px rgba(36, 41, 46, 0.4);
 }
 
+/* Bottone Project Page segnaposto */
+.project-page-btn {
+    background: linear-gradient(135deg, #0f766e 0%, #134e4a 100%);
+}
+
+.project-page-btn:hover {
+    background: linear-gradient(135deg, #115e59 0%, #083344 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(15, 118, 110, 0.4);
+}
+
+.project-page-btn.is-placeholder {
+    opacity: 0.72;
+    cursor: not-allowed;
+}
+
+.project-page-btn.is-placeholder:hover {
+    transform: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
 /* Icona ArXiv personalizzata */
 .arxiv-icon {
     width: 16px;
