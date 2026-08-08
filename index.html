@@ -835,6 +835,7 @@
           <!-- Publication Filters -->
           <div class="publication-filters">
             <button class="filter-btn active" data-filter="all" aria-pressed="true">All</button>
+            <button class="filter-btn" data-filter="2026" aria-pressed="false">2026</button>
             <button class="filter-btn" data-filter="2025" aria-pressed="false">2025</button>
             <button class="filter-btn" data-filter="2024" aria-pressed="false">2024</button>
             <button class="filter-btn" data-filter="journal" aria-pressed="false">Journals</button>
@@ -888,6 +889,53 @@
                 </div>
               </div>
                END ITEM -->
+
+              <!-- BEGIN ITEM -->
+              <div class="src_timeline-item" data-year="2026" data-type="conference" data-paper-key="hexmil">
+                <a href="+++PUBLISHER_LINK+++" class="external-link" target="_blank" rel="noopener noreferrer">
+                  <img src="images/paper_previews/acmmm26_hexmil.png" alt="Preview of hexmil" class="src_timeline-img" loading="lazy">
+                </a>
+                <div class="src_timeline-content">
+                  <div class="src_timeline-date">2026</div>
+                  <h3 class="src_timeline-title">
+                    <a href="+++PUBLISHER_LINK+++" class="external-link" target="_blank" rel="noopener noreferrer">
+                      HexMIL: Hierarchical Attention MIL for Ante-Hoc Explainable Detection of AI-Manipulated CT Volumes
+                    </a>
+                    <span class="publication-type-badge badge-conference">Conference</span>
+                    <span class="citation-badge"><i class="fas fa-quote-right"></i> 0 citations</span>
+                  </h3>
+                  <div class="src_timeline-authors">O. Pontorno, L. Guarnera, Z. Akhtar, S. Battiato</div>
+                  <div class="src_timeline-journal">34th ACM International Conference on Multimedia</div>
+                  
+                  <div class="publication-buttons">
+                    <button class="pub-btn abstract-btn" onclick="toggleAbstract('abstract-3')">
+                      <i class="fas fa-file-text"></i>
+                      Abstract
+                      <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <a href="https://opontorno.github.io/hexmil/" class="pub-btn project-page-btn is-placeholder" aria-disabled="true" tabindex="-1">
+                      <i class="fas fa-diagram-project"></i>
+                      Project Page
+                    </a>
+                  </div>
+                  <div class="abstract-content" id="abstract-3">
+                    <div class="abstract-text">
+                      The emergence of medical deepfakes, i.e., medical images manipulated by deep generative models, poses a significant threat to clinical 
+                      workflows. However, existing detectors suffer from two critical limitations: poor generalization to unseen generative architectures 
+                      for manipulation detection and lack of interpretability. In this context, we present HexMIL (Hierarchical EXplainable Multiple Instance 
+                      Learning), a mask-free medical deepfake detector that simultaneously addresses both limitations using only binary volume-level supervision. 
+                      HexMIL decomposes each CT volume into a two-level hierarchy of patches and slices, aggregated via independent Gated Attention modules 
+                      whose weights are directly combined into a full-resolution 3D attention volume that localizes the manipulated sub-region without any 
+                      pixel-level annotation. Unlike post-hoc methods such as Grad-CAM, HexMIL's attention weights constitute the exact forward computation 
+                      driving the classification decision, providing ante-hoc and structurally faithful spatial attribution. We evaluate HexMIL on M3DSynth and 
+                      CT-GAN datasets under a rigorous cross-generator generalization protocol, training on a single generative architecture and testing on 
+                      unseen ones. HexMIL outperforms all baselines by +9.1 AUC and +9.4 F1 in out-of-domain classification, and achieves the best average IoU 
+                      and Pointing Game score in localization.
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- END ITEM -->              
 
               <!-- BEGIN ITEM -->
               <div class="src_timeline-item" data-year="2026" data-type="conference" data-paper-key="muflow">
@@ -1006,11 +1054,6 @@
                       Abstract
                       <i class="fas fa-chevron-down"></i>
                     </button>
-                    <!-- Placeholder: replace href with the future project landing page URL -->
-                    <a href="#" class="pub-btn project-page-btn is-placeholder" aria-disabled="true" tabindex="-1">
-                      <i class="fas fa-diagram-project"></i>
-                      Project Page
-                    </a>
                     <a href="https://arxiv.org/abs/2504.19595" class="pub-btn arxiv-btn" target="_blank" rel="noopener noreferrer">
                       <span class="arxiv-icon">ar</span>
                       ArXiv
@@ -1062,11 +1105,6 @@
                       Abstract
                       <i class="fas fa-chevron-down"></i>
                     </button>
-                    <!-- Placeholder: replace href with the future project landing page URL -->
-                    <a href="#" class="pub-btn project-page-btn is-placeholder" aria-disabled="true" tabindex="-1">
-                      <i class="fas fa-diagram-project"></i>
-                      Project Page
-                    </a>
                     <a href="https://arxiv.org/abs/2404.15697" class="pub-btn arxiv-btn" target="_blank" rel="noopener noreferrer">
                       <span class="arxiv-icon">ar</span>
                       ArXiv
@@ -1120,11 +1158,6 @@
                       Abstract
                       <i class="fas fa-chevron-down"></i>
                     </button>
-                    <!-- Placeholder: replace href with the future project landing page URL -->
-                    <a href="#" class="pub-btn project-page-btn is-placeholder" aria-disabled="true" tabindex="-1">
-                      <i class="fas fa-diagram-project"></i>
-                      Project Page
-                    </a>
                     <a href="https://arxiv.org/abs/2402.02209" class="pub-btn arxiv-btn" target="_blank" rel="noopener noreferrer">
                       <span class="arxiv-icon">ar</span>
                       ArXiv
@@ -1251,15 +1284,19 @@
               <div class="review-items">
                 <div class="review-badge conference-badge">
                   <span class="badge-name">ACM Multimedia</span>
-                  <span class="badge-years">2025</span>
+                  <span class="badge-years">2026, 2025</span>
+                </div>
+                <div class="review-badge conference-badge">
+                  <span class="badge-name">IJCV</span>
+                  <span class="badge-years">2026</span>
                 </div>
                 <div class="review-badge conference-badge">
                   <span class="badge-name">ICPR</span>
-                  <span class="badge-years">2024</span>
+                  <span class="badge-years">2026, 2024</span>
                 </div>
                 <div class="review-badge conference-badge">
                   <span class="badge-name">MetroXRAINE</span>
-                  <span class="badge-years">2024</span>
+                  <span class="badge-years">2026, 2024</span>
                 </div>
               </div>
             </div>
@@ -1269,6 +1306,10 @@
         <div id="last-update-res" style="font-size: 1em; text-align: center; margin-top: 30px; color: gray;"></div>
       </section>
       <!-- ===== activities Section End ===== -->
+
+
+
+
 
       <!-- ===== Projects Section Start ===== -->
       <section class="projects section" id="projects">

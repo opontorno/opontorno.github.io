@@ -209,13 +209,15 @@
     position: relative;
     width: 100%;
     max-width: 400px;
+    aspect-ratio: 1;
+    line-height: 0;
 }
 
 /* Stile dell'immagine di profilo */
 .home .home-img img {
+    display: block;
     width: 100%;
-    height: auto;
-    aspect-ratio: 1;
+    height: 100%;
     object-fit: cover;
     border-radius: 20px;
     box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
@@ -226,14 +228,12 @@
 
 .img-border {
     position: absolute;
-    top: -15px;
-    left: -15px;
-    right: 15px;
-    bottom: 15px;
+    inset: 0;
     border: 3px solid var(--bg-second);
     border-radius: 20px;
     z-index: 1;
     transition: all 0.4s ease;
+    transform: translate(-15px, -15px);
 }
 
 .home .home-img:hover img {
@@ -241,7 +241,7 @@
 }
 
 .home .home-img:hover .img-border {
-    transform: translate(5px, 5px);
+    transform: translate(-15px, -15px);
 }
 
 /* ============================================

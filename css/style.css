@@ -1033,6 +1033,12 @@ section[id] {
     color: var(--bg-second);
 }
 
+.src_timeline-title a {
+    color: inherit;
+    pointer-events: none;
+    cursor: default;
+}
+
 .src_timeline-authors {
     font-style: italic;
     color: var(--text-black-700);
