@@ -110,7 +110,8 @@ def get_semantic_scholar_stats(author_id=None):
         
         print("\n📄 Publications breakdown:")
         for i, paper in enumerate(papers[:25], 1):  # Limit to first 25 for display
-            title = paper.get('title', 'Unknown')[:50]
+            title = paper.get('title') or 'Unknown'
+            title = str(title).strip()
             cited_count = paper.get('citationCount', 0)
             year = paper.get('year', 'N/A')
             authors = paper.get('authors', [])

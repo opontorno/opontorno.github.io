@@ -253,41 +253,41 @@ function animateValueDecimal(id, start, end, duration) {
     }, 16);
 }
 
+function normalizePaperText(value = "") {
+    return String(value || "")
+        .toLowerCase()
+        .normalize("NFKD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/[^a-z0-9]+/g, " ")
+        .trim();
+}
+
 // Update paper citations from stats.json
 function updatePaperCitations(publications) {
-    // Mapping between paper keys and titles in stats.json
-    const paperMapping = {
-        'deepfeaturex-sn': 'DeepFeatureX-SN',
-        'wild': 'WILD',
-        'deepfeaturex-net': 'DeepFeatureX Net',
-        'dct-traces': 'DCT-Traces'
-    };
-    
-    // Get all timeline items with citation badges
     const timelineItems = document.querySelectorAll('.src_timeline-item[data-paper-key]');
-    
+
     timelineItems.forEach(item => {
         const paperKey = item.getAttribute('data-paper-key');
         const citationBadge = item.querySelector('.citation-badge');
-        
+        const titleLink = item.querySelector('.src_timeline-title a.external-link');
+        const pageTitle = titleLink ? titleLink.textContent.trim() : '';
+
         if (!citationBadge || !paperKey) return;
-        
-        // Find matching publication in stats.json by title pattern
+
         const publication = publications.find(pub => {
-            const pubTitle = pub.title.toLowerCase();
-            const searchKey = paperMapping[paperKey];
-            
-            if (!searchKey) return false;
-            
-            return pubTitle.includes(searchKey.toLowerCase());
+            const pubTitle = normalizePaperText(pub.title);
+            const itemTitle = normalizePaperText(pageTitle || paperKey);
+
+            if (!pubTitle || !itemTitle) return false;
+
+            return pubTitle.includes(itemTitle) || itemTitle.includes(pubTitle);
         });
-        
+
         if (publication) {
             const citations = publication.citations || 0;
             const citationText = citations === 1 ? '1 citation' : `${citations} citations`;
             citationBadge.innerHTML = `<i class="fas fa-quote-right"></i> ${citationText}`;
-            
-            // Add animation
+
             citationBadge.style.opacity = '0';
             setTimeout(() => {
                 citationBadge.style.transition = 'opacity 0.5s ease';
@@ -295,7 +295,7 @@ function updatePaperCitations(publications) {
             }, 100);
         }
     });
-    
+
     console.log('✅ Paper citations updated from Semantic Scholar');
 }
 

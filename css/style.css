@@ -1093,6 +1093,11 @@ section[id] {
     letter-spacing: 0.3px;
 }
 
+.pub-btn:focus-visible {
+    outline: 3px solid rgba(48, 148, 110, 0.35);
+    outline-offset: 2px;
+}
+
 .pub-btn i {
     font-size: 15px;
 }
@@ -1879,8 +1884,8 @@ body:not(.dark) .citation-badge {
 }
 
 .citation-badge:hover {
-    box-shadow: 0 4px 12px rgba(48, 148, 110, 0.4);
-    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(48, 148, 110, 0.25);
+    transform: none;
 }
 
 .badge-journal {

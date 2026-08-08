@@ -211,6 +211,7 @@
     max-width: 400px;
     aspect-ratio: 1;
     line-height: 0;
+    pointer-events: none;
 }
 
 /* Stile dell'immagine di profilo */
@@ -221,27 +222,26 @@
     object-fit: cover;
     border-radius: 20px;
     box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: none;
     position: relative;
     z-index: 2;
+    pointer-events: none;
 }
 
 .img-border {
     position: absolute;
-    inset: 0;
+    inset: 12px;
     border: 3px solid var(--bg-second);
-    border-radius: 20px;
+    border-radius: 24px;
     z-index: 1;
-    transition: all 0.4s ease;
-    transform: translate(-15px, -15px);
+    transition: none;
+    transform: none;
+    box-shadow: 0 0 0 2px rgba(48, 148, 110, 0.15);
 }
 
-.home .home-img:hover img {
-    transform: translate(-10px, -10px);
-}
-
+.home .home-img:hover img,
 .home .home-img:hover .img-border {
-    transform: translate(-15px, -15px);
+    transform: none;
 }
 
 /* ============================================
