@@ -10,9 +10,11 @@
 // ========================================
 // LAST UPDATE DATE
 // ========================================
-// Modify this date when you update your website content.
+// Bump this date whenever you edit site content by hand (text, sections, CSS...).
 // Format: YYYY-MM-DD (e.g., "2026-02-17")
-// This will appear at the bottom of each section as "Last update: [date]"
+// The page shows whichever is newer between this date and data/stats.json's
+// automated "last_updated" field, so a weekly stats refresh is reflected too
+// even if you forget to bump this value.
 
 const WEBSITE_CONFIG = {
     lastUpdate: "2026-08-08"

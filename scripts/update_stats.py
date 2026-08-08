@@ -109,7 +109,7 @@ def get_semantic_scholar_stats(author_id=None):
         years_set = set()  # Track unique publication years
         
         print("\n📄 Publications breakdown:")
-        for i, paper in enumerate(papers[:25], 1):  # Limit to first 25 for display
+        for i, paper in enumerate(papers, 1):
             title = paper.get('title') or 'Unknown'
             title = str(title).strip()
             cited_count = paper.get('citationCount', 0)
@@ -161,7 +161,7 @@ def get_semantic_scholar_stats(author_id=None):
             "influential_citations": influential_citations_total,
             "years_active": years_active,
             "avg_citations": avg_citations,
-            "publications_details": publications_details[:10],  # Keep top 10
+            "publications_details": publications_details,
             "last_updated": datetime.now().strftime("%Y-%m-%d"),
             "source": "Semantic Scholar API",
             "author_id": author_id

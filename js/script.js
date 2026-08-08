@@ -173,11 +173,14 @@ fetch('data/stats.json')
             }
         }
         
-        // Update "Last update" dates from manual config (config.js) or stats.json
-        // Priority: config.js > stats.json (manual override)
-        const updateSource = (typeof WEBSITE_CONFIG !== 'undefined' && WEBSITE_CONFIG.lastUpdate) 
-            ? WEBSITE_CONFIG.lastUpdate 
-            : data.last_updated;
+        // Update "Last update" dates: use whichever is more recent between the
+        // manually maintained config.js date and stats.json's automated update date,
+        // so a weekly auto-refresh can't be shadowed by a stale manual date (or vice versa).
+        const manualUpdate = (typeof WEBSITE_CONFIG !== 'undefined') ? WEBSITE_CONFIG.lastUpdate : undefined;
+        const updateSource = [manualUpdate, data.last_updated]
+            .filter(Boolean)
+            .sort()
+            .pop();
         
         if (updateSource) {
             // Add time to avoid timezone conversion issues
@@ -206,13 +209,9 @@ fetch('data/stats.json')
             }
         }
         
-        console.log('📊 Stats loaded from Semantic Scholar (updated:', data.last_updated + ')');
-        if (data.github) {
-            console.log('🐙 GitHub stats loaded');
-        }
     })
-    .catch(error => {
-        console.log('ℹ️ Using default stats');
+    .catch(() => {
+        // stats.json unavailable — page falls back to its static default values
     });
 
 // Counter animation function
@@ -256,10 +255,10 @@ function animateValueDecimal(id, start, end, duration) {
 function normalizePaperText(value = "") {
     return String(value || "")
         .toLowerCase()
+        .replace(/[\u00b5\u03bc]/g, "mu") // micro sign / Greek mu -> "mu", to match LaTeX-style titles (e.g. "$\mu$Flow")
         .normalize("NFKD")
         .replace(/[\u0300-\u036f]/g, "")
-        .replace(/[^a-z0-9]+/g, " ")
-        .trim();
+        .replace(/[^a-z0-9]+/g, ""); // strip everything else, incl. whitespace, so word-boundary differences (e.g. "mu flow" vs "muflow") don't break matching
 }
 
 // Update paper citations from stats.json
@@ -295,8 +294,6 @@ function updatePaperCitations(publications) {
             }, 100);
         }
     });
-
-    console.log('✅ Paper citations updated from Semantic Scholar');
 }
 
 // Load and display featured projects
@@ -639,14 +636,12 @@ document.addEventListener('DOMContentLoaded', function() {
         activitiesNavLinks.forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
-                console.log('Navigation link clicked:', this.getAttribute('href')); // Debug log
-                
+
                 const targetHref = this.getAttribute('href');
                 const activitiesSection = document.getElementById('activities');
                 const targetElement = document.querySelector(targetHref);
-                
+
                 if (!activitiesSection || !targetElement) {
-                    console.error('Section or target element not found!');
                     return;
                 }
                 
@@ -723,42 +718,9 @@ window.toggleAbstract = function(abstractId) {
     }
 };
 /* ============================== Timeline Interactive Features ============================ */
-// Timeline filters
+// Timeline item expand/collapse (About/CV career timeline)
 document.addEventListener('DOMContentLoaded', () => {
-    const filterBtns = document.querySelectorAll('.timeline-filter-btn');
-    const timelineItems = document.querySelectorAll('.timeline-item');
-    
-    filterBtns.forEach(btn => {
-        btn.addEventListener('click', function() {
-            const filter = this.getAttribute('data-filter');
-            
-            // Update active button
-            filterBtns.forEach(b => b.classList.remove('active'));
-            this.classList.add('active');
-            
-            // Filter timeline items
-            timelineItems.forEach(item => {
-                const type = item.getAttribute('data-type');
-                
-                if (filter === 'all' || filter === type) {
-                    item.classList.remove('hidden');
-                    setTimeout(() => {
-                        item.style.opacity = '1';
-                        item.style.transform = 'translateY(0)';
-                    }, 50);
-                } else {
-                    item.style.opacity = '0';
-                    item.style.transform = 'translateY(-20px)';
-                    setTimeout(() => {
-                        item.classList.add('hidden');
-                    }, 300);
-                }
-            });
-        });
-    });
-    
-    // Timeline item expand/collapse
-    timelineItems.forEach(item => {
+    document.querySelectorAll('.timeline-item').forEach(item => {
         item.addEventListener('click', function(e) {
             e.stopPropagation();
             this.classList.toggle('expanded');

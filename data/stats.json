@@ -3,45 +3,50 @@
   "citations": 39,
   "projects": 5,
   "collaborations": 3,
-  "last_updated": "2026-08-03",
+  "last_updated": "2026-08-08",
   "h_index": 3,
   "source": "Semantic Scholar API",
   "avg_citations": 5.6,
-  "most_cited": 18,
+  "most_cited": 19,
   "publications_details": [
     {
-      "title": "$\\mu$Flow: Leveraging Average Images for Improving",
+      "title": "$\\mu$Flow: Leveraging Average Images for Improving Generalisation of Deepfake Faces Detectors",
       "citations": 0,
       "year": 2026
     },
     {
-      "title": "(DFF '25) 1st Deepfake Forensics Workshop: Detecti",
+      "title": "HexMIL: Hierarchical Attention MIL for Ante-Hoc Explainable Detection of AI-Manipulated CT Volumes",
+      "citations": 0,
+      "year": 2026
+    },
+    {
+      "title": "(DFF '25) 1st Deepfake Forensics Workshop: Detection, Attribution, Recognition, and Adversarial Challenges in the Era of AI-Generated Media",
       "citations": 0,
       "year": 2025
     },
     {
-      "title": "DeepFeatureX-SN: Generalization of deepfake detect",
-      "citations": 6,
+      "title": "DeepFeatureX-SN: Generalization of deepfake detection via contrastive learning",
+      "citations": 7,
       "year": 2025
     },
     {
-      "title": "WILD: a new in-the-Wild Image Linkage Dataset for ",
+      "title": "WILD: a new in-the-Wild Image Linkage Dataset for synthetic image attribution",
       "citations": 15,
       "year": 2025
     },
     {
-      "title": "Adversarial Attacks on Deepfake Detectors: A Chall",
-      "citations": 2,
+      "title": "Adversarial Attacks on Deepfake Detectors: A Challenge in the Era of AI-Generated Media (AADD-2025)",
+      "citations": 3,
       "year": 2025
     },
     {
-      "title": "DeepFeatureX Net: Deep Features eXtractors based N",
+      "title": "DeepFeatureX Net: Deep Features eXtractors based Network for discriminating synthetic from real images",
       "citations": 10,
       "year": 2024
     },
     {
-      "title": "On the Exploitation of DCT-Traces in the Generativ",
-      "citations": 18,
+      "title": "On the Exploitation of DCT-Traces in the Generative-AI Domain",
+      "citations": 19,
       "year": 2024
     }
   ],
