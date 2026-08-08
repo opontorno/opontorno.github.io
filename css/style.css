@@ -548,55 +548,10 @@ section[id] {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-/* Tooltip con stelle per skills */
-.about .about-content .skills .skill-tag::after {
-    content: attr(data-stars-display);
-    position: absolute;
-    bottom: 100%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-8px);
-    background: rgba(0, 0, 0, 0.9);
-    color: #fff;
-    padding: 8px 12px;
-    border-radius: 6px;
-    font-size: 16px;
-    white-space: nowrap;
-    opacity: 0;
-    pointer-events: none;
-    transition: all 0.3s ease;
-    z-index: 1000;
-    letter-spacing: 2px;
-}
-
+/* Nascondi il tooltip con stelle per le skill */
+.about .about-content .skills .skill-tag::after,
 .about .about-content .skills .skill-tag::before {
-    content: '';
-    position: absolute;
-    bottom: 100%;
-    left: 50%;
-    transform: translateX(-50%) translateY(4px);
-    border: 6px solid transparent;
-    border-top-color: rgba(0, 0, 0, 0.9);
-    opacity: 0;
-    pointer-events: none;
-    transition: all 0.3s ease;
-    z-index: 1000;
-}
-
-.about .about-content .skills .skill-tag:hover::after,
-.about .about-content .skills .skill-tag:hover::before {
-    opacity: 1;
-}
-
-/* Genera il contenuto delle stelle in base all'attributo data-stars */
-.about .about-content .skills .skill-tag[data-stars="1"]::after { content: "★☆☆☆☆"; }
-.about .about-content .skills .skill-tag[data-stars="2"]::after { content: "★★☆☆☆"; }
-.about .about-content .skills .skill-tag[data-stars="3"]::after { content: "★★★☆☆"; }
-.about .about-content .skills .skill-tag[data-stars="4"]::after { content: "★★★★☆"; }
-.about .about-content .skills .skill-tag[data-stars="5"]::after { content: "★★★★★"; }
-
-/* Colore stelle verde */
-.about .about-content .skills .skill-tag[data-stars]::after {
-    color: var(--bg-second);
+    display: none !important;
 }
 
 /* Stili vecchi mantenuti per compatibilità */
@@ -917,9 +872,63 @@ section[id] {
 }
 
 .about .about-content .timeline .timeline-text {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
     line-height: 1.7;
     font-size: 15px;
     color: var(--text-black-700);
+}
+
+.about .about-content .timeline .timeline-description {
+    font-weight: 600;
+    color: var(--text-black-900);
+}
+
+.about .about-content .timeline .timeline-keywords {
+    display: block;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    white-space: nowrap;
+    mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+}
+
+.about .about-content .timeline .timeline-keywords-track {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding-right: 14px;
+    animation: timeline-keywords-scroll 16s linear infinite;
+    will-change: transform;
+}
+
+.about .about-content .timeline .timeline-keyword {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--bg-second);
+    background: rgba(48, 148, 110, 0.1);
+    white-space: nowrap;
+}
+
+.about .about-content .timeline .timeline-keyword::before {
+    content: '';
+    margin-right: 0;
+}
+
+.about .about-content .timeline .timeline-item:hover .timeline-keywords-track {
+    animation-play-state: paused;
+}
+
+@keyframes timeline-keywords-scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
 }
 
 

@@ -1,3 +1,116 @@
+const nav = document.querySelector(".nav");
+const navLinks = nav ? Array.from(nav.querySelectorAll("a")) : [];
+const allSection = document.querySelectorAll(".section");
+
+const overlay = document.createElement("div");
+overlay.classList.add("overlay");
+document.body.appendChild(overlay);
+
+document.documentElement.style.scrollBehavior = 'smooth';
+
+function setActiveSection(hash) {
+    const targetHash = hash.startsWith('#') ? hash : `#${hash}`;
+    const targetSection = document.getElementById(targetHash.replace('#', ''));
+
+    if (!targetSection) return;
+
+    allSection.forEach(section => {
+        section.classList.remove('active', 'back-section');
+    });
+
+    targetSection.classList.add('active');
+
+    navLinks.forEach(link => {
+        const isActive = link.getAttribute('href') === targetHash;
+        link.classList.toggle('active', isActive);
+        if (isActive) {
+            link.setAttribute('aria-current', 'page');
+        } else {
+            link.removeAttribute('aria-current');
+        }
+    });
+
+    if (window.innerWidth < 1200) {
+        asideSectionTogglerBtn();
+    }
+
+    if (window.location.hash !== targetHash) {
+        history.replaceState(null, '', targetHash);
+    }
+}
+
+function setupNavigation() {
+    if (!nav) return;
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetHash = this.getAttribute('href');
+            if (!targetHash) return;
+            setActiveSection(targetHash);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    });
+
+    const logoLink = document.querySelector('.logo a');
+    if (logoLink) {
+        logoLink.addEventListener('click', function (event) {
+            event.preventDefault();
+            setActiveSection('#home');
+        });
+    }
+
+    const initialHash = window.location.hash || '#home';
+    setActiveSection(initialHash);
+}
+
+function setupTimelineKeywordsMarquee() {
+    document.querySelectorAll('.timeline-keywords').forEach(container => {
+        const track = container.querySelector('.timeline-keywords-track');
+        if (!track) return;
+
+        const hasDuplicate = container.querySelector('.timeline-keywords-track[aria-hidden="true"]');
+        if (hasDuplicate) return;
+
+        const duplicateTrack = track.cloneNode(true);
+        duplicateTrack.setAttribute('aria-hidden', 'true');
+        container.appendChild(duplicateTrack);
+    });
+}
+
+const navTogglerBtn = document.querySelector(".nav-toggler");
+const aside = document.querySelector(".aside");
+
+function asideSectionTogglerBtn() {
+    if (!aside || !navTogglerBtn) return;
+
+    aside.classList.toggle("open");
+    navTogglerBtn.classList.toggle("open");
+
+    const isOpen = aside.classList.contains("open");
+    navTogglerBtn.setAttribute("aria-expanded", isOpen);
+
+    if (isOpen) {
+        overlay.classList.add("active");
+    } else {
+        overlay.classList.remove("active");
+    }
+}
+
+if (navTogglerBtn) {
+    navTogglerBtn.addEventListener("click", () => {
+        asideSectionTogglerBtn();
+    });
+}
+
+overlay.addEventListener("click", () => {
+    if (!aside || !navTogglerBtn) return;
+    aside.classList.remove("open");
+    navTogglerBtn.classList.remove("open");
+    navTogglerBtn.setAttribute("aria-expanded", "false");
+    overlay.classList.remove("active");
+});
+
 /* ============================== Initialization Function ============================ */
 function initializeWebsite() {
 
@@ -412,105 +525,6 @@ function loadQuickInsights(projects, languages) {
     }
 }
 
-/* ============================== Aside ============================ */
-const nav = document.querySelector(".nav"),
-      navList = nav.querySelectorAll("li"),
-      totalNavList = navList.length,
-      allSection = document.querySelectorAll(".section"),
-      totalSection = allSection.length;
-
-// Add overlay to body
-const overlay = document.createElement("div");
-overlay.classList.add("overlay");
-document.body.appendChild(overlay);
-
-// Smooth scroll behavior
-document.documentElement.style.scrollBehavior = 'smooth';
-
-for (let i = 0; i < totalNavList; i++) {
-    const a = navList[i].querySelector("a");
-    a.addEventListener("click", function (e) {
-        e.preventDefault();
-        removeBackSection();
-        for (let j = 0; j < totalNavList; j++) {
-            if (navList[j].querySelector("a").classList.contains("active")) {
-                addBackSection(j);
-            }
-            navList[j].querySelector("a").classList.remove("active");
-            navList[j].querySelector("a").removeAttribute("aria-current");
-        }
-        this.classList.add("active");
-        this.setAttribute("aria-current", "page");
-        showSection(this);
-        if (window.innerWidth < 1200) {
-            asideSectionTogglerBtn();
-        }
-    });
-}
-
-document.querySelector(".logo a").addEventListener("click", function (event) {
-    event.preventDefault();
-    removeBackSection();
-    showSection(this);
-    updateNav(this);
-});
-
-function removeBackSection() {
-    for (let i = 0; i < totalSection; i++) {
-        allSection[i].classList.remove("back-section");
-    }
-}
-
-function addBackSection(num) {
-    allSection[num].classList.add("back-section");
-}
-
-function showSection(element) {
-    for (let i = 0; i < totalSection; i++) {
-        allSection[i].classList.remove("active");
-    }
-    const target = element.getAttribute("href").split("#")[1];
-    document.querySelector("#" + target).classList.add("active");
-}
-
-function updateNav(element) {
-    for (let i = 0; i < totalNavList; i++) {
-        navList[i].querySelector("a").classList.remove("active");
-        const target = element.getAttribute("href").split("#")[1];
-        if (target === navList[i].querySelector("a").getAttribute("href").split("#")[1]) {
-            navList[i].querySelector("a").classList.add("active");
-        }
-    }
-}
-
-const navTogglerBtn = document.querySelector(".nav-toggler"),
-      aside = document.querySelector(".aside");
-
-navTogglerBtn.addEventListener("click", () => {
-    asideSectionTogglerBtn();
-});
-
-overlay.addEventListener("click", () => {
-    aside.classList.remove("open");
-    navTogglerBtn.classList.remove("open");
-    navTogglerBtn.setAttribute("aria-expanded", "false");
-    overlay.classList.remove("active");
-});
-
-function asideSectionTogglerBtn() {
-    aside.classList.toggle("open");
-    navTogglerBtn.classList.toggle("open");
-    
-    const isOpen = aside.classList.contains("open");
-    navTogglerBtn.setAttribute("aria-expanded", isOpen);
-
-    if (isOpen) {
-        overlay.classList.add("active");
-    } else {
-        overlay.classList.remove("active");
-    }
-}
-
 /* ========================== Dark/Light Mode Toggle =========================== */
 const dayNight = document.querySelector(".day-night");
 let themeSwitchTimeout;
@@ -614,6 +628,8 @@ if (scrollToTopBtn) {
 /* ============================== Call Initialization ============================ */
 // Execute when DOM is fully loaded
 document.addEventListener('DOMContentLoaded', function() {
+    setupNavigation();
+    setupTimelineKeywordsMarquee();
     initializeWebsite();
     
     // Handle Activities internal navigation
@@ -634,39 +650,15 @@ document.addEventListener('DOMContentLoaded', function() {
                     return;
                 }
                 
-                // Check if activities section is already active
                 const alreadyActive = activitiesSection.classList.contains('active');
-                
-                if (!alreadyActive) {
-                    // Activate activities section first
-                    document.querySelectorAll('.section').forEach(section => {
-                        section.classList.remove('active');
-                        section.classList.remove('back-section');
-                    });
-                    activitiesSection.classList.add('active');
-                    
-                    // Update nav
-                    document.querySelectorAll('.nav a').forEach(navLink => {
-                        navLink.classList.remove('active');
-                        navLink.removeAttribute('aria-current');
-                    });
-                    const activitiesNavLink = document.querySelector('.nav a[href="#activities"]');
-                    if (activitiesNavLink) {
-                        activitiesNavLink.classList.add('active');
-                        activitiesNavLink.setAttribute('aria-current', 'page');
-                    }
-                }
+                setActiveSection('#activities');
                 
                 // Scroll to target element within the section
-                // Use a small delay to ensure section is rendered if it was just activated
                 const delay = alreadyActive ? 0 : 200;
                 setTimeout(() => {
                     const targetPosition = targetElement.offsetTop;
-                    console.log('Scrolling to position:', targetPosition); // Debug log
-                    
-                    // Scroll the section container to the target element
                     activitiesSection.scrollTo({
-                        top: targetPosition - 100, // 100px offset from top
+                        top: targetPosition - 100,
                         behavior: 'smooth'
                     });
                 }, delay);
@@ -684,26 +676,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const targetSection = document.getElementById(targetId);
                 
                 if (targetSection) {
-                    // Hide all sections
-                    document.querySelectorAll('.section').forEach(section => {
-                        section.classList.remove('active');
-                        section.classList.remove('back-section');
-                    });
-                    
-                    // Show target section
-                    targetSection.classList.add('active');
-                    
-                    // Update navigation
-                    document.querySelectorAll('.nav a').forEach(navLink => {
-                        navLink.classList.remove('active');
-                        navLink.removeAttribute('aria-current');
-                    });
-                    
-                    const navLink = document.querySelector(`.nav a[href="#${targetId}"]`);
-                    if (navLink) {
-                        navLink.classList.add('active');
-                        navLink.setAttribute('aria-current', 'page');
-                    }
+                    setActiveSection(`#${targetId}`);
                     
                     // Close mobile menu if open
                     if (window.innerWidth < 1200) {

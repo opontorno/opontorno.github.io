@@ -15,5 +15,5 @@
 // This will appear at the bottom of each section as "Last update: [date]"
 
 const WEBSITE_CONFIG = {
-    lastUpdate: "2026-04-14"
+    lastUpdate: "2026-08-08"
 };
