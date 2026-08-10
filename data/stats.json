@@ -3,14 +3,14 @@
   "citations": 39,
   "projects": 5,
   "collaborations": 3,
-  "last_updated": "2026-08-08",
+  "last_updated": "2026-08-10",
   "h_index": 3,
   "source": "Semantic Scholar API",
   "avg_citations": 5.6,
   "most_cited": 19,
   "publications_details": [
     {
-      "title": "$\\mu$Flow: Leveraging Average Images for Improving Generalisation of Deepfake Faces Detectors",
+      "title": "\u03bcFlow: Leveraging Average Images for Improving Generalisation of Deepfake Faces Detectors",
       "citations": 0,
       "year": 2026
     },
@@ -51,18 +51,18 @@
     }
   ],
   "github": {
-    "public_repos": 13,
-    "total_stars": 22,
+    "public_repos": 14,
+    "total_stars": 23,
     "followers": 24,
     "total_forks": 9,
     "top_languages": [
       {
         "name": "Jupyter Notebook",
-        "percentage": 98.1
+        "percentage": 96.5
       },
       {
         "name": "Python",
-        "percentage": 1.0
+        "percentage": 2.6
       },
       {
         "name": "CSS",
@@ -70,7 +70,7 @@
       },
       {
         "name": "HTML",
-        "percentage": 0.2
+        "percentage": 0.3
       },
       {
         "name": "NetLogo",
@@ -132,7 +132,7 @@
         "forks": 0,
         "language": "CSS",
         "topics": [],
-        "updated_at": "2026-07-27T04:14:59Z"
+        "updated_at": "2026-08-08T18:48:04Z"
       },
       {
         "name": "classifying-butterfly-species-in-MATLAB",
@@ -166,7 +166,7 @@
         "updated_at": "2025-11-27T18:16:21Z"
       }
     ],
-    "last_updated": "2026-08-03",
+    "last_updated": "2026-08-10",
     "source": "GitHub API"
   },
   "author_id": "2282534052",
