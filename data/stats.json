@@ -3,7 +3,7 @@
   "citations": 39,
   "projects": 5,
   "collaborations": 3,
-  "last_updated": "2026-08-17",
+  "last_updated": "2026-08-24",
   "h_index": 3,
   "source": "Semantic Scholar API",
   "avg_citations": 4.9,
@@ -132,7 +132,7 @@
         "forks": 0,
         "language": "CSS",
         "topics": [],
-        "updated_at": "2026-08-10T04:23:01Z"
+        "updated_at": "2026-08-17T03:41:27Z"
       },
       {
         "name": "classifying-butterfly-species-in-MATLAB",
@@ -166,7 +166,7 @@
         "updated_at": "2025-11-27T18:16:21Z"
       }
     ],
-    "last_updated": "2026-08-17",
+    "last_updated": "2026-08-24",
     "source": "GitHub API"
   },
   "author_id": "2282534052",
