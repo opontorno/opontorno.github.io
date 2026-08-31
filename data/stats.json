@@ -3,7 +3,7 @@
   "citations": 39,
   "projects": 5,
   "collaborations": 3,
-  "last_updated": "2026-08-24",
+  "last_updated": "2026-08-31",
   "h_index": 3,
   "source": "Semantic Scholar API",
   "avg_citations": 4.9,
@@ -52,7 +52,7 @@
   ],
   "github": {
     "public_repos": 14,
-    "total_stars": 23,
+    "total_stars": 24,
     "followers": 24,
     "total_forks": 9,
     "top_languages": [
@@ -125,6 +125,22 @@
         "updated_at": "2025-11-03T12:02:52Z"
       },
       {
+        "name": "MuFlow",
+        "description": "[ECCV26] \u00b5Flow \u2014 Leveraging Average Images for Improving Generalisation of Deepfake Faces Detectors",
+        "url": "https://github.com/opontorno/MuFlow",
+        "stars": 2,
+        "forks": 0,
+        "language": "Python",
+        "topics": [
+          "anomaly-detection",
+          "deep-learning",
+          "deepfakes-detection",
+          "normalizing-flows",
+          "one-class-learning"
+        ],
+        "updated_at": "2026-08-24T21:49:03Z"
+      },
+      {
         "name": "opontorno.github.io",
         "description": null,
         "url": "https://github.com/opontorno/opontorno.github.io",
@@ -132,7 +148,7 @@
         "forks": 0,
         "language": "CSS",
         "topics": [],
-        "updated_at": "2026-08-17T03:41:27Z"
+        "updated_at": "2026-08-24T03:46:38Z"
       },
       {
         "name": "classifying-butterfly-species-in-MATLAB",
@@ -148,25 +164,9 @@
           "matlab"
         ],
         "updated_at": "2023-07-08T10:50:51Z"
-      },
-      {
-        "name": "DeepFeatureX-SN",
-        "description": "Official implementation of the paper ``DeepFeatureX-SN: Generalization of deepfake detection via contrastive learning'', accepted for publication at the Springer journal 'Multimedia Tools and Application'.",
-        "url": "https://github.com/opontorno/DeepFeatureX-SN",
-        "stars": 1,
-        "forks": 2,
-        "language": "Python",
-        "topics": [
-          "computer-vision",
-          "deep-learning",
-          "deepfakes",
-          "machine-learning",
-          "multimedia-forensics"
-        ],
-        "updated_at": "2025-11-27T18:16:21Z"
       }
     ],
-    "last_updated": "2026-08-24",
+    "last_updated": "2026-08-31",
     "source": "GitHub API"
   },
   "author_id": "2282534052",
