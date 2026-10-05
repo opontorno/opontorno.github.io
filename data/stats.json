@@ -1,12 +1,12 @@
 {
   "publications": 8,
-  "citations": 39,
+  "citations": 56,
   "projects": 5,
   "collaborations": 3,
-  "last_updated": "2026-09-28",
-  "h_index": 3,
+  "last_updated": "2026-10-05",
+  "h_index": 4,
   "source": "Semantic Scholar API",
-  "avg_citations": 4.9,
+  "avg_citations": 7.0,
   "most_cited": 20,
   "publications_details": [
     {
@@ -52,7 +52,7 @@
   ],
   "github": {
     "public_repos": 14,
-    "total_stars": 24,
+    "total_stars": 25,
     "followers": 22,
     "total_forks": 9,
     "top_languages": [
@@ -110,6 +110,22 @@
         "updated_at": "2025-11-27T18:20:17Z"
       },
       {
+        "name": "MuFlow",
+        "description": "[ECCV26] \u00b5Flow \u2014 Leveraging Average Images for Improving Generalisation of Deepfake Faces Detectors",
+        "url": "https://github.com/opontorno/MuFlow",
+        "stars": 4,
+        "forks": 0,
+        "language": "Python",
+        "topics": [
+          "anomaly-detection",
+          "deep-learning",
+          "deepfakes-detection",
+          "normalizing-flows",
+          "one-class-learning"
+        ],
+        "updated_at": "2026-10-01T16:22:58Z"
+      },
+      {
         "name": "Traffic-lights-recognition",
         "description": "Final project for the postgraduate course 'School in AI: Deep learning, Vision and Language for industry', held in the year 2022.The basic idea of this project  is to build a model emulating the behaviour of an autonomous driving car in the management of the action to be taken upon recognition of a traffic light.",
         "url": "https://github.com/opontorno/Traffic-lights-recognition",
@@ -125,22 +141,6 @@
         "updated_at": "2025-11-03T12:02:52Z"
       },
       {
-        "name": "MuFlow",
-        "description": "[ECCV26] \u00b5Flow \u2014 Leveraging Average Images for Improving Generalisation of Deepfake Faces Detectors",
-        "url": "https://github.com/opontorno/MuFlow",
-        "stars": 3,
-        "forks": 0,
-        "language": "Python",
-        "topics": [
-          "anomaly-detection",
-          "deep-learning",
-          "deepfakes-detection",
-          "normalizing-flows",
-          "one-class-learning"
-        ],
-        "updated_at": "2026-09-21T10:42:03Z"
-      },
-      {
         "name": "opontorno.github.io",
         "description": null,
         "url": "https://github.com/opontorno/opontorno.github.io",
@@ -148,7 +148,7 @@
         "forks": 0,
         "language": "CSS",
         "topics": [],
-        "updated_at": "2026-09-21T08:23:21Z"
+        "updated_at": "2026-09-28T09:09:37Z"
       },
       {
         "name": "classifying-butterfly-species-in-MATLAB",
@@ -166,7 +166,7 @@
         "updated_at": "2023-07-08T10:50:51Z"
       }
     ],
-    "last_updated": "2026-09-28",
+    "last_updated": "2026-10-05",
     "source": "GitHub API"
   },
   "author_id": "2282534052",
