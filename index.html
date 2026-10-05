@@ -856,31 +856,49 @@
           
           <!-- Publication Filters -->
           <div class="publication-filters">
-            <button class="filter-btn active" data-filter="all" aria-pressed="true">All</button>
-            <button class="filter-btn" data-filter="2026" aria-pressed="false">2026</button>
-            <button class="filter-btn" data-filter="2025" aria-pressed="false">2025</button>
-            <button class="filter-btn" data-filter="2024" aria-pressed="false">2024</button>
-            <button class="filter-btn" data-filter="journal" aria-pressed="false">Journals</button>
-            <button class="filter-btn" data-filter="conference" aria-pressed="false">Conferences</button>
+            <div class="publication-filter-group">
+              <button class="filter-btn filter-dropdown year-filter" type="button" aria-expanded="false" aria-haspopup="true">
+                Year <i class="fas fa-chevron-down" aria-hidden="true"></i>
+              </button>
+              <div class="filter-menu" role="menu">
+                <button class="filter-option" type="button" data-filter-group="year" data-filter="all">All years</button>
+                <button class="filter-option" type="button" data-filter-group="year" data-filter="2026">2026</button>
+                <button class="filter-option" type="button" data-filter-group="year" data-filter="2025">2025</button>
+                <button class="filter-option" type="button" data-filter-group="year" data-filter="2024">2024</button>
+              </div>
+            </div>
+            <div class="publication-filter-group">
+              <button class="filter-btn filter-dropdown type-filter" type="button" aria-expanded="false" aria-haspopup="true">
+                Type <i class="fas fa-chevron-down" aria-hidden="true"></i>
+              </button>
+              <div class="filter-menu" role="menu">
+                <button class="filter-option" type="button" data-filter-group="type" data-filter="all">All types</button>
+                <button class="filter-option" type="button" data-filter-group="type" data-filter="conference">Conference</button>
+                <button class="filter-option" type="button" data-filter-group="type" data-filter="journal">Journal</button>
+              </div>
+            </div>
           </div>
+          <p id="publication-count-note" class="publication-count-note" aria-live="polite"></p>
           
           <div class="src_timeline-container">
             <div class="src_timeline">
 
-              <!-- BEGIN ITEM
+              <!-- BEGIN ITEM TEMPLATE
               <div class="src_timeline-item" data-year="++YEAR++" data-type="+++TYPE+++" data-paper-key="+++PAPER_KEY+++">
                 <img src="+++IMAGE_LINK+++" alt="Preview of +++TITLE+++" class="src_timeline-img" loading="lazy">
                 <div class="src_timeline-content">
-                  <div class="src_timeline-date">++YEAR++</div>
-                  <h3 class="src_timeline-title">
-                    <a href="+++PUBLISHER_LINK+++" class="external-link" target="_blank" rel="noopener noreferrer">
-                      +++TITLE+++
-                    </a>
+                  <div class="publication-meta">
+                    <div class="src_timeline-date">++YEAR++</div>
+                    <a href="VENUE_LINK" class="src_timeline-journal" target="_blank" rel="noopener noreferrer">+++JOURNAL+++</a>
                     <span class="publication-type-badge badge-conference">+++CONFERENCE+++</span>
                     <span class="citation-badge"><i class="fas fa-quote-right"></i> 0 citations</span>
+                  </div>
+                  <h3 class="src_timeline-title">
+                    <span class="external-link">
+                      +++TITLE+++
+                    </span>
                   </h3>
-                  <div class="src_timeline-authors">+++AUTORS+++</div>
-                  <div class="src_timeline-journal">+++JOURNAL+++</div>
+                  <div class="src_timeline-authors">+++AUTHORS+++</div>
                   
                   <div class="publication-buttons">
                     <button class="pub-btn abstract-btn" onclick="toggleAbstract('abstract-3')">
@@ -888,18 +906,32 @@
                       Abstract
                       <i class="fas fa-chevron-down"></i>
                     </button>
-                    <a href="+++ARXIV_LINK+++" class="pub-btn arxiv-btn" target="_blank" rel="noopener noreferrer">
-                      <span class="arxiv-icon">ar</span>
-                      ArXiv
-                    </a>
-                    <a href="+++PUBLISHER_LINK+++" class="pub-btn publisher-btn" target="_blank" rel="noopener noreferrer">
-                      <i class="fas fa-external-link-alt"></i>
-                      +++PUBLISHER+++
-                    </a>
+                    <div class="paper-menu-group">
+                      <button class="pub-btn paper-btn" type="button" aria-expanded="false" aria-haspopup="true">
+                        <i class="fas fa-book-open"></i> Paper <i class="fas fa-chevron-down"></i>
+                      </button>
+                      <div class="paper-menu">
+                        <a href="+++ARXIV_LINK+++" class="paper-option" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-lines"></i> ArXiv</a>
+                        <a href="+++PUBLISHER_LINK+++" class="paper-option" target="_blank" rel="noopener noreferrer"><i class="fas fa-link"></i> DOI</a>
+                      </div>
+                    </div>
                     <a href="+++PROJECT_PAGE_LINK+++" class="pub-btn project-page-btn is-placeholder" aria-disabled="true" tabindex="-1">
                       <i class="fas fa-diagram-project"></i>
                       Project Page
                     </a>
+                    <button class="pub-btn cite-btn" onclick="toggleCitation('citation-3')">
+                      <i class="fas fa-quote-left"></i> Cite
+                    </button>
+                  </div>
+                  <div class="citation-content" id="citation-3">
+                    <pre class="citation-code"><code>
+@article{author2025,
+  title = {+++TITLE+++},
+  author = {+++AUTHORS+++},
+  journal = {+++JOURNAL+++},
+  year = {++YEAR++}
+}
+                  </code></pre>
                   </div>
                   <div class="abstract-content" id="abstract-3">
                     <div class="abstract-text">
@@ -914,16 +946,18 @@
               <div class="src_timeline-item" data-year="2026" data-type="conference" data-paper-key="hexmil">
                 <img src="images/paper_previews/acmmm26_hexmil.png" alt="Preview of hexmil" class="src_timeline-img" loading="lazy">
                 <div class="src_timeline-content">
-                  <div class="src_timeline-date">2026</div>
-                  <h3 class="src_timeline-title">
-                    <a href="" class="external-link" target="_blank" rel="noopener noreferrer">
-                      HexMIL: Hierarchical Attention MIL for Ante-Hoc Explainable Detection of AI-Manipulated CT Volumes
-                    </a>
+                  <div class="publication-meta">
+                    <div class="src_timeline-date">2026</div>
+                    <a href="https://2026.acmmm.org/" class="src_timeline-journal" target="_blank" rel="noopener noreferrer">34th ACM International Conference on Multimedia</a>
                     <span class="publication-type-badge badge-conference">Conference</span>
                     <span class="citation-badge"><i class="fas fa-quote-right"></i> 0 citations</span>
+                  </div>
+                  <h3 class="src_timeline-title">
+                    <span class="external-link">
+                      HexMIL: Hierarchical Attention MIL for Ante-Hoc Explainable Detection of AI-Manipulated CT Volumes
+                    </span>
                   </h3>
                   <div class="src_timeline-authors">O. Pontorno, L. Guarnera, Z. Akhtar, S. Battiato</div>
-                  <div class="src_timeline-journal">34th ACM International Conference on Multimedia</div>
                   
                   <div class="publication-buttons">
                     <button class="pub-btn abstract-btn" onclick="toggleAbstract('abstract-6')">
@@ -931,30 +965,33 @@
                       Abstract
                       <i class="fas fa-chevron-down"></i>
                     </button>
-                    <a href="https://opontorno.github.io/hexmil/" class="pub-btn project-page-btn is-placeholder" aria-disabled="true" tabindex="-1">
+                    <div class="paper-menu-group">
+                      <button class="pub-btn paper-btn" type="button" aria-expanded="false" aria-haspopup="true">
+                        <i class="fas fa-book-open"></i> Paper <i class="fas fa-chevron-down"></i>
+                      </button>
+                      <div class="paper-menu">
+                        <a href="https://arxiv.org/pdf/2608.05101" class="paper-option" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-lines"></i> ArXiv</a>
+                        <a href="https://doi.org/10.1145/3767308.3836040" class="paper-option" target="_blank" rel="noopener noreferrer"><i class="fas fa-link"></i> DOI</a>
+                      </div>
+                    </div>
+                    <a href="https://opontorno.github.io/hexmil/" class="pub-btn project-page-btn" target="_blank" rel="noopener noreferrer">
                       <i class="fas fa-diagram-project"></i>
                       Project Page
                     </a>
+                    <button class="pub-btn cite-btn" onclick="toggleCitation('citation-6')">
+                      <i class="fas fa-quote-left"></i> Cite
+                    </button>
                   </div>
-                  <!-- TEMPLATE: Add a new publication card
-                  <div class="src_timeline-item" data-year="0000" data-type="journal|conference" data-paper-key="paper-key">
-                    <img src="images/paper_previews/preview.png" alt="Preview of Paper Title" class="src_timeline-img" loading="lazy">
-                    <div class="src_timeline-content">
-                      <div class="src_timeline-date">0000</div>
-                      <h3 class="src_timeline-title">
-                        <a href="PUBLISHER_LINK" class="external-link" target="_blank" rel="noopener noreferrer">Paper title</a>
-                        <span class="publication-type-badge badge-journal">Journal</span>
-                        <span class="citation-badge"><i class="fas fa-quote-right"></i> 0 citations</span>
-                      </h3>
-                      <div class="src_timeline-authors">Author 1, Author 2</div>
-                      <div class="src_timeline-journal">Venue details</div>
-                      <div class="publication-buttons">
-                        <button class="pub-btn abstract-btn" onclick="toggleAbstract('abstract-x')"><i class="fas fa-file-text"></i> Abstract <i class="fas fa-chevron-down"></i></button>
-                        <a href="#" class="pub-btn project-page-btn is-placeholder" aria-disabled="true" tabindex="-1"><i class="fas fa-diagram-project"></i> Project Page</a>
-                      </div>
-                    </div>
+                  <div class="citation-content" id="citation-6">
+                    <pre class="citation-code"><code>
+@inproceedings{pontorno2026hexmil,
+  title     = {{HexMIL: Hierarchical Attention MIL for Ante-Hoc Explainable Detection of AI-Manipulated CT Volumes}},
+  author    = {Pontorno, Orazio and Guarnera, Luca and Akhtar, Zahid and Battiato, Sebastiano},
+  booktitle = {Proceedings of the 34th ACM International Conference on Multimedia},
+  year      = {2026},
+}
+                    </code></pre>
                   </div>
-                  -->
                   <div class="abstract-content" id="abstract-6">
                     <div class="abstract-text">
                       The emergence of medical deepfakes, i.e., medical images manipulated by deep generative models, poses a significant threat to clinical 
@@ -978,16 +1015,18 @@
               <div class="src_timeline-item" data-year="2026" data-type="conference" data-paper-key="muflow">
                 <img src="images/paper_previews/eccv26_µFlow.png" alt="Preview of µFlow" class="src_timeline-img" loading="lazy">
                 <div class="src_timeline-content">
-                  <div class="src_timeline-date">2026</div>
-                  <h3 class="src_timeline-title">
-                    <a href="+++PUBLISHER_LINK+++" class="external-link" target="_blank" rel="noopener noreferrer">
-                      µFlow: Leveraging Average Images for Improving Generalisation of Deepfake Faces Detectors
-                    </a>
+                  <div class="publication-meta">
+                    <div class="src_timeline-date">2026</div>
+                    <a href="https://eccv.ecva.net/Conferences/2026" class="src_timeline-journal" target="_blank" rel="noopener noreferrer">European Conference on Computer Vision (ECCV)</a>
                     <span class="publication-type-badge badge-conference">Conference</span>
                     <span class="citation-badge"><i class="fas fa-quote-right"></i> 0 citations</span>
+                  </div>
+                  <h3 class="src_timeline-title">
+                    <span class="external-link">
+                      µFlow: Leveraging Average Images for Improving Generalisation of Deepfake Faces Detectors
+                    </span>
                   </h3>
                   <div class="src_timeline-authors">O. Pontorno*, M.Litrico*, L. Guarnera, V. Giuffrida, S. Battiato</div>
-                  <div class="src_timeline-journal">European Conference on Computer Vision 2026</div>
                   
                   <div class="publication-buttons">
                     <button class="pub-btn abstract-btn" onclick="toggleAbstract('abstract-5')">
@@ -995,10 +1034,35 @@
                       Abstract
                       <i class="fas fa-chevron-down"></i>
                     </button>
-                    <a href="https://opontorno.github.io/MuFlow/" class="pub-btn project-page-btn is-placeholder" aria-disabled="true" tabindex="-1">
+                    <div class="paper-menu-group">
+                      <button class="pub-btn paper-btn" type="button" aria-expanded="false" aria-haspopup="true">
+                        <i class="fas fa-book-open"></i> Paper <i class="fas fa-chevron-down"></i>
+                      </button>
+                      <div class="paper-menu">
+                        <a href="https://arxiv.org/pdf/2606.30528" class="paper-option" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-lines"></i> ArXiv</a>
+                        <a href="https://doi.org/10.1007/978-3-032-37422-6_20" class="paper-option" target="_blank" rel="noopener noreferrer"><i class="fas fa-link"></i> DOI</a>
+                      </div>
+                    </div>
+                    <a href="https://opontorno.github.io/MuFlow/" class="pub-btn project-page-btn" target="_blank" rel="noopener noreferrer">
                       <i class="fas fa-diagram-project"></i>
                       Project Page
                     </a>
+                    <button class="pub-btn cite-btn" onclick="toggleCitation('citation-5')">
+                      <i class="fas fa-quote-left"></i>
+                      Cite
+                    </button>
+                  </div>
+                  <div class="citation-content" id="citation-5">
+                    <pre class="citation-code"><code>
+@inproceedings{pontorno2026mu,
+  title={$\mu$ Flow: Leveraging Average Images for Improving Generalisation of Deepfake Faces Detectors},
+  author={Pontorno, Orazio and Litrico, Mattia and Guarnera, Luca and Giuffrida, Mario Valerio and Battiato, Sebastiano},
+  booktitle={European Conference on Computer Vision},
+  pages={351--370},
+  year={2026},
+  organization={Springer}
+}
+                    </code></pre>
                   </div>
                   <div class="abstract-content" id="abstract-5">
                     <div class="abstract-text">
@@ -1014,16 +1078,18 @@
               <div class="src_timeline-item" data-year="2025" data-type="journal" data-paper-key="deepfeaturex-sn">
                 <img src="images/paper_previews/MTA_preview.png" alt="Preview of DeepFeatureX-SN paper" class="src_timeline-img" loading="lazy">
                 <div class="src_timeline-content">
-                  <div class="src_timeline-date">2025</div>
-                  <h3 class="src_timeline-title">
-                    <a href="https://doi.org/10.1007/s11042-025-21060-1" class="external-link" target="_blank" rel="noopener noreferrer">
-                      DeepFeatureX-SN: Generalization of deepfake detection via contrastive learning
-                    </a>
+                  <div class="publication-meta">
+                    <div class="src_timeline-date">2025</div>
+                    <a href="https://link.springer.com/journal/11042" class="src_timeline-journal" target="_blank" rel="noopener noreferrer">Multimedia Tools and Applications</a>
                     <span class="publication-type-badge badge-journal">Journal</span>
                     <span class="citation-badge"><i class="fas fa-quote-right"></i> 0 citations</span>
+                  </div>
+                  <h3 class="src_timeline-title">
+                    <span class="external-link">
+                      DeepFeatureX-SN: Generalization of deepfake detection via contrastive learning
+                    </span>
                   </h3>
                   <div class="src_timeline-authors">Orazio Pontorno, Luca Guarnera, Sebastiano Battiato</div>
-                  <div class="src_timeline-journal">Multimedia Tools and Applications (2025): 1-20.</div>
                   
                   <div class="publication-buttons">
                     <button class="pub-btn abstract-btn" onclick="toggleAbstract('abstract-4')">
@@ -1031,14 +1097,35 @@
                       Abstract
                       <i class="fas fa-chevron-down"></i>
                     </button>
-                    <a href="https://doi.org/10.1007/s11042-025-21060-1" class="pub-btn publisher-btn" target="_blank" rel="noopener noreferrer">
-                      <i class="fas fa-external-link-alt"></i>
-                      Springer
-                    </a>
+                    <div class="paper-menu-group">
+                      <button class="pub-btn paper-btn" type="button" aria-expanded="false" aria-haspopup="true">
+                        <i class="fas fa-book-open"></i> Paper <i class="fas fa-chevron-down"></i>
+                      </button>
+                      <div class="paper-menu">
+                        <a href="https://doi.org/10.1007/s11042-025-21060-1" class="paper-option" target="_blank" rel="noopener noreferrer"><i class="fas fa-link"></i> DOI</a>
+                      </div>
+                    </div>
                     <a href="https://github.com/mfs-iplab/DeepFeatureX-SN" class="pub-btn github-btn">
                       <i class="fab fa-github"></i>
                       GitHub
                     </a>
+                    <button class="pub-btn cite-btn" onclick="toggleCitation('citation-4')">
+                      <i class="fas fa-quote-left"></i> Cite
+                    </button>
+                  </div>
+                  <div class="citation-content" id="citation-4">
+                    <pre class="citation-code"><code>
+@article{pontorno2025deepfeaturex,
+  title={DeepFeatureX-SN: Generalization of deepfake detection via contrastive learning},
+  author={Pontorno, Orazio and Guarnera, Luca and Battiato, Sebastiano},
+  journal={Multimedia Tools and Applications},
+  volume={84},
+  number={39},
+  pages={47721--47740},
+  year={2025},
+  publisher={Springer}
+}
+                    </code></pre>
                   </div>
                   <div class="abstract-content" id="abstract-4">
                     <div class="abstract-text">
@@ -1068,16 +1155,18 @@
               <div class="src_timeline-item" data-year="2025" data-type="conference" data-paper-key="wild">
                 <img src="images/paper_previews/WILD.png" alt="Preview of WILD dataset paper" class="src_timeline-img" loading="lazy">
                 <div class="src_timeline-content">
-                  <div class="src_timeline-date">2025</div>
-                  <h3 class="src_timeline-title">
-                    <a href="" class="external-link" target="_blank" rel="noopener noreferrer">
-                      WILD: a new in-the-Wild Image Linkage Dataset for synthetic image attribution
-                    </a>
+                  <div class="publication-meta">
+                    <div class="src_timeline-date">2025</div>
+                    <a href="https://2025.ijcnn.org/" class="src_timeline-journal" target="_blank" rel="noopener noreferrer">International Joint Conference on Neural Networks (IJCNN)</a>
                     <span class="publication-type-badge badge-conference">Conference</span>
                     <span class="citation-badge"><i class="fas fa-quote-right"></i> 8 citations</span>
+                  </div>
+                  <h3 class="src_timeline-title">
+                    <span class="external-link">
+                      WILD: a new in-the-Wild Image Linkage Dataset for synthetic image attribution
+                    </span>
                   </h3>
-                  <div class="src_timeline-authors">Bongini P., Mandelli S., Montibeller A., et al.</div>
-                  <div class="src_timeline-journal">2025 International Joint Conference on Neural Networks (IJCNN)</div>
+                  <div class="src_timeline-authors">Bongini P., Mandelli S., Montibeller A., ..., Pontorno O., et al.</div>
                   
                   <div class="publication-buttons">
                     <button class="pub-btn abstract-btn" onclick="toggleAbstract('abstract-3')">
@@ -1085,14 +1174,30 @@
                       Abstract
                       <i class="fas fa-chevron-down"></i>
                     </button>
-                    <a href="https://arxiv.org/abs/2504.19595" class="pub-btn arxiv-btn" target="_blank" rel="noopener noreferrer">
-                      <span class="arxiv-icon">ar</span>
-                      ArXiv
-                    </a>
-                    <a href="https://doi.org/10.1109/IJCNN64981.2025.11227289" class="pub-btn publisher-btn" target="_blank" rel="noopener noreferrer">
-                      <i class="fas fa-external-link-alt"></i>
-                      IEEE
-                    </a>
+                    <div class="paper-menu-group">
+                      <button class="pub-btn paper-btn" type="button" aria-expanded="false" aria-haspopup="true">
+                        <i class="fas fa-book-open"></i> Paper <i class="fas fa-chevron-down"></i>
+                      </button>
+                      <div class="paper-menu">
+                        <a href="https://arxiv.org/abs/2504.19595" class="paper-option" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-lines"></i> ArXiv</a>
+                        <a href="https://doi.org/10.1109/IJCNN64981.2025.11227289" class="paper-option" target="_blank" rel="noopener noreferrer"><i class="fas fa-link"></i> DOI</a>
+                      </div>
+                    </div>
+                    <button class="pub-btn cite-btn" onclick="toggleCitation('citation-2')">
+                      <i class="fas fa-quote-left"></i> Cite
+                    </button>
+                  </div>
+                  <div class="citation-content" id="citation-2">
+                    <pre class="citation-code"><code>
+@inproceedings{bongini2025wild,
+  title={WILD: a new in-the-Wild Image Linkage Dataset for synthetic image attribution},
+  author={Bongini, Pietro and Mandelli, Sara and Montibeller, Andrea and Casu, Mirko and Pontorno, Orazio and Ragaglia, Claudio Vittorio and Zanchetta, Luca and Aquilina, Mattia and Wani, Taiba Majid and Guarnera, Luca and others},
+  booktitle={2025 International Joint Conference on Neural Networks (IJCNN)},
+  pages={1--8},
+  year={2025},
+  organization={IEEE}
+}
+                    </code></pre>
                   </div>
                   <div class="abstract-content" id="abstract-3">
                     <div class="abstract-text">
@@ -1106,7 +1211,7 @@
                       attribution models in a wide range of tasks, including closed and open set identification and verification, and robust attribution with 
                       respect to post-processing and adversarial attacks. Models trained on WILD are expected to benefit from the challenging scenario represented
                       by the dataset itself. Moreover, an assessment of seven baseline methodologies on closed and open set attribution is presented, including 
-                      obustness tests with respect to post-processing.
+                      robustness tests with respect to post-processing.
                     </div>
                   </div>
                 </div>
@@ -1117,16 +1222,18 @@
               <div class="src_timeline-item" data-year="2024" data-type="conference" data-paper-key="deepfeaturex-net">
                 <img src="images/paper_previews/icpr24_preview.png" alt="Preview of DeepFeatureX Net paper" class="src_timeline-img" loading="lazy">
                 <div class="src_timeline-content">
-                  <div class="src_timeline-date">2024</div>
-                  <h3 class="src_timeline-title">
-                    <a href="https://doi.org/10.1007/978-3-031-78305-0_12" class="external-link" target="_blank" rel="noopener noreferrer">
-                      DeepFeatureX Net: Deep Features eXtractors based Network for discriminating synthetic from real images
-                    </a>
+                  <div class="publication-meta">
+                    <div class="src_timeline-date">2024</div>
+                    <a href="https://icpr2024.org/" class="src_timeline-journal" target="_blank" rel="noopener noreferrer">International Conference on Pattern Recognition (ICPR)</a>
                     <span class="publication-type-badge badge-conference">Conference</span>
                     <span class="citation-badge"><i class="fas fa-quote-right"></i> 7 citations</span>
+                  </div>
+                  <h3 class="src_timeline-title">
+                    <span class="external-link">
+                      DeepFeatureX Net: Deep Features eXtractors based Network for discriminating synthetic from real images
+                    </span>
                   </h3>
                   <div class="src_timeline-authors">Orazio Pontorno, Luca Guarnera, Sebastiano Battiato</div>
-                  <div class="src_timeline-journal">International Conference on Pattern Recognition, 21, 177-193</div>
                   
                   <div class="publication-buttons">
                     <button class="pub-btn abstract-btn" onclick="toggleAbstract('abstract-2')">
@@ -1134,18 +1241,34 @@
                       Abstract
                       <i class="fas fa-chevron-down"></i>
                     </button>
-                    <a href="https://arxiv.org/abs/2404.15697" class="pub-btn arxiv-btn" target="_blank" rel="noopener noreferrer">
-                      <span class="arxiv-icon">ar</span>
-                      ArXiv
-                    </a>
-                    <a href="https://doi.org/10.1007/978-3-031-78305-0_12" class="pub-btn publisher-btn" target="_blank" rel="noopener noreferrer">
-                      <i class="fas fa-external-link-alt"></i>
-                      Springer
-                    </a>
+                    <div class="paper-menu-group">
+                      <button class="pub-btn paper-btn" type="button" aria-expanded="false" aria-haspopup="true">
+                        <i class="fas fa-book-open"></i> Paper <i class="fas fa-chevron-down"></i>
+                      </button>
+                      <div class="paper-menu">
+                        <a href="https://arxiv.org/abs/2404.15697" class="paper-option" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-lines"></i> ArXiv</a>
+                        <a href="https://doi.org/10.1007/978-3-031-78305-0_12" class="paper-option" target="_blank" rel="noopener noreferrer"><i class="fas fa-link"></i> DOI</a>
+                      </div>
+                    </div>
                     <a href="https://github.com/mfs-iplab/block-based_deepfake-detection" class="pub-btn github-btn">
                       <i class="fab fa-github"></i>
                       GitHub
                     </a>
+                    <button class="pub-btn cite-btn" onclick="toggleCitation('citation-1')">
+                      <i class="fas fa-quote-left"></i> Cite
+                    </button>
+                  </div>
+                  <div class="citation-content" id="citation-1">
+                    <pre class="citation-code"><code>
+@inproceedings{pontorno2024deepfeaturex,
+  title={Deepfeaturex net: Deep features extractors based network for discriminating synthetic from real images},
+  author={Pontorno, Orazio and Guarnera, Luca and Battiato, Sebastiano},
+  booktitle={International Conference on Pattern Recognition},
+  pages={177--193},
+  year={2024},
+  organization={Springer}
+}
+                  </code></pre>
                   </div>
                   <div class="abstract-content" id="abstract-2">
                     <div class="abstract-text">
@@ -1168,16 +1291,18 @@
               <div class="src_timeline-item" data-year="2024" data-type="conference" data-paper-key="dct-traces">
                 <img src="images/paper_previews/icip24_preview.png" alt="Preview of DCT-Traces paper" class="src_timeline-img" loading="lazy">
                 <div class="src_timeline-content">
-                  <div class="src_timeline-date">2024</div>
-                  <h3 class="src_timeline-title">
-                    <a href="https://doi.org/10.1109/ICIP51287.2024.10648013" class="external-link" target="_blank" rel="noopener noreferrer">
-                      On the Exploitation of DCT-Traces in the Generative-AI Domain
-                    </a>
+                  <div class="publication-meta">
+                    <div class="src_timeline-date">2024</div>
+                    <a href="https://2024.ieeeicip.org/" class="src_timeline-journal" target="_blank" rel="noopener noreferrer">IEEE International Conference on Image Processing (ICIP)</a>
                     <span class="publication-type-badge badge-conference">Conference</span>
                     <span class="citation-badge"><i class="fas fa-quote-right"></i> 13 citations</span>
+                  </div>
+                  <h3 class="src_timeline-title">
+                    <span class="external-link">
+                      On the Exploitation of DCT-Traces in the Generative-AI Domain
+                    </span>
                   </h3>
                   <div class="src_timeline-authors">Orazio Pontorno, Luca Guarnera, Sebastiano Battiato</div>
-                  <div class="src_timeline-journal">2024 IEEE International Conference on Image Processing (ICIP), 3806-3812</div>
                   
                   <div class="publication-buttons">
                     <button class="pub-btn abstract-btn" onclick="toggleAbstract('abstract-1')">
@@ -1185,18 +1310,34 @@
                       Abstract
                       <i class="fas fa-chevron-down"></i>
                     </button>
-                    <a href="https://arxiv.org/abs/2402.02209" class="pub-btn arxiv-btn" target="_blank" rel="noopener noreferrer">
-                      <span class="arxiv-icon">ar</span>
-                      ArXiv
-                    </a>
-                    <a href="https://doi.org/10.1109/ICIP51287.2024.10648013" class="pub-btn publisher-btn" target="_blank" rel="noopener noreferrer">
-                      <i class="fas fa-external-link-alt"></i>
-                      IEEE
-                    </a>
+                    <div class="paper-menu-group">
+                      <button class="pub-btn paper-btn" type="button" aria-expanded="false" aria-haspopup="true">
+                        <i class="fas fa-book-open"></i> Paper <i class="fas fa-chevron-down"></i>
+                      </button>
+                      <div class="paper-menu">
+                        <a href="https://arxiv.org/abs/2402.02209" class="paper-option" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-lines"></i> ArXiv</a>
+                        <a href="https://doi.org/10.1109/ICIP51287.2024.10648013" class="paper-option" target="_blank" rel="noopener noreferrer"><i class="fas fa-link"></i> DOI</a>
+                      </div>
+                    </div>
                     <a href="https://github.com/opontorno/dcts_analysis_deepfakes" class="pub-btn github-btn">
                       <i class="fab fa-github"></i>
                       GitHub
                     </a>
+                    <button class="pub-btn cite-btn" onclick="toggleCitation('citation-0')">
+                      <i class="fas fa-quote-left"></i> Cite
+                    </button>
+                  </div>
+                  <div class="citation-content" id="citation-0">
+                    <pre class="citation-code"><code>
+@inproceedings{pontorno2024exploitation,
+  title={On the exploitation of DCT-traces in the generative-AI domain},
+  author={Pontorno, Orazio and Guarnera, Luca and Battiato, Sebastiano},
+  booktitle={2024 IEEE international conference on image processing (ICIP)},
+  pages={3806--3812},
+  year={2024},
+  organization={IEEE}
+}
+                    </code></pre>
                   </div>
                   <div class="abstract-content" id="abstract-1">
                     <div class="abstract-text">

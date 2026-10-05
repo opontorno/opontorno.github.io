@@ -1001,12 +1001,27 @@ section[id] {
     gap: 12px;
 }
 
+.publication-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.publication-meta .publication-type-badge {
+    margin-left: auto;
+}
+
+.publication-meta .citation-badge {
+    margin-left: 0;
+}
+
 .src_timeline-date {
     display: inline-block;
     color: white;
     background: var(--bg-second);
     padding: 6px 14px;
-    border-radius: 20px;
+    border-radius: 6px;
     font-weight: 600;
     font-size: 0.85em;
     letter-spacing: 0.5px;
@@ -1023,16 +1038,6 @@ section[id] {
     transition: color 0.3s ease;
 }
 
-.src_timeline-title a:hover {
-    color: var(--bg-second);
-}
-
-.src_timeline-title a {
-    color: inherit;
-    pointer-events: none;
-    cursor: default;
-}
-
 .src_timeline-authors {
     font-style: italic;
     color: var(--text-black-700);
@@ -1041,11 +1046,21 @@ section[id] {
 }
 
 .src_timeline-journal {
-    font-size: 0.9em;
-    color: var(--text-black-700);
+    display: inline-block;
+    font-size: 0.95em;
+    color: white;
     font-weight: 500;
-    padding-left: 12px;
-    border-left: 3px solid var(--bg-second);
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px;
+    background: var(--bg-second);
+    box-shadow: 0 2px 8px rgba(48, 148, 110, 0.3);
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+
+.src_timeline-journal:hover {
+    transform: translateY(-2px);
 }
 
 /* Link esterni */
@@ -1076,7 +1091,7 @@ section[id] {
     gap: 8px;
     padding: 10px 20px;
     border: none;
-    border-radius: 25px;
+    border-radius: 6px;
     font-size: 13px;
     font-weight: 600;
     cursor: pointer;
@@ -1112,26 +1127,81 @@ section[id] {
     box-shadow: 0 4px 15px rgba(48, 148, 110, 0.4);
 }
 
-/* Bottone ArXiv */
-.arxiv-btn {
+/* Bottone Cite */
+.cite-btn {
+    background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%);
+}
+
+.cite-btn:hover,
+.cite-btn.active {
+    background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(74, 85, 104, 0.4);
+}
+
+/* Tendina Paper */
+.paper-menu-group {
+    position: relative;
+}
+
+.paper-btn {
     background: linear-gradient(135deg, #b31b1b 0%, #8a1515 100%);
 }
 
-.arxiv-btn:hover {
+.paper-btn:hover,
+.paper-menu-group.open .paper-btn {
     background: linear-gradient(135deg, #a01818 0%, #7a1212 100%);
     transform: translateY(-3px);
     box-shadow: 0 4px 15px rgba(179, 27, 27, 0.4);
 }
 
-/* Bottone Publisher */
-.publisher-btn {
-    background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%);
+.paper-btn .fa-chevron-down {
+    font-size: 11px;
+    transition: transform 0.3s ease;
 }
 
-.publisher-btn:hover {
-    background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
-    transform: translateY(-3px);
-    box-shadow: 0 4px 15px rgba(74, 85, 104, 0.4);
+.paper-menu-group.open .fa-chevron-down {
+    transform: rotate(180deg);
+}
+
+.paper-menu {
+    position: absolute;
+    z-index: 20;
+    top: calc(100% + 8px);
+    left: 0;
+    min-width: 130px;
+    padding: 6px;
+    display: none;
+    background: var(--bg-black-900);
+    border: 1px solid var(--bg-black-50);
+    border-radius: 6px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.22);
+}
+
+.paper-menu-group.open .paper-menu {
+    display: grid;
+}
+
+.paper-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 12px;
+    border-radius: 4px;
+    color: var(--text-black-900);
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.paper-option:hover {
+    background: var(--bg-second);
+    color: white;
+}
+
+.paper-option i {
+    font-size: 13px;
 }
 
 /* Bottone GitHub */
@@ -1166,21 +1236,6 @@ section[id] {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
-/* Icona ArXiv personalizzata */
-.arxiv-icon {
-    width: 16px;
-    height: 16px;
-    background: white;
-    color: #b31b1b;
-    border-radius: 3px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    font-size: 10px;
-}
-
-
 /* ============================================
    ABSTRACT ESPANDIBILE
    ============================================ */
@@ -1191,13 +1246,17 @@ section[id] {
     transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     background: var(--bg-black-900);
     border-radius: 10px;
-    margin-top: 18px;
-    border: 1px solid transparent;
+    margin-top: 0;
+    border: 0 solid transparent;
+    visibility: hidden;
 }
 
 .abstract-content.expanded {
     max-height: 600px;
+    margin-top: 18px;
     border-color: var(--bg-black-50);
+    border-width: 1px;
+    visibility: visible;
     box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
@@ -1219,6 +1278,37 @@ section[id] {
     color: var(--bg-second);
     margin-bottom: 15px;
     text-align: left;
+}
+
+.citation-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    background: var(--bg-black-900);
+    border-radius: 6px;
+    margin-top: 0;
+    border: 0 solid transparent;
+    visibility: hidden;
+}
+
+.citation-content.expanded {
+    max-height: 320px;
+    margin-top: 18px;
+    border-color: var(--bg-black-50);
+    border-width: 1px;
+    visibility: visible;
+    box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.citation-code {
+    display: block;
+    padding: 20px;
+    overflow-x: auto;
+    color: var(--text-black-700);
+    font-family: monospace;
+    font-size: 13px;
+    line-height: 1.6;
+    white-space: pre-wrap;
 }
 
 /* Animazione freccia del bottone abstract */
@@ -1332,7 +1422,7 @@ section[id] {
     background: var(--bg-second);
     color: white;
     text-decoration: none;
-    border-radius: 20px;
+    border-radius: 6px;
     font-size: 0.9rem;
     font-weight: 600;
     transition: all 0.3s ease;
@@ -1591,6 +1681,10 @@ section[id] {
         margin: 8px 0;
         width: fit-content;
     }
+
+    .publication-meta .publication-type-badge {
+        margin-left: 0;
+    }
     
     .filter-btn {
         padding: 10px 18px;
@@ -1757,12 +1851,24 @@ section[id] {
     box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
 }
 
+.publication-count-note {
+    margin: -25px auto 25px;
+    color: var(--text-black-700);
+    font-size: 0.85rem;
+    text-align: center;
+    opacity: 0.75;
+}
+
+.publication-filter-group {
+    position: relative;
+}
+
 .filter-btn {
     padding: 12px 28px;
     border: 2px solid var(--bg-black-50);
     background: var(--bg-black-900);
     color: var(--text-black-900);
-    border-radius: 30px;
+    border-radius: 6px;
     font-size: 14px;
     font-weight: 600;
     cursor: pointer;
@@ -1771,6 +1877,59 @@ section[id] {
     letter-spacing: 0.5px;
     position: relative;
     overflow: hidden;
+}
+
+.filter-dropdown {
+    min-width: 150px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+}
+
+.filter-dropdown i {
+    font-size: 11px;
+    transition: transform 0.3s ease;
+}
+
+.publication-filter-group.open .filter-dropdown i {
+    transform: rotate(180deg);
+}
+
+.filter-menu {
+    position: absolute;
+    z-index: 10;
+    top: calc(100% + 8px);
+    left: 0;
+    min-width: 100%;
+    padding: 6px;
+    display: none;
+    background: var(--bg-black-900);
+    border: 1px solid var(--bg-black-50);
+    border-radius: 6px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.publication-filter-group.open .filter-menu {
+    display: grid;
+}
+
+.filter-option {
+    padding: 9px 12px;
+    border: 0;
+    background: transparent;
+    color: var(--text-black-900);
+    text-align: left;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+.filter-option:hover,
+.filter-option.selected {
+    background: var(--bg-second);
+    color: white;
 }
 
 .filter-btn::before {
@@ -1797,13 +1956,6 @@ section[id] {
     border-color: var(--bg-second);
     transform: translateY(-3px);
     box-shadow: 0 6px 20px rgba(48, 148, 110, 0.3);
-}
-
-.filter-btn.active {
-    background: linear-gradient(135deg, var(--bg-second) 0%, #2a7a5e 100%);
-    color: white;
-    border-color: var(--bg-second);
-    box-shadow: 0 4px 15px rgba(48, 148, 110, 0.35);
 }
 
 .filter-btn:focus {

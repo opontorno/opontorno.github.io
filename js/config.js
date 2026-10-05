@@ -17,5 +17,5 @@
 // even if you forget to bump this value.
 
 const WEBSITE_CONFIG = {
-    lastUpdate: "2026-08-08"
+    lastUpdate: "2026-10-05"
 };

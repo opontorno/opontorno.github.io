@@ -30,7 +30,7 @@ function setActiveSection(hash) {
         }
     });
 
-    if (window.innerWidth < 1200) {
+    if (window.innerWidth < 1200 && aside && aside.classList.contains('open')) {
         asideSectionTogglerBtn();
     }
 
@@ -164,6 +164,12 @@ fetch('data/stats.json')
         if (data.influential_citations !== undefined) animateValue('research-influential', 0, data.influential_citations, 1500, false);
         if (data.years_active) animateValue('research-years', 0, data.years_active, 1200, false);
         if (data.avg_citations) animateValueDecimal('research-avg-citations', 0, data.avg_citations, 1500);
+
+        const publicationCountNote = document.getElementById('publication-count-note');
+        const detailedPublicationCount = document.querySelectorAll('.src_timeline-item[data-paper-key]').length;
+        if (publicationCountNote && data.publications && detailedPublicationCount < data.publications) {
+            publicationCountNote.textContent = `Showing ${detailedPublicationCount} detailed publications of ${data.publications} total. Workshop papers are listed below.`;
+        }
         
         // Update co-authors count if available
         if (data.coauthors) {
@@ -173,14 +179,10 @@ fetch('data/stats.json')
             }
         }
         
-        // Update "Last update" dates: use whichever is more recent between the
-        // manually maintained config.js date and stats.json's automated update date,
-        // so a weekly auto-refresh can't be shadowed by a stale manual date (or vice versa).
+        // Prefer the manually selected date and fall back to the automated date
+        // only when config.js does not define one.
         const manualUpdate = (typeof WEBSITE_CONFIG !== 'undefined') ? WEBSITE_CONFIG.lastUpdate : undefined;
-        const updateSource = [manualUpdate, data.last_updated]
-            .filter(Boolean)
-            .sort()
-            .pop();
+        const updateSource = manualUpdate || data.last_updated;
         
         if (updateSource) {
             // Add time to avoid timezone conversion issues
@@ -261,6 +263,24 @@ function normalizePaperText(value = "") {
         .replace(/[^a-z0-9]+/g, ""); // strip everything else, incl. whitespace, so word-boundary differences (e.g. "mu flow" vs "muflow") don't break matching
 }
 
+function escapeHtml(value = '') {
+    return String(value)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+}
+
+function sanitizeUrl(value = '') {
+    try {
+        const url = new URL(String(value), window.location.origin);
+        return ['http:', 'https:'].includes(url.protocol) ? url.href : '#';
+    } catch {
+        return '#';
+    }
+}
+
 // Update paper citations from stats.json
 function updatePaperCitations(publications) {
     const timelineItems = document.querySelectorAll('.src_timeline-item[data-paper-key]');
@@ -308,22 +328,26 @@ function loadFeaturedProjects(projects) {
         card.className = 'project-card';
         card.style.opacity = '0';
         card.style.transform = 'translateY(30px)';
+                const projectName = escapeHtml(project.name || 'Untitled project').replace(/-/g, ' ');
+                const projectDescription = escapeHtml(project.description || 'No description available');
+                const projectLanguage = escapeHtml(project.language || '');
+                const projectUrl = sanitizeUrl(project.url);
         
         // Limit topics to first 4
         const topicsHTML = project.topics && project.topics.length > 0
             ? project.topics.slice(0, 4).map(topic => 
-                `<span class="project-topic">${topic}</span>`
+                                `<span class="project-topic">${escapeHtml(topic)}</span>`
               ).join('')
             : '';
         
         card.innerHTML = `
             <div class="project-header">
                 <div class="project-title">
-                    <h4>${project.name.replace(/-/g, ' ')}</h4>
+                    <h4>${projectName}</h4>
                 </div>
-                ${project.language ? `<span class="project-language">${project.language}</span>` : ''}
+                ${projectLanguage ? `<span class="project-language">${projectLanguage}</span>` : ''}
             </div>
-            <p class="project-description">${project.description || 'No description available'}</p>
+            <p class="project-description">${projectDescription}</p>
             <div class="project-footer">
                 ${topicsHTML ? `<div class="project-topics">${topicsHTML}</div>` : '<div class="project-topics"></div>'}
                 <div class="project-stats">
@@ -335,7 +359,7 @@ function loadFeaturedProjects(projects) {
                             <i class="fas fa-code-fork"></i> ${project.forks}
                         </span>
                     </div>
-                    <a href="${project.url}" class="project-link" target="_blank" rel="noopener noreferrer">
+                    <a href="${projectUrl}" class="project-link" target="_blank" rel="noopener noreferrer">
                         GitHub <i class="fas fa-external-link-alt"></i>
                     </a>
                 </div>
@@ -388,7 +412,7 @@ function loadLanguageDistribution(languages) {
             <div class="language-header">
                 <div class="language-name">
                     <span class="language-icon ${langClass}"></span>
-                    ${language}
+                    ${escapeHtml(language)}
                 </div>
                 <span class="language-percent">${percentage}%</span>
             </div>
@@ -451,7 +475,7 @@ function loadTopicsCloud(projects) {
         }
         
         tag.innerHTML = `
-            <span class="topic-name">${topic}</span>
+            <span class="topic-name">${escapeHtml(topic)}</span>
             <span class="topic-count">${count}</span>
         `;
         
@@ -479,7 +503,7 @@ function loadQuickInsights(projects, languages) {
     const mostStarredEl = document.getElementById('insight-most-starred');
     if (mostStarredEl && mostStarred) {
         mostStarredEl.innerHTML = `
-            <span>${mostStarred.name.replace(/-/g, ' ')}</span>
+            <span>${escapeHtml(mostStarred.name || 'Untitled project').replace(/-/g, ' ')}</span>
             <i class="fas fa-star" style="font-size: 0.9rem;"></i>
             <span style="font-size: 1rem; color: var(--bg-second);">${mostStarred.stars}</span>
         `;
@@ -495,7 +519,7 @@ function loadQuickInsights(projects, languages) {
             const sorted = Object.entries(languages).sort((a, b) => b[1] - a[1]);
             primaryLang = sorted[0]?.[0] || 'N/A';
         }
-        primaryLangEl.textContent = primaryLang;
+            primaryLangEl.textContent = primaryLang;
     }
     
     // Top topic
@@ -513,7 +537,7 @@ function loadQuickInsights(projects, languages) {
         const sortedTopics = Object.entries(topicsCount).sort((a, b) => b[1] - a[1]);
         if (sortedTopics.length > 0) {
             topTopicEl.innerHTML = `
-                <span>${sortedTopics[0][0]}</span>
+                <span>${escapeHtml(sortedTopics[0][0])}</span>
                 <span style="font-size: 0.9rem; color: var(--bg-second);">(${sortedTopics[0][1]} repos)</span>
             `;
         } else {
@@ -548,52 +572,72 @@ window.addEventListener("load", () => {
 });
 
 /* ============================== Publications Filters ============================ */
-const filterButtons = document.querySelectorAll('.filter-btn');
 const timelineItems = document.querySelectorAll('.src_timeline-item');
+const filterGroups = document.querySelectorAll('.publication-filter-group');
 
-if (filterButtons.length > 0 && timelineItems.length > 0) {
-    filterButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const filterValue = this.getAttribute('data-filter');
-            
-            // Update active button
-            filterButtons.forEach(btn => {
-                btn.classList.remove('active');
-                btn.setAttribute('aria-pressed', 'false');
+if (filterGroups.length > 0 && timelineItems.length > 0) {
+    const selectedFilters = { year: 'all', type: 'all' };
+
+    function applyPublicationFilters() {
+        timelineItems.forEach(item => {
+            const matchesYear = selectedFilters.year === 'all' || item.getAttribute('data-year') === selectedFilters.year;
+            const matchesType = selectedFilters.type === 'all' || item.getAttribute('data-type') === selectedFilters.type;
+            const isVisible = matchesYear && matchesType;
+
+            if (isVisible) {
+                item.style.display = 'flex';
+                setTimeout(() => item.classList.add('show'), 10);
+            } else {
+                item.classList.remove('show');
+                setTimeout(() => item.style.display = 'none', 300);
+            }
+        });
+    }
+
+    filterGroups.forEach(group => {
+        const dropdownButton = group.querySelector('.filter-dropdown');
+        const options = group.querySelectorAll('.filter-option');
+        const filterGroup = dropdownButton.classList.contains('year-filter') ? 'year' : 'type';
+        const defaultLabel = filterGroup === 'year' ? 'Year' : 'Type';
+
+        dropdownButton.addEventListener('click', () => {
+            const isExpanded = dropdownButton.getAttribute('aria-expanded') === 'true';
+
+            filterGroups.forEach(otherGroup => {
+                const otherButton = otherGroup.querySelector('.filter-dropdown');
+                otherButton.setAttribute('aria-expanded', 'false');
+                otherGroup.classList.remove('open');
             });
-            this.classList.add('active');
-            this.setAttribute('aria-pressed', 'true');
-            
-            // Filter publications
-            timelineItems.forEach(item => {
-                if (filterValue === 'all') {
-                    item.style.display = 'flex';
-                    setTimeout(() => item.classList.add('show'), 10);
-                } else if (filterValue === 'journal' || filterValue === 'conference') {
-                    if (item.getAttribute('data-type') === filterValue) {
-                        item.style.display = 'flex';
-                        setTimeout(() => item.classList.add('show'), 10);
-                    } else {
-                        item.classList.remove('show');
-                        setTimeout(() => item.style.display = 'none', 300);
-                    }
-                } else {
-                    // Year filter
-                    if (item.getAttribute('data-year') === filterValue) {
-                        item.style.display = 'flex';
-                        setTimeout(() => item.classList.add('show'), 10);
-                    } else {
-                        item.classList.remove('show');
-                        setTimeout(() => item.style.display = 'none', 300);
-                    }
-                }
+
+            dropdownButton.setAttribute('aria-expanded', String(!isExpanded));
+            group.classList.toggle('open', !isExpanded);
+        });
+
+        options.forEach(option => {
+            option.addEventListener('click', () => {
+                const value = option.getAttribute('data-filter');
+                selectedFilters[filterGroup] = value;
+                dropdownButton.innerHTML = `${value === 'all' ? defaultLabel : option.textContent} <i class="fas fa-chevron-down" aria-hidden="true"></i>`;
+                dropdownButton.setAttribute('aria-expanded', 'false');
+                group.classList.remove('open');
+                options.forEach(item => item.classList.remove('selected'));
+                option.classList.add('selected');
+                applyPublicationFilters();
             });
         });
     });
-    
-    // Initialize all items as visible
+
     timelineItems.forEach(item => {
         item.classList.add('show');
+    });
+
+    document.addEventListener('click', event => {
+        if (!event.target.closest('.publication-filter-group')) {
+            filterGroups.forEach(group => {
+                group.classList.remove('open');
+                group.querySelector('.filter-dropdown').setAttribute('aria-expanded', 'false');
+            });
+        }
     });
 }
 
@@ -717,6 +761,60 @@ window.toggleAbstract = function(abstractId) {
         }
     }
 };
+
+window.toggleCitation = function(citationId) {
+    const citationContent = document.getElementById(citationId);
+    const button = document.querySelector(`[onclick="toggleCitation('${citationId}')"]`);
+
+    if (citationContent && button) {
+        const isExpanded = citationContent.classList.contains('expanded');
+
+        document.querySelectorAll('.citation-content.expanded').forEach(content => {
+            content.classList.remove('expanded');
+        });
+        document.querySelectorAll('.cite-btn.active').forEach(btn => {
+            btn.classList.remove('active');
+        });
+
+        if (!isExpanded) {
+            citationContent.classList.add('expanded');
+            button.classList.add('active');
+        }
+    }
+};
+
+document.querySelectorAll('.paper-menu-group').forEach(group => {
+    const button = group.querySelector('.paper-btn');
+
+    button.addEventListener('click', event => {
+        event.stopPropagation();
+        const isOpen = group.classList.contains('open');
+
+        document.querySelectorAll('.paper-menu-group.open').forEach(openGroup => {
+            openGroup.classList.remove('open');
+            openGroup.querySelector('.paper-btn').setAttribute('aria-expanded', 'false');
+        });
+
+        group.classList.toggle('open', !isOpen);
+        button.setAttribute('aria-expanded', String(!isOpen));
+    });
+
+    group.querySelectorAll('.paper-option').forEach(option => {
+        option.addEventListener('click', () => {
+            group.classList.remove('open');
+            button.setAttribute('aria-expanded', 'false');
+        });
+    });
+});
+
+document.addEventListener('click', event => {
+    if (!event.target.closest('.paper-menu-group')) {
+        document.querySelectorAll('.paper-menu-group.open').forEach(group => {
+            group.classList.remove('open');
+            group.querySelector('.paper-btn').setAttribute('aria-expanded', 'false');
+        });
+    }
+});
 /* ============================== Timeline Interactive Features ============================ */
 // Timeline item expand/collapse (About/CV career timeline)
 document.addEventListener('DOMContentLoaded', () => {

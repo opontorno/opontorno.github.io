@@ -11,6 +11,9 @@ import requests
 from pathlib import Path
 import time
 
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+REQUEST_TIMEOUT = 30
+
 # Load environment variables from .env file if it exists (for local testing)
 env_file = Path(__file__).parent.parent / '.env'
 if env_file.exists():
@@ -35,7 +38,7 @@ def find_author_id():
             'limit': 5
         }
         
-        response = requests.get(url, params=params)
+        response = requests.get(url, params=params, timeout=REQUEST_TIMEOUT)
         response.raise_for_status()
         
         data = response.json()
@@ -78,7 +81,7 @@ def get_semantic_scholar_stats(author_id=None):
         print(f"📡 Fetching from: {url}")
         print(f"🔎 Author ID: {author_id}")
         
-        response = requests.get(url, params=params)
+        response = requests.get(url, params=params, timeout=REQUEST_TIMEOUT)
         
         print(f"📊 Status code: {response.status_code}")
         
@@ -200,14 +203,15 @@ def update_stats_file(stats):
     
     try:
         # Read existing stats
-        with open('data/stats.json', 'r') as f:
+        stats_file = PROJECT_ROOT / 'data' / 'stats.json'
+        with open(stats_file, 'r') as f:
             current_stats = json.load(f)
         
         # Update with new data
         current_stats.update(stats)
         
         # Write back
-        with open('data/stats.json', 'w') as f:
+        with open(stats_file, 'w') as f:
             json.dump(current_stats, f, indent=2)
         
         print("✓ Stats file updated successfully!")

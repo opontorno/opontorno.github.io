@@ -11,6 +11,8 @@ import requests
 from pathlib import Path
 from collections import Counter
 
+REQUEST_TIMEOUT = 30
+
 # Load environment variables from .env file if it exists
 env_file = Path(__file__).parent.parent / '.env'
 if env_file.exists():
@@ -60,13 +62,13 @@ def get_github_stats():
         
         # Get user info
         user_url = f"https://api.github.com/users/{GITHUB_USERNAME}"
-        user_response = requests.get(user_url)
+        user_response = requests.get(user_url, timeout=REQUEST_TIMEOUT)
         user_response.raise_for_status()
         user_data = user_response.json()
         
         # Get repositories
         repos_url = f"https://api.github.com/users/{GITHUB_USERNAME}/repos?per_page=100"
-        repos_response = requests.get(repos_url)
+        repos_response = requests.get(repos_url, timeout=REQUEST_TIMEOUT)
         repos_response.raise_for_status()
         repos_data = repos_response.json()
         
@@ -89,13 +91,13 @@ def get_github_stats():
                 lang_url = repo.get('languages_url')
                 if lang_url:
                     try:
-                        lang_response = requests.get(lang_url)
+                        lang_response = requests.get(lang_url, timeout=REQUEST_TIMEOUT)
                         if lang_response.status_code == 200:
                             lang_data = lang_response.json()
                             for lang, bytes_count in lang_data.items():
                                 languages[lang] += bytes_count
                                 total_bytes += bytes_count
-                    except:
+                    except requests.RequestException:
                         pass
         
         # Get top 5 languages with percentages

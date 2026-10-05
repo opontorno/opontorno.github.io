@@ -6,6 +6,8 @@ Helper script to find your Semantic Scholar Author ID
 import requests
 import json
 
+REQUEST_TIMEOUT = 30
+
 def find_author_id(author_name):
     """Find Semantic Scholar Author ID by name"""
     try:
@@ -18,7 +20,7 @@ def find_author_id(author_name):
             'limit': 10
         }
         
-        response = requests.get(url, params=params)
+        response = requests.get(url, params=params, timeout=REQUEST_TIMEOUT)
         response.raise_for_status()
         
         data = response.json()
@@ -41,7 +43,7 @@ def find_author_id(author_name):
             }
             
             try:
-                detail_response = requests.get(detail_url, params=params)
+                detail_response = requests.get(detail_url, params=params, timeout=REQUEST_TIMEOUT)
                 detail_response.raise_for_status()
                 details = detail_response.json()
                 
