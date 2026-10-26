@@ -51,8 +51,8 @@
     }
   ],
   "github": {
-    "public_repos": 14,
-    "total_stars": 25,
+    "public_repos": 15,
+    "total_stars": 28,
     "followers": 22,
     "total_forks": 9,
     "top_languages": [
@@ -78,6 +78,22 @@
       }
     ],
     "featured_projects": [
+      {
+        "name": "MuFlow",
+        "description": "[ECCV26] \u00b5Flow \u2014 Leveraging Average Images for Improving Generalisation of Deepfake Faces Detectors",
+        "url": "https://github.com/opontorno/MuFlow",
+        "stars": 7,
+        "forks": 0,
+        "language": "Python",
+        "topics": [
+          "anomaly-detection",
+          "deep-learning",
+          "deepfakes-detection",
+          "normalizing-flows",
+          "one-class-learning"
+        ],
+        "updated_at": "2026-10-22T14:58:16Z"
+      },
       {
         "name": "Hybrid-Quantum-Neural-Network-for-binary-classification",
         "description": "Final project for the university course 'Quantum Computer Programming', held in the academic year 2022/2023. The purpose of this project is to investigate the structure of a hybrid neural network. To do this, I made use of the 'qiskit' library, which allows useful tools for constructing a classical-quantum neural network.",
@@ -110,22 +126,6 @@
         "updated_at": "2025-11-27T18:20:17Z"
       },
       {
-        "name": "MuFlow",
-        "description": "[ECCV26] \u00b5Flow \u2014 Leveraging Average Images for Improving Generalisation of Deepfake Faces Detectors",
-        "url": "https://github.com/opontorno/MuFlow",
-        "stars": 4,
-        "forks": 0,
-        "language": "Python",
-        "topics": [
-          "anomaly-detection",
-          "deep-learning",
-          "deepfakes-detection",
-          "normalizing-flows",
-          "one-class-learning"
-        ],
-        "updated_at": "2026-10-01T16:22:58Z"
-      },
-      {
         "name": "Traffic-lights-recognition",
         "description": "Final project for the postgraduate course 'School in AI: Deep learning, Vision and Language for industry', held in the year 2022.The basic idea of this project  is to build a model emulating the behaviour of an autonomous driving car in the management of the action to be taken upon recognition of a traffic light.",
         "url": "https://github.com/opontorno/Traffic-lights-recognition",
@@ -148,7 +148,7 @@
         "forks": 0,
         "language": "CSS",
         "topics": [],
-        "updated_at": "2026-10-12T10:01:01Z"
+        "updated_at": "2026-10-19T08:17:37Z"
       },
       {
         "name": "classifying-butterfly-species-in-MATLAB",
@@ -166,7 +166,7 @@
         "updated_at": "2023-07-08T10:50:51Z"
       }
     ],
-    "last_updated": "2026-10-19",
+    "last_updated": "2026-10-26",
     "source": "GitHub API"
   },
   "author_id": "2282534052",
