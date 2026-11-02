@@ -3,11 +3,11 @@
   "citations": 56,
   "projects": 5,
   "collaborations": 3,
-  "last_updated": "2026-10-19",
+  "last_updated": "2026-11-02",
   "h_index": 4,
   "source": "Semantic Scholar API",
   "avg_citations": 7.0,
-  "most_cited": 20,
+  "most_cited": 25,
   "publications_details": [
     {
       "title": "\u03bcFlow: Leveraging Average Images for Improving Generalisation of Deepfake Faces Detectors",
@@ -26,7 +26,7 @@
     },
     {
       "title": "DeepFeatureX-SN: Generalization of deepfake detection via contrastive learning",
-      "citations": 7,
+      "citations": 8,
       "year": 2025
     },
     {
@@ -41,12 +41,12 @@
     },
     {
       "title": "DeepFeatureX Net: Deep Features eXtractors based Network for discriminating synthetic from real images",
-      "citations": 10,
+      "citations": 15,
       "year": 2024
     },
     {
       "title": "On the Exploitation of DCT-Traces in the Generative-AI Domain",
-      "citations": 20,
+      "citations": 25,
       "year": 2024
     }
   ],
@@ -148,7 +148,7 @@
         "forks": 0,
         "language": "CSS",
         "topics": [],
-        "updated_at": "2026-10-19T08:17:37Z"
+        "updated_at": "2026-10-26T08:19:12Z"
       },
       {
         "name": "classifying-butterfly-species-in-MATLAB",
@@ -166,7 +166,7 @@
         "updated_at": "2023-07-08T10:50:51Z"
       }
     ],
-    "last_updated": "2026-10-26",
+    "last_updated": "2026-11-02",
     "source": "GitHub API"
   },
   "author_id": "2282534052",
