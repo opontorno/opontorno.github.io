@@ -1,13 +1,13 @@
 {
   "publications": 8,
-  "citations": 56,
+  "citations": 67,
   "projects": 5,
   "collaborations": 3,
-  "last_updated": "2026-11-02",
+  "last_updated": "2026-11-09",
   "h_index": 4,
   "source": "Semantic Scholar API",
-  "avg_citations": 7.0,
-  "most_cited": 25,
+  "avg_citations": 8.4,
+  "most_cited": 26,
   "publications_details": [
     {
       "title": "\u03bcFlow: Leveraging Average Images for Improving Generalisation of Deepfake Faces Detectors",
@@ -26,12 +26,12 @@
     },
     {
       "title": "DeepFeatureX-SN: Generalization of deepfake detection via contrastive learning",
-      "citations": 8,
+      "citations": 9,
       "year": 2025
     },
     {
       "title": "WILD: a new in-the-Wild Image Linkage Dataset for synthetic image attribution",
-      "citations": 16,
+      "citations": 17,
       "year": 2025
     },
     {
@@ -41,18 +41,18 @@
     },
     {
       "title": "DeepFeatureX Net: Deep Features eXtractors based Network for discriminating synthetic from real images",
-      "citations": 15,
+      "citations": 16,
       "year": 2024
     },
     {
       "title": "On the Exploitation of DCT-Traces in the Generative-AI Domain",
-      "citations": 25,
+      "citations": 26,
       "year": 2024
     }
   ],
   "github": {
     "public_repos": 15,
-    "total_stars": 28,
+    "total_stars": 29,
     "followers": 22,
     "total_forks": 9,
     "top_languages": [
@@ -92,7 +92,7 @@
           "normalizing-flows",
           "one-class-learning"
         ],
-        "updated_at": "2026-10-22T14:58:16Z"
+        "updated_at": "2026-11-03T10:54:59Z"
       },
       {
         "name": "Hybrid-Quantum-Neural-Network-for-binary-classification",
@@ -141,6 +141,21 @@
         "updated_at": "2025-11-03T12:02:52Z"
       },
       {
+        "name": "hexmil",
+        "description": "[ACMMM 26] HexMIL: Hierarchical Attention MIL for Ante-Hoc Explainable Detection of AI-Manipulated CT Volumes",
+        "url": "https://github.com/opontorno/hexmil",
+        "stars": 2,
+        "forks": 0,
+        "language": "Python",
+        "topics": [
+          "aigc-detection",
+          "deep-learning",
+          "medical-deepfakes",
+          "xai"
+        ],
+        "updated_at": "2026-11-04T12:19:48Z"
+      },
+      {
         "name": "opontorno.github.io",
         "description": null,
         "url": "https://github.com/opontorno/opontorno.github.io",
@@ -148,25 +163,10 @@
         "forks": 0,
         "language": "CSS",
         "topics": [],
-        "updated_at": "2026-10-26T08:19:12Z"
-      },
-      {
-        "name": "classifying-butterfly-species-in-MATLAB",
-        "description": "Final project for the university course 'Neural Computing', held in the academic year 2022/2023.The purpose of this work is to build an architecture of a neural network that can learn to correctly recognize and classify the family to which a butterfly belongs. To do this, we will train the network using the dataset '*Butterfly & Moths",
-        "url": "https://github.com/opontorno/classifying-butterfly-species-in-MATLAB",
-        "stars": 1,
-        "forks": 0,
-        "language": "MATLAB",
-        "topics": [
-          "convolutional-neural-networks",
-          "deep-learning",
-          "deep-neural-networks",
-          "matlab"
-        ],
-        "updated_at": "2023-07-08T10:50:51Z"
+        "updated_at": "2026-11-02T10:19:56Z"
       }
     ],
-    "last_updated": "2026-11-02",
+    "last_updated": "2026-11-09",
     "source": "GitHub API"
   },
   "author_id": "2282534052",
