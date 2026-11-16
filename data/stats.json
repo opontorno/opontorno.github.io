@@ -92,7 +92,7 @@
           "normalizing-flows",
           "one-class-learning"
         ],
-        "updated_at": "2026-11-03T10:54:59Z"
+        "updated_at": "2026-11-10T14:00:22Z"
       },
       {
         "name": "Hybrid-Quantum-Neural-Network-for-binary-classification",
@@ -153,7 +153,7 @@
           "medical-deepfakes",
           "xai"
         ],
-        "updated_at": "2026-11-04T12:19:48Z"
+        "updated_at": "2026-11-10T14:29:58Z"
       },
       {
         "name": "opontorno.github.io",
@@ -163,10 +163,10 @@
         "forks": 0,
         "language": "CSS",
         "topics": [],
-        "updated_at": "2026-11-02T10:19:56Z"
+        "updated_at": "2026-11-09T10:40:01Z"
       }
     ],
-    "last_updated": "2026-11-09",
+    "last_updated": "2026-11-16",
     "source": "GitHub API"
   },
   "author_id": "2282534052",
